@@ -1,0 +1,138 @@
+<div class="content-wrapper container-fluid p-0">
+    <div class="content-body">
+        <app-content-header [contentHeader]="contentHeader"></app-content-header>
+        <section class="order-details-page">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
+                            <div class="order-info">
+                                <p><strong>Order ID</strong></p>
+                                <p class="badge badge-light-primary">{{orderData.orderId}}</p>
+                            </div>
+                            <div class="order-info">
+                                <p><strong>Order Status</strong></p>
+                                <p [ngClass]="getColor(orderData.status)">{{orderData.status}}</p>
+                            </div>
+                            <div class="order-info">
+                                <p><strong>Payment Mode</strong></p>
+                                <p>{{orderData.payment.paymentMode}}</p>
+                            </div>
+                            <div class="order-info">
+                                <p><strong>Order Date</strong></p>
+                                <p>{{orderData.timing[0].date}}</p>
+                            </div>
+                            <div class="order-info">
+                                <p><strong>Distance</strong></p>
+                                <p>{{orderData.distance}}</p>
+                            </div>
+                            <div class="order-info">
+                                <p><strong>Outlet Name</strong></p>
+                                <p>{{orderData.outlet.outletName}}</p>
+                            </div>
+                            <div class="order-info">
+                                <p><strong>Order Time</strong></p>
+                                <p>{{orderData.timing[0].time}}</p>
+                            </div>
+
+                        </div>
+                        <hr>
+                        <div class="row mt-3">
+                            <div class="col-md-4">
+                                <div class="food-items">
+                                    <h4 class="card-title">Food Items</h4>
+                                    <div class="employee-task d-flex justify-content-between align-items-center mb-1" *ngFor="let product of orderData.productList">
+                                        <div class="media">
+                                            <!-- <div class="avatar mr-75">
+                                                <img src="assets/images/pages/users/merchant/momos.jpg" class="rounded"
+                                                    width="42" height="42" alt="Avatar" />
+                                            </div> -->
+                                            <div class="media-body my-auto">
+                                                <h6 class="mb-0">{{product.productName}} X {{product.quantity}}</h6>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span>₹{{product.productPrice}} ({{product.quantityPrice}})</span>
+
+                                        </div>
+                                    </div>
+                                    <!-- <div class="employee-task d-flex justify-content-between align-items-center mb-1">
+                                        <div class="media">
+                                            <div class="avatar mr-75">
+                                                <img src="assets/images/pages/users/merchant/dish.jpg" class="rounded"
+                                                    width="42" height="42" alt="Avatar" />
+                                            </div>
+                                            <div class="media-body my-auto">
+                                                <h6 class="mb-0">Veg Lolipop</h6>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span>₹120</span>
+
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="customer-details">
+                                    <h4 class="card-title">Customer Details</h4>
+                                    <div
+                                        class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mb-1">
+                                        <div><strong> Customer Name:</strong></div>
+                                        <div>{{orderData.client.clientName}}</div>
+
+                                    </div>
+                                    <div
+                                        class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mb-1">
+                                        <div><strong> Customer Phone:</strong>
+                                        </div>
+                                        <div>{{orderData.client.clientPhone}}</div>
+                                    </div>
+                                    <div
+                                        class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mb-1">
+                                        <div><strong> Customer Address:</strong></div>
+                                        <div>{{orderData.client.clientAddress}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="price-details">
+                                    <h4 class="card-title">Price Details</h4>
+                                    <div
+                                        class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mb-1">
+                                        <div><strong> Order Price:</strong></div>
+                                        <div>₹{{orderData.amount.totalAmount}}</div>
+
+                                    </div>
+                                    <div
+                                        class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mb-1">
+                                        <div><strong>Delivery Charges:</strong></div>
+                                        <div>₹{{orderData.amount.deliveryCharge}}</div>
+                                    </div>
+                                    <div
+                                        class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mb-1">
+                                        <div><strong>Tax:</strong></div>
+                                        <div>₹{{orderData.amount.taxAmount}}</div>
+                                    </div>
+                                    <div
+                                        class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mb-1">
+                                        <div><strong>Discount:</strong></div>
+                                        <div>₹{{orderData.amount.discountedAmount}}</div>
+                                    </div>
+                                    <hr>
+                                    <div
+                                        class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mb-1">
+                                        <div><strong>Total Price:</strong></div>
+                                        <div>₹{{orderData.payableAmount | number:'1.2-2'}}</div>
+                                    </div>
+                                    
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

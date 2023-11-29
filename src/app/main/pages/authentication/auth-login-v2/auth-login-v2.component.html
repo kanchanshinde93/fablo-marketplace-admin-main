@@ -1,0 +1,64 @@
+<div class="auth-wrapper auth-v2">
+  <div class="login-wrapper">
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-lg-6 col-12">
+        <!-- Left Text-->
+          <div class="w-100 d-lg-flex align-items-center justify-content-center">
+            <!-- <img class="img-fluid" [src]="
+                    coreConfig.layout.skin === 'dark'
+                      ? 'assets/images/pages/login-v2-dark.svg'
+                      : 'assets/images/pages/login-v2.svg'
+                  " alt="Login V2" /> -->
+                  <img src="assets/images/pages/working-setup.svg" alt="">
+          </div>
+        <!-- /Left Text-->
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-6 col-12">
+        <!-- Login-->
+        <div class="login-section">
+         
+            
+            <!-- /Brand logo-->
+            <h2 class="card-title font-weight-bold mb-1">Welcome to <span>Fablo</span></h2>
+            <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
+            <form class="auth-login-form mt-2" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <!-- <div class="form-group">
+                <label for="basicSelect">User Type</label>
+                <select class="form-control" id="basicSelect">
+                  <option>Admin</option>
+                  <option>Operation</option>
+                  <option>Sub Admin</option>
+                  <option>Marketing Executive</option>
+                </select>
+              </div> -->
+              <div class="form-group">
+                <label class="form-label" for="login-email">Email</label>
+                <input type="text" formControlName="email" class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f.email.errors }" placeholder="admin@demo.com"
+                  aria-describedby="login-email" autofocus="" tabindex="1" />
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.required">Email is required</div>
+                  <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="login-password">Password</label>
+                <input type="password" formControlName="password" class="form-control"
+                  [ngClass]="{ 'is-invalid error': submitted && f.password.errors }" placeholder="············"
+                  aria-describedby="login-password" tabindex="2" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback"
+                  [ngClass]="{ 'd-block': submitted && f.password.errors }">
+                  <div *ngIf="f.password.errors.required">Password is required</div>
+                </div>
+              </div>
+              <button type="submit" [disabled]="loading" class="btn btn-primary btn-block mt-2" tabindex="4" rippleEffect>
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>Sign in
+              </button>
+            </form>
+          
+        </div>
+        <!-- /Login-->
+      </div>
+    </div>
+  </div>
+</div>

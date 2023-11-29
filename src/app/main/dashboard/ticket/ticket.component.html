@@ -1,0 +1,90 @@
+<div class="content-wrapper container-fluid p-0">
+    <div class="content-body">
+        <app-content-header [contentHeader]="contentHeader"></app-content-header>
+        <section class="ticket-page">
+            
+                    <div class="d-flex align-items-baseline justify-content-between">
+                        <div class="d-flex">
+                            <select class="form-control" id="basicSelect">
+                                <option>Customer</option>
+                                <option>Merchant</option>
+                            </select>
+
+                            <select class="ml-2 form-control" id="basicSelect" (change)="selectStatus($event)">
+                                <option value="All">All</option>
+                            <option value="Open">Pending</option>
+                            <option value="completed">Completed</option>
+                            </select>
+
+                        </div>
+                        <div
+                            class="date-range d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
+                            
+                            <div class="input-group mb-1 search-table mr-1">
+                                <input type="search" placeholder="Search" class="form-control ml-25"
+                                    (keyup)="filterUpdate($event)" (search)="filterUpdate($event)" />
+                            </div>
+                            <!-- <button csvLink (click)="downloadCSV($event)"
+                                class="btn btn-outline-secondary float-right csv-export m" rippleEffect>
+                                <img src="assets/images/icons/csv.png" alt=""> </button> -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="card" *ngFor="let ticket of ticketList">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{ticket.issue}}</h4>
+                                    <div class="card-subtitle text-muted mb-1"><strong>Expired:</strong> <span> No amount will be deducted</span></div>
+                                    <hr>
+                                    <p class="card-text">
+                                        <strong>ID :</strong> <span> {{ticket.ticketId}}</span>
+                                    </p>
+                                    <p class="card-text">
+                                        <strong>Order Items :</strong> <span> chicken roll X1</span> 
+                                    </p>
+                                    <button class="btn btn-outline-primary" (click)="viewDetails(ticket)">View Details</button>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <ng-container *ngIf="isShow">
+                            <div class="col-md-7">
+                                <div class="card view-details">
+                                    <div class="Cross-btn mr-1">
+                                        
+                                        <button type="button" class="close" (click)="closeDetails()" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title d-flex">{{ticketData?.issue}}</h4>
+                                        <hr>
+                                        <div class="media">
+                                            <div class="avatar mr-1">
+                                                <img src="assets/images/portrait/small/avatar-s-7.jpg" alt="Avatar" width="42"
+                                                    height="42" />
+                                            </div>
+                                            <div class="media-body">
+                                                <h5 class="mb-0">Shyama Thakur</h5>
+                                                <small class="text-muted">1 Order With Fablo Food</small>
+                                            </div>
+                                        </div>
+                                        <img class="ticket-wrong-image" src="/assets/images/pages/wrong-item.jpg" />
+                                        <div
+                                            class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mt-2">
+                                            <h5><strong>Issue with:</strong> <span> 1X Chicken Roll</span> <strong>₹
+                                                    210</strong>
+                                            </h5>
+                                            <!-- <button class="btn btn-outline-primary">Close</button> -->
+                                        </div>
+        
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                
+            
+        </section>
+    </div>
+</div>

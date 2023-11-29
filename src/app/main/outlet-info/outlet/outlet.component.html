@@ -1,0 +1,305 @@
+<div class="content-wrapper container-fluid p-0">
+    <div class="content-body">
+        <!-- content-header component -->
+        <app-content-header [contentHeader]="contentHeader"></app-content-header>
+        <!-- Customer List Responsive Datatable -->
+        <section id="customer-page ngx-datatable-Responsive">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">All Outlet</h4>
+                    <div>
+                        <!-- <button type="button" class="btn btn-primary mr-1" routerLink="/outlet-info/add-outlet">
+                            Add Outlet +
+                        </button> -->
+                        <!-- <button type="button" class="btn btn-primary" routerLink="/userType/outletDetails" rippleEffect>
+                            Outlet Details
+                        </button> -->
+                    </div>
+                    
+                    
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex justify-content-between align-items-center m-1">
+                            <label class="d-flex align-items-center">Show
+                                <select class="form-control mx-25" [(ngModel)]="basicSelectedOption">
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select>
+                                entries</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12 d-flex justify-content-md-end">
+                        <div class="d-flex align-items-center justify-content-end pb-1 pl-1 pl-md-0 pb-md-0">
+                            
+                            <div class="input-group mb-1 search-table">
+                                <input type="search" placeholder="Search" class="form-control ml-25"
+                                    (keyup)="filterUpdate($event)" (search)="filterUpdate($event)" />
+                            </div>
+                            <button csvLink (click)="downloadCSV($event)"
+                                class="btn btn-outline-secondary float-right csv-export" rippleEffect><img
+                                    src="assets/images/icons/csv.png" alt=""> </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ngx-datatables responsive -->
+                <ngx-datatable #table class="bootstrap core-bootstrap" [columnMode]="ColumnMode.force"
+                    [headerHeight]="40" [rowHeight]="58" [footerHeight]="50" rowHeight="auto" [limit]="10" [rows]="rows"
+                    [scrollbarH]="true">
+                    <ngx-datatable-column name="Seller Id" prop="sellerId" [width]="150"></ngx-datatable-column>
+                    <ngx-datatable-column name="Outlet Name" prop="outletName" [width]="150"></ngx-datatable-column>
+                    <ngx-datatable-column name="Is Closed" prop="isClosed" [width]="150">
+                        <ng-template let-closeStatus="value" ngx-datatable-cell-template>
+                            <div class="badge badge-pill" [ngClass]="selectButtonClass(closeStatus)">
+                              {{ closeStatus }}
+                            </div>
+                          </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Phone" prop="phone" [width]="150"></ngx-datatable-column>
+                    <ngx-datatable-column name="Is Verified" prop="isVerified" [width]="150">
+                        <ng-template let-verificationStatus="value" ngx-datatable-cell-template>
+                            <div class="badge badge-pill" 
+                            [ngClass]="{
+                              'badge-light-success': verificationStatus,
+                              'badge-light-dark': !verificationStatus
+                            }"
+                            >
+                            {{verificationStatus}}
+                            </div>
+                          </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Action" [width]="120" [sortable]="false">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            <div class="d-flex align-items-center">
+                                <div ngbDropdown container="body">
+                                    <a ngbDropdownToggle href="javascript:void(0);" class="hide-arrow"
+                                        id="dropdownBrowserState" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+
+                                    </a>
+                                    <div ngbDropdownMenu class="dropdown-menu-right"
+                                        aria-labelledby="dropdownBrowserState">
+                                        <a href="javascript:void(0)" ngbDropdownItem
+                                            class="d-flex align-items-center" (click)="openoutletDetails(row)"><i
+                                                data-feather="file-text" class="mr-50" ></i>Details</a>
+                                        <a href="javascript:void(0)" ngbDropdownItem
+                                            class="d-flex align-items-center" (click)="changeOutletStatus(content,row)">Change Status</a>
+                                        <a href="javascript:void(0)" ngbDropdownItem
+                                            class="d-flex align-items-center"><i data-feather="trash-2"
+                                                class="mr-50"></i>Delete</a>
+                                    </div>
+                                </div>
+                                <div class="ml-1 edit-icon">
+                                    <a href="javascript:void(0)">
+                                        <i class="fa-regular fa-pen-to-square"
+                                            (click)="openEditOutletModal(content1,row)"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngx-datatable-column>
+                </ngx-datatable>
+                <!--/ ngx-datatables responsive -->
+            </div>
+        </section>
+        <!--/ Responsive Datatable -->
+    </div>
+</div>
+
+<!-- Modal -->
+<ng-template #modalVC let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle"> Add Outlet</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <form class="form form-vertical">
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="first-name-vertical">First Name</label>
+                        <input type="text" id="first-name-vertical" class="form-control" name="fname"
+                            placeholder="First Name" />
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="email-id-vertical">Email</label>
+                        <input type="email" id="email-id-vertical" class="form-control" name="email-id"
+                            placeholder="Email" />
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="basicSelect">Role</label>
+                        <select class="form-control" id="basicSelect">
+                            <option>Operation</option>
+                            <option>Marketing</option>
+                            <option>Manager</option>
+                            <option>Sub-Admin</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="contact-info-vertical">Mobile</label>
+                        <input type="number" id="contact-info-vertical" class="form-control" name="contact"
+                            placeholder="Mobile" />
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="password-vertical">Password</label>
+                        <input type="password" id="password-vertical" class="form-control" name="contact"
+                            placeholder="Password" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
+                        Save
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</ng-template>
+<!-- / Modal -->
+
+<!-- Modal -->
+<ng-template #modalAD let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel6">Customer Details</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <div class="d-flex justify-content-between align-items-center mb-1">
+            <div class="media">
+                <div class="avatar mr-1">
+                    <img src="assets/images/portrait/small/avatar-s-7.jpg" alt="Avatar" width="42" height="42" />
+                </div>
+                <div class="media-body">
+                    <h5 class="mb-0">Shyama Thakur</h5>
+                    <small class="text-muted">Updated 12m ago</small>
+                </div>
+            </div>
+        </div>
+        <p><strong>Name</strong>: Shyama Thakur</p>
+        <p><strong>Email</strong> : shyamathakur@fabloplatforms.com</p>
+        <p><strong>Address</strong> :Shagun Arcade, 515-516, 5th Floor, AB Rd, Vijay Nagar, Indore,
+            Madhya Pradesh 452010</p>
+        <p><strong>Phone</strong> : 9174100683</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
+            Ok
+        </button>
+    </div>
+</ng-template>
+
+<!-- open edit outlet modal -->
+<ng-template #content1 let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Edit Outlet</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <form [formGroup]="editOutletForm" class="form form-vertical" (ngSubmit)="editOutletFormSubmit()">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="first-name-column">Outlet Name</label>
+                        <input type="text" id="outletName" class="form-control" placeholder="Outlet Name"
+                            formControlName="outletName" name="outletName"
+                            [ngClass]="{ 'is-invalid': Submitted && b.outletName.errors }" />
+                        <div *ngIf="Submitted && b.outletName.errors" class="invalid-feedback">
+                            <div *ngIf="b.outletName.errors.required">Outlet Name is required</div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <fieldset class="form-group">
+                        <label for="file-upload-single">Outlet Image</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" formControlName="outletImage" id="outletImage"
+                                [ngClass]="{ 'is-invalid': Submitted && b.outletImage.errors }"
+                                (change)="outletImage($event)"/>
+                            <div *ngIf="Submitted && b.outletImage.errors" class="invalid-feedback">
+                                <div *ngIf="b.outletImage.errors.required">Outlet Image is required</div>
+                            </div>
+                            <label class="custom-file-label">Choose Image</label>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="first-name-column">Contact No</label>
+                        <input type="text" id="shopAddress" class="form-control" placeholder="Contact No"
+                            formControlName="phone" name="phone"
+                            [ngClass]="{ 'is-invalid': Submitted && b.phone.errors }" />
+                        <div *ngIf="Submitted && b.phone.errors" class="invalid-feedback">
+                            <div *ngIf="b.phone.errors.required">Contact No is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="first-name-column">Area</label>
+                        <input type="text" id="area" class="form-control" placeholder="Area"
+                            formControlName="area" name="area"
+                            [ngClass]="{ 'is-invalid': Submitted && b.area.errors }" />
+                        <div *ngIf="Submitted && b.area.errors" class="invalid-feedback">
+                            <div *ngIf="b.area.errors.required">Area is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="first-name-column">Shop Address</label>
+                        <input type="text" id="shopAddress" class="form-control" placeholder="Shop Address"
+                            formControlName="shopAddress" name="shopAddress"
+                            [ngClass]="{ 'is-invalid': Submitted && b.shopAddress.errors }" />
+                        <div *ngIf="Submitted && b.shopAddress.errors" class="invalid-feedback">
+                            <div *ngIf="b.shopAddress.errors.required">Shop Address is required</div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-12 text-right">
+                    <button type="submit" rippleEffect class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</ng-template>
+
+<!-- open change outlet status Modal -->
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel160">Change Outlet Status</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0">Are You Sure You Want to Change Status</div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="modal.dismiss('Cross click')">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="outletStatusChange()">Confirm</button>
+    </div>
+</ng-template>

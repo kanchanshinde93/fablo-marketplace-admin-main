@@ -1,0 +1,189 @@
+<div class="content-wrapper container-fluid p-0">
+    <div class="content-body">
+        <!-- content-header component -->
+        <app-content-header [contentHeader]="contentHeader"></app-content-header>
+        <!-- Customer List Responsive Datatable -->
+        <section id="customer-page ngx-datatable-Responsive">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Agent</h4>
+                   
+                    <button type="button" class="btn btn-primary btn-add" (click)="openAddAgentModal(addAgent)" rippleEffect>
+                        Add Agent
+                    </button>
+                </div>
+                <!-- <div class="modal-size-lg d-inline-block">
+                    
+                    <button type="button" class="btn btn-primary btn-add" (click)="modalOpenAD(modalAD)" rippleEffect>
+                        Agent Details
+                    </button>
+                </div> -->
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex justify-content-between align-items-center m-1">
+                            <label class="d-flex align-items-center">Show
+                                <select class="form-control mx-25" [(ngModel)]="basicSelectedOption">
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select>
+                                entries</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12 d-flex justify-content-md-end">
+                        <div class="d-flex align-items-center justify-content-end pb-1 pl-1 pl-md-0 pb-md-0">
+                            <div class="input-group mb-1 search-table">
+                                <input type="search" placeholder="Search" class="form-control ml-25"
+                                    (keyup)="filterUpdate($event)" (search)="filterUpdate($event)" />
+                            </div>
+                            <button csvLink (click)="downloadCSV($event)"
+                                class="btn btn-outline-secondary float-right csv-export" rippleEffect><img
+                                    src="assets/images/icons/csv.png" alt=""> </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ngx-datatables responsive -->
+                <ngx-datatable #table class="bootstrap core-bootstrap" [columnMode]="ColumnMode.force"
+                    [headerHeight]="40" [rowHeight]="58" [footerHeight]="50" rowHeight="auto" [limit]="10" [rows]="rows"
+                    [scrollbarH]="true">
+                    <ngx-datatable-column name="Name" prop="username" [width]="100"></ngx-datatable-column>
+                    <ngx-datatable-column name="Phone" prop="phone" [width]="100"></ngx-datatable-column>
+                    <ngx-datatable-column name="Email" prop="email" [width]="100"></ngx-datatable-column>
+                    <ngx-datatable-column name="User Type" prop="userType" [width]="50" [sortable]="false"></ngx-datatable-column>
+                    <!-- <ngx-datatable-column name="Action" [width]="120" [sortable]="false">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            <div class="d-flex align-items-center">
+                                <div ngbDropdown container="body">
+                                    <a ngbDropdownToggle href="javascript:void(0);" class="hide-arrow"
+                                        id="dropdownBrowserState" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+
+                                    </a>
+                                    <div ngbDropdownMenu class="dropdown-menu-right"
+                                        aria-labelledby="dropdownBrowserState">
+                                        <a href="javascript:void(0)" ngbDropdownItem
+                                            class="d-flex align-items-center"><i
+                                                data-feather="file-text" class="mr-50"></i>Details</a>
+                                        <a href="javascript:void(0)" ngbDropdownItem
+                                            class="d-flex align-items-center"
+                                            >Change Status</a>
+                                        <a href="javascript:void(0)" ngbDropdownItem
+                                            class="d-flex align-items-center"><i data-feather="trash-2"
+                                                class="mr-50"></i>Delete</a>
+                                    </div>
+                                </div>
+                                <div class="ml-1 edit-icon">
+                                    <a href="javascript:void(0)">
+                                        <i class="fa-regular fa-pen-to-square"
+                                            (click)="openEditOutletModal(content1,row)"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngx-datatable-column> -->
+                </ngx-datatable>
+                <!--/ ngx-datatables responsive -->
+            </div>
+        </section>
+        <!--/ Responsive Datatable -->
+
+
+        <!-- Modal -->
+        <ng-template #addAgent let-modal>
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle"> Add Agent</h5>
+                <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" tabindex="0" ngbAutofocus>
+                <form [formGroup]="addAgentForm" class="form form-vertical" (ngSubmit)="addAgentFormSubmit">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="first-name-vertical">First Name</label>
+                                <input type="text" id="first-name-vertical" class="form-control" name="fname"
+                                    placeholder="First Name" />
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="email-id-vertical">Email</label>
+                                <input type="email" id="email-id-vertical" class="form-control" name="email-id"
+                                    placeholder="Email" />
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="basicSelect">Role</label>
+                                <select class="form-control" id="basicSelect">
+                                    <option>Operation</option>
+                                    <option>Marketing</option>
+                                    <option>Manager</option>
+                                    <option>Sub-Admin</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="contact-info-vertical">Mobile</label>
+                                <input type="number" id="contact-info-vertical" class="form-control" name="contact"
+                                    placeholder="Mobile" />
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="password-vertical">Password</label>
+                                <input type="password" id="password-vertical" class="form-control" name="contact"
+                                    placeholder="Password" />
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')"
+                                rippleEffect>
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </ng-template>
+        <!-- / Modal -->
+        <ng-template #modalAD let-modal>
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel6">Agent Details</h5>
+                <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" tabindex="0" ngbAutofocus>
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                    <div class="media">
+                        <div class="avatar mr-1">
+                            <img src="assets/images/portrait/small/avatar-s-7.jpg" alt="Avatar" width="42"
+                                height="42" />
+                        </div>
+                        <div class="media-body">
+                            <h5 class="mb-0">Shyama Thakur</h5>
+                            <small class="text-muted">Updated 12m ago</small>
+                        </div>
+                    </div>
+                </div>
+                <p><strong>Name</strong>: Shyama Thakur</p>
+                <p><strong>Email</strong> : shyamathakur@fabloplatforms.com</p>
+                <p><strong>Address</strong> :Shagun Arcade, 515-516, 5th Floor, AB Rd, Vijay Nagar, Indore,
+                    Madhya Pradesh 452010</p>
+                <p><strong>Phone</strong> : 9174100683</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
+                    Ok
+                </button>
+            </div>
+        </ng-template>
+        <!-- Modal -->
+    </div>
+</div>

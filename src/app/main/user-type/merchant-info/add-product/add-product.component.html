@@ -1,0 +1,100 @@
+<div class="content-wrapper container-fluid p-0">
+    <div class="content-body">
+        <!-- content-header component -->
+        <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+        <!-- add category Start-->
+        <section id="add-category-page">
+            <div class="add-category-form card mt-5">
+                <div class="card-header">
+                    <h4 class="card-title">
+                        Add Product
+                    </h4>
+                </div>
+
+                <div class="card-body">
+                    <form class="form">
+                        <div class="row">
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="basicSelect">Select Category</label>
+                                    <select class="form-control" id="basicSelect">
+                                        <option>A</option>
+                                        <option>B</option>
+                                        <option>C</option>
+                                        <option>D</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="basicSelect">Select Sub Category</label>
+                                    <select class="form-control" id="basicSelect">
+                                        <option>A</option>
+                                        <option>B</option>
+                                        <option>C</option>
+                                        <option>D</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <fieldset class="form-group">
+                                    <label for="file-upload-single">Product Image</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" accept='image/*' ng2FileSelect [uploader]="uploader"
+                                            id="file-upload-single" />
+                                        <label class="custom-file-label">Choose Image</label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <fieldset class="form-group">
+                                    <label for="file-upload-single">Image Preview</label>
+                                    <div class="preview-image">
+                                        <img src="assets/images/pages/users/merchant/momos.jpg" alt="">
+                                        <span *ngFor="let item of uploader.queue"><strong>{{ item?.file?.name
+                                                }}</strong></span>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="first-name-column">Product Name</label>
+                                    <input type="text" id="first-name-column" class="form-control" placeholder="Category Name"
+                                        name="fname-column" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label for="first-name-column">Product Price</label>
+                                    <input type="text" id="first-name-column" class="form-control" placeholder="Category Name"
+                                        name="fname-column" />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="basicTextarea">Product Description</label>
+                                <fieldset class="form-group">
+                                    <textarea class="form-control" id="basicTextarea" rows="3" placeholder="Description"></textarea>
+                                </fieldset>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked />
+                                    <label class="form-check-label" for="inlineRadio1">Veg</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
+                                    <label class="form-check-label" for="inlineRadio2">Nonveg</label>
+                                </div>
+                            </div>
+                            <div class="col-12 text-right">
+                                <button type="submit" rippleEffect class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- add category End-->
+    </div>
+</div>

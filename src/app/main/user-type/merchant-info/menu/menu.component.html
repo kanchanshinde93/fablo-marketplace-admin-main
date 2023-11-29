@@ -1,0 +1,1271 @@
+<div class="content-wrapper container-fluid p-0">
+    <div class="content-body">
+        <!-- content-header component -->
+        <app-content-header [contentHeader]="contentHeader"></app-content-header>
+        <div id="outlet-menu-page">
+            <div class="row">
+                <!-- Menu Card -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card card-employee-task">
+                        <div class="card-header">
+                            <h4 class="card-title">Categories</h4>
+                            <button class="btn btn-outline-primary"
+                                (click)="openAddCategoryModal(addProductCategory)"><i
+                                    class="fa-regular fa-plus"></i></button>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="employee-task d-flex justify-content-between align-items-center"
+                                *ngFor="let category of categoryList">
+                                <div class="media">
+
+                                    <div class="media-body my-auto">
+                                        <a class="mb-0" (click)="subCategory(category)">{{category.categoryName}}</a>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <button class="text-primary mr-75"><i class="fa-regular fa-pen-to-square"
+                                            (click)="openEditCategoryModal(editProductCategory,category)"></i></button>
+                                    <button class="text-danger mr-75"
+                                        (click)="openDeletCategoryModal(deleteCategory,category)"><i
+                                            class="fa-solid fa-trash-can"></i></button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <ng-container *ngIf="showSubcat">
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="card card-employee-task">
+                            <div class="card-header">
+                                <h4 class="card-title">Sub Categories</h4>
+                                <button class="btn btn-outline-primary"
+                                    (click)="openAddCategoryModal(addProductCategory)"><i
+                                        class="fa-regular fa-plus"></i></button>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="employee-task d-flex justify-content-between align-items-center"
+                                    *ngFor="let subCategory of subCategoryList">
+                                    <div class="media">
+                                        <div class="media-body my-auto">
+                                            <a class="mb-0"
+                                                (click)="getProductBySubId(subCategory)">{{subCategory.categoryName}}</a>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <button class="text-primary mr-75"><i class="fa-regular fa-pen-to-square"
+                                                (click)="openEditCategoryModal(editProductCategory,subCategory)"></i></button>
+                                        <button class="text-danger mr-75"
+                                            (click)="openDeletCategoryModal(deleteCategory,subCategory)"><i
+                                                class="fa-solid fa-trash-can"></i></button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngIf="showProd">
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="card card-employee-task">
+                            <div class="card-header">
+                                <h4 class="card-title">Product</h4>
+                                <button class="btn btn-outline-primary" (click)="openAddProductModal(addProduct)"><i
+                                        class="fa-regular fa-plus"></i></button>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="employee-task d-flex justify-content-between align-items-center"
+                                    *ngFor="let product of productList">
+                                    <button type="button" (click)="modalProductView(productView,product)" rippleEffect>
+                                        <div class="media">
+                                            <div class="media-body my-auto">
+                                                <h6 class="mb-0">{{product.productName}}</h6>
+                                            </div>
+                                        </div>
+                                    </button>
+                                    <div class="d-flex align-items-center">
+                                        <button class="text-primary mr-75"><i class="fa-regular fa-pen-to-square"
+                                                (click)="openEditProductModal(editProduct,product)"></i></button>
+                                        <button class="text-danger mr-75"
+                                            (click)="openDeletProductModal(deleteProducts,product)"><i
+                                                class="fa-solid fa-trash-can"></i></button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <!--/ Menu Card -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- open add product category Modal -->
+<ng-template #addProductCategory let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Add Customization</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <form [formGroup]="addCategoryForm" class="form form-vertical" (ngSubmit)="addCategoryFormSubmit()">
+            <div class="row">
+                <div class="col-8">
+                    <div class="form-group">
+                        <label for="first-name-vertical">Category Name</label>
+                        <input type="text" id="first-name-vertical" class="form-control" name="fname"
+                            placeholder="Category Name" formControlName="categoryName"
+                            [ngClass]="{ 'is-invalid': Submitted && addCategory.categoryName.errors }" />
+                        <div *ngIf="Submitted && addCategory.categoryName.errors" class="invalid-feedback">
+                            <div *ngIf="addCategory.categoryName.errors.required">Category Name is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" (click)="modal.close('Accept click')"
+                        rippleEffect>
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary" rippleEffect>
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</ng-template>
+
+<!-- open edit product category Modal -->
+<ng-template #editProductCategory let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Add Customization</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <form [formGroup]="editCategoryForm" class="form form-vertical" (ngSubmit)="editCategoryFormSubmit()">
+            <div class="row">
+                <div class="col-8">
+                    <div class="form-group">
+                        <label for="first-name-vertical">Category Name</label>
+                        <input type="text" id="first-name-vertical" class="form-control" name="fname"
+                            placeholder="Category Name" formControlName="categoryName"
+                            [ngClass]="{ 'is-invalid': Submitted && eCategory.categoryName.errors }" />
+                        <div *ngIf="Submitted && eCategory.categoryName.errors" class="invalid-feedback">
+                            <div *ngIf="eCategory.categoryName.errors.required">Category Name is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" (click)="modal.close('Accept click')"
+                        rippleEffect>
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary" rippleEffect>
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</ng-template>
+
+<!-- open add product Modal -->
+<ng-template #addProduct let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Add Product</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <form [formGroup]="addProductForm" class="form" (ngSubmit)="addProductFormSubmit()">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="first-name-column">Product Name</label>
+                        <input type="text" id="first-name-column" class="form-control" placeholder="Product Name"
+                            name="outletName" formControlName="productName"
+                            [ngClass]="{ 'is-invalid': Submitted && aproduct.productName.errors }" />
+                        <div *ngIf="Submitted && aproduct.productName.errors" class="invalid-feedback">
+                            <div *ngIf="aproduct.productName.errors.required">Product Name is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <fieldset class="form-group">
+                        <label for="file-upload-single">Product Image</label>
+                        <div class="custom-file">
+                            <label class="custom-file-label">Choose Image</label>
+                            <input type="file" class="custom-file-input" type="file" ng2FileSelect [uploader]="uploader"
+                                (change)="SelectImage($event)" id="file-upload-single" formControlName="productImage"
+                                [ngClass]="{ 'is-invalid': Submitted && aproduct.productImage.errors }" />
+                            <div *ngIf="Submitted && aproduct.productImage.errors" class="invalid-feedback">
+                                <div *ngIf="aproduct.productImage.errors.required">Product Image is required</div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="first-name-column">Product Price</label>
+                        <input type="text" id="first-name-column" class="form-control" placeholder="Product Price"
+                            name="area" formControlName="productPrice"
+                            [ngClass]="{ 'is-invalid': Submitted && aproduct.productPrice.errors }" />
+                        <div *ngIf="Submitted && aproduct.productPrice.errors" class="invalid-feedback">
+                            <div *ngIf="aproduct.productPrice.errors.required">Product Price is required</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-12">
+                    <fieldset class="form-group">
+                        <label for="file-upload-single">Image Preview</label>
+                        <div class="preview-image categary-image" *ngFor="let url of imageURL">
+                            <img src="{{url}}" alt="">
+                            <span *ngFor="let item of uploader.queue"><strong>{{ item?.file?.name }}</strong></span>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="col-md-6 col-12 mt-1 mb-1">
+                    <label for="file-upload-single">Veg/Nonveg</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="isVeg" id="inlineRadio1" value="true"
+                            formControlName="isVeg" />
+                        <label class="form-check-label" for="inlineRadio1">Veg</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="isVeg" id="inlineRadio2" value="false"
+                            formControlName="isVeg" />
+                        <label class="form-check-label" for="inlineRadio2">Nonveg</label>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="first-name-column">Product Description</label>
+                        <input type="text" id="first-name-column" class="form-control" placeholder="Product Description"
+                            name="type" formControlName="productDesc"
+                            [ngClass]="{ 'is-invalid': Submitted && aproduct.productDesc.errors }" />
+                        <div *ngIf="Submitted && aproduct.productDesc.errors" class="invalid-feedback">
+                            <div *ngIf="aproduct.productDesc.errors.required">Product Description is required</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-12 text-right">
+                    <button type="submit" rippleEffect class="btn btn-primary">Submit  <i class="ml-1 fa fa-spinner fa-spin" *ngIf="loading"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</ng-template>
+
+<!-- open edit product Modal -->
+<ng-template #editProduct let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Edit Product</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <form [formGroup]="editProductForm" class="form" (ngSubmit)="editProductFormSubmit()">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="first-name-column">Product Name</label>
+                        <input type="text" id="first-name-column" class="form-control" placeholder="Product Name"
+                            name="outletName" formControlName="productName"
+                            [ngClass]="{ 'is-invalid': Submitted && eproduct.productName.errors }" />
+                        <div *ngIf="Submitted && eproduct.productName.errors" class="invalid-feedback">
+                            <div *ngIf="eproduct.productName.errors.required">Product Name is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <fieldset class="form-group">
+                        <label for="file-upload-single">Product Image</label>
+                        <div class="custom-file">
+                            <label class="custom-file-label">Choose Image</label>
+                            <input type="file" class="custom-file-input" type="file" ng2FileSelect [uploader]="uploader"
+                                (change)="changeImage($event)" id="file-upload-single" formControlName="productImage"
+                                [ngClass]="{ 'is-invalid': Submitted && eproduct.productImage.errors }" />
+                            <div *ngIf="Submitted && eproduct.productImage.errors" class="invalid-feedback">
+                                <div *ngIf="eproduct.productImage.errors.required">Product Image is required</div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="first-name-column">Product Price</label>
+                        <input type="text" id="first-name-column" class="form-control" placeholder="Product Price"
+                            name="area" formControlName="productPrice"
+                            [ngClass]="{ 'is-invalid': Submitted && eproduct.productPrice.errors }" />
+                        <div *ngIf="Submitted && eproduct.productPrice.errors" class="invalid-feedback">
+                            <div *ngIf="eproduct.productPrice.errors.required">Product Price is required</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-12">
+                    <fieldset class="form-group">
+                        <label for="file-upload-single">Image Preview</label>
+                        <div class="preview-image categary-image" *ngFor="let url of imageURL">
+                            <img src="{{url}}" alt="">
+                            <span *ngFor="let item of uploader.queue"><strong>{{ item?.file?.name }}</strong></span>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="first-name-vertical">Veg/Nonveg</label>
+                        <select formControlName="isVeg" class="form-control">
+                            <option value="true">Veg</option>
+                            <option value="false">Nonveg</option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="first-name-column">Product Description</label>
+                        <input type="text" id="first-name-column" class="form-control" placeholder="Product Description"
+                            name="type" formControlName="productDesc"
+                            [ngClass]="{ 'is-invalid': Submitted && eproduct.productDesc.errors }" />
+                        <div *ngIf="Submitted && eproduct.productDesc.errors" class="invalid-feedback">
+                            <div *ngIf="eproduct.productDesc.errors.required">Product Description is required</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-12 text-right">
+                    <button type="submit" rippleEffect class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</ng-template>
+<!-- Modal Product View-->
+<ng-template #productView let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel6">Product View</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-view-box">
+                    <div><strong>Product Image</strong></div>
+                    <div><img src="{{product?.productImage}}" alt=""></div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="product-view-box">
+                            <div><strong>Product Name</strong></div>
+                            <div>
+                                <p> {{product?.productName}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="product-view-box">
+                            <div><strong>Product Price</strong></div>
+                            <div>
+                                <p>₹{{product?.productPrice}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="product-view-box">
+                            <div class="custom-control custom-control-primary custom-switch">
+                                <div class="mb-50"><strong>Veg or Nonveg</strong></div>
+                                <input type="checkbox" [checked]="isVeg(product.isVeg)" disabled
+                                    class="custom-control-input" id="isVeg" />
+                                <label class="custom-control-label" for="isVeg"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="product-view-box">
+                            <div class="custom-control custom-control-primary custom-switch">
+                                <div class="mb-50"><strong>In Stock</strong></div>
+                                <input type="checkbox" [checked]="inStock(product)"
+                                    (change)="changeStockStatus(product)" class="custom-control-input" id="stock" />
+                                <label class="custom-control-label" for="stock"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="product-view-box">
+                            <button class="btn btn-outline-primary mr-1"
+                                (click)="modalCustomizationList(customizationList,product)"
+                                rippleEffect>Customization</button>
+                            <button class="btn btn-outline-primary" (click)="modalAddons(addOn,product)"
+                                rippleEffect>Addons</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
+<!-- Product View End -->
+
+<!-- Modal Customization List-->
+<ng-template #customizationList let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel6">Customization</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <!-- Customer List Responsive Datatable -->
+        <section class="customer-page" id="ngx-datatable-Responsive">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Customization List</h4>
+                    <div>
+                        <button class="btn btn-primary btn-add" (click)="modalAddCustomization(addCustomization)"
+                            rippleEffect><span>Add Customization +</span></button>
+                        <!-- <button class="btn btn-primary btn-add" rippleEffect><span>Edit Customization</span></button> -->
+                        <!-- <button class="btn btn-primary btn-add" (click)="modalViewVariation(viewVariation)"
+                            rippleEffect><span>View Details</span></button> -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex justify-content-between align-items-center m-1">
+                            <label class="d-flex align-items-center">Show
+                                <select class="form-control mx-25" [(ngModel)]="basicSelectedOption">
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select>
+                                entries</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12 d-flex justify-content-md-end">
+                        <div class="d-flex align-items-center justify-content-end pb-1 pl-1 pl-md-0 pb-md-0">
+                            <div class="input-group mb-1 search-table">
+                                <input type="search" placeholder="Search" class="form-control ml-25"
+                                    (keyup)="filterUpdate($event)" (search)="filterUpdate($event)" />
+                            </div>
+                            <button csvLink (click)="downloadCSV($event)"
+                                class="btn btn-outline-secondary float-right csv-export" rippleEffect><img
+                                    src="assets/images/icons/csv.png" alt=""> </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ngx-datatables responsive -->
+                <ngx-datatable #table class="bootstrap core-bootstrap" [columnMode]="ColumnMode.force"
+                    [headerHeight]="40" [rowHeight]="58" [footerHeight]="50" rowHeight="auto" [limit]="10" [rows]="rows"
+                    [scrollbarH]="true">
+                    <ngx-datatable-column name="Name" prop="variationName" [width]="150"></ngx-datatable-column>
+                    <ngx-datatable-column name="Min Selection" prop="minSelection" [width]="50"></ngx-datatable-column>
+                    <ngx-datatable-column name="Max Selection" prop="maxSelection" [width]="50"></ngx-datatable-column>
+                    <ngx-datatable-column name="Action" [width]="50" [sortable]="false">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            <div class="d-flex align-items-center">
+                                <div ngbDropdown container="body">
+                                    <a ngbDropdownToggle href="javascript:void(0);" class="hide-arrow"
+                                        id="dropdownBrowserState" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+
+                                    </a>
+                                    <div ngbDropdownMenu class="dropdown-menu-right"
+                                        aria-labelledby="dropdownBrowserState">
+                                        <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center"
+                                            (click)="modalViewVariation(viewVariation,rows)"><i data-feather="file-text"
+                                                class="mr-50"></i>Details</a>
+                                        <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center"
+                                            (click)="changeOutletStatus(content,row)">Change Status</a>
+                                        <a href="javascript:void(0)" ngbDropdownItem
+                                            class="d-flex align-items-center"><i data-feather="trash-2"
+                                                class="mr-50"></i>Delete</a>
+                                    </div>
+                                </div>
+                                <div class="ml-1 edit-icon">
+                                    <a href="javascript:void(0)">
+                                        <i class="fa-regular fa-pen-to-square"
+                                            (click)="modalEditCustomization(editCustomization,row)"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngx-datatable-column>
+                </ngx-datatable>
+                <!--/ ngx-datatables responsive -->
+            </div>
+        </section>
+        <!--/ Responsive Datatable -->
+    </div>
+</ng-template>
+
+
+<!-- Modal Variation List-->
+<ng-template #viewVariation let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel6">Variant List</h5>
+        <button class="btn btn-outline-primary btn-add-variant" (click)="modalAddVariation(addVariant)" rippleEffect><i
+                class="fa-regular fa-plus"></i></button>
+
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <div class="card variant-box" *ngFor="let item of variant.variantList">
+            <div class="card-body">
+                <div class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mb-2">
+                    <button class="btn btn-variant-edit" (click)="modalEditVariation(editVariant,item)" rippleEffect><i
+                            class="fa-regular fa-pen-to-square"></i></button>
+                    <button class="btn btn-variant-delete" (click)="modalDeleteVariant(deleteVariant,item)"
+                        rippleEffect><i class="fa-solid fa-trash"></i></button>
+                </div>
+                <div class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mb-1">
+                    <div><strong>Variant Name:</strong></div>
+                    <div>{{item.variantName}}</div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
+                    <div><strong>Variant Price</strong></div>
+                    <div>₹{{item.displayPrice}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+<!-- Modal Add Customization-->
+<ng-template #addCustomization let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Add Customization</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <form [formGroup]="addCustomizationForm" class="form form-vertical" (ngSubmit)="addCustomizationFormSubmit()">
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="first-name-vertical">Variation Name</label>
+                        <input type="text" id="first-name-vertical" class="form-control" name="fname"
+                            placeholder="Variant Name" formControlName="variationName"
+                            [ngClass]="{ 'is-invalid': Submitted && avariation.variationName.errors }" />
+                        <div *ngIf="Submitted && avariation.variationName.errors" class="invalid-feedback">
+                            <div *ngIf="avariation.variationName.errors.required">Variation Name is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" (click)="modal.close('Accept click')"
+                        rippleEffect>
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary" rippleEffect>
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</ng-template>
+<!-- / Modal -->
+
+<!-- Modal Edit Customization-->
+<ng-template #editCustomization let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Edit Customization</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <form [formGroup]="editCustomizationForm" class="form form-vertical" (ngSubmit)="editCustomizationFormSubmit()">
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="first-name-vertical">Variation Name</label>
+                        <input type="text" id="first-name-vertical" class="form-control" name="fname"
+                            placeholder="Variant Name" formControlName="variationName"
+                            [ngClass]="{ 'is-invalid': Submitted && evariation.variationName.errors }" />
+                        <div *ngIf="Submitted && evariation.variationName.errors" class="invalid-feedback">
+                            <div *ngIf="evariation.variationName.errors.required">Variation Name is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="email-id-vertical">Min Selection</label>
+                        <input type="number" id="email-id-vertical" class="form-control" name="email-id"
+                            placeholder="Min Selection" formControlName="minSelection"
+                            [ngClass]="{ 'is-invalid': Submitted && evariation.minSelection.errors }" />
+                        <div *ngIf="Submitted && evariation.minSelection.errors" class="invalid-feedback">
+                            <div *ngIf="evariation.minSelection.errors.required">Variation Name is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="email-id-vertical">Max Selection</label>
+                        <input type="number" id="email-id-vertical" class="form-control" name="email-id"
+                            placeholder="Max Selection" formControlName="maxSelection"
+                            [ngClass]="{ 'is-invalid': Submitted && evariation.maxSelection.errors }" />
+                        <div *ngIf="Submitted && evariation.maxSelection.errors" class="invalid-feedback">
+                            <div *ngIf="evariation.maxSelection.errors.required">Variation Name is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" (click)="modal.close('Accept click')"
+                        rippleEffect>
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary" rippleEffect>
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</ng-template>
+<!-- / Modal -->
+
+<!-- Modal -->
+<ng-template #addVariant let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Add Variant</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <form [formGroup]="addVariantForm" class="form form-vertical" (ngSubmit)="addVariantFormSubmit()">
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="first-name-vertical">Variant Name</label>
+                        <input type="text" id="first-name-vertical" class="form-control" name="fname"
+                            placeholder="Variant Name" formControlName="variantName"
+                            [ngClass]="{ 'is-invalid': Submitted && avariant.variantName.errors }" />
+                        <div *ngIf="Submitted && avariant.variantName.errors" class="invalid-feedback">
+                            <div *ngIf="avariant.variantName.errors.required">Variant Name is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="email-id-vertical">Variant Price</label>
+                        <input type="number" id="email-id-vertical" class="form-control" name="email-id"
+                            placeholder="Max Selection" formControlName="variantPrice"
+                            [ngClass]="{ 'is-invalid': Submitted && avariant.variantPrice.errors }" />
+                        <div *ngIf="Submitted && avariant.variantPrice.errors" class="invalid-feedback">
+                            <div *ngIf="avariant.variantPrice.errors.required">Variant Price is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" (click)="modal.close('Accept click')"
+                        rippleEffect>
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary" rippleEffect>
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</ng-template>
+<!-- / Modal -->
+
+<!--open edit variant Modal -->
+<ng-template #editVariant let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Edit Variant</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <form [formGroup]="editVariantForm" class="form form-vertical" (ngSubmit)="editVariantFormSubmit()">
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="first-name-vertical">Variant Name</label>
+                        <input type="text" id="first-name-vertical" class="form-control" name="fname"
+                            placeholder="Variant Name" formControlName="variantName"
+                            [ngClass]="{ 'is-invalid': Submitted && evariant.variantName.errors }" />
+                        <div *ngIf="Submitted && evariant.variantName.errors" class="invalid-feedback">
+                            <div *ngIf="evariant.variantName.errors.required">Variant Name is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="email-id-vertical">Variant Price</label>
+                        <input type="number" id="email-id-vertical" class="form-control" name="email-id"
+                            placeholder="Variant Price" formControlName="variantPrice"
+                            [ngClass]="{ 'is-invalid': Submitted && evariant.variantPrice.errors }" />
+                        <div *ngIf="Submitted && evariant.variantPrice.errors" class="invalid-feedback">
+                            <div *ngIf="evariant.variantPrice.errors.required">Variant Price is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" (click)="modal.close('Accept click')"
+                        rippleEffect>
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary" rippleEffect>
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</ng-template>
+<!-- / Modal -->
+
+<!-- Modal delete variant-->
+<ng-template #deleteVariant let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Delete Variant</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <p>
+            Are you sure you want to Delete ?
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" (click)="modal.close('Accept click')" rippleEffect>
+            Cancel
+        </button>
+        <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
+            Delete
+        </button>
+    </div>
+</ng-template>
+<!-- / Modal add variant -->
+
+<!-- Modal Addon List-->
+<ng-template #addOn let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel6">Add On</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <div class="row">
+            <div class="col-md-6">
+                <!-- product addon List-->
+                <section class="customer-page" id="ngx-datatable-Responsive">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Product Addon</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-12">
+                                <div class="d-flex justify-content-between align-items-center m-1">
+                                    <label class="d-flex align-items-center">Show
+                                        <select class="form-control mx-25" [(ngModel)]="basicSelectedOption">
+                                            <option value="10">10</option>
+                                            <option value="25">25</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select>
+                                        entries</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12 d-flex justify-content-md-end">
+                                <div class="d-flex align-items-center justify-content-end pb-1 pl-1 pl-md-0 pb-md-0">
+                                    <div class="input-group mb-1 search-table">
+                                        <input type="search" placeholder="Search" class="form-control ml-25"
+                                            (keyup)="filterUpdate($event)" (search)="filterUpdate($event)" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ngx-datatables responsive -->
+                        <ngx-datatable #table class="bootstrap core-bootstrap" [columnMode]="ColumnMode.force"
+                            [headerHeight]="40" [rowHeight]="58" [footerHeight]="50" rowHeight="auto" [limit]="10"
+                            [rows]="rows1" [scrollbarH]="true">
+                            <ngx-datatable-column name="Category Name" prop="categoryName"
+                                [width]="100"></ngx-datatable-column>
+                            <ngx-datatable-column name="Min Selection" prop="minSelection"
+                                [width]="100"></ngx-datatable-column>
+                            <ngx-datatable-column name="Max Selection" prop="maxSelection"
+                                [width]="100"></ngx-datatable-column>
+                            <ngx-datatable-column name="Action" [width]="100" [sortable]="false">
+                                <ng-template let-row="row" ngx-datatable-cell-template>
+                                    <div class="d-flex align-items-center">
+                                        <div ngbDropdown container="body">
+                                            <a ngbDropdownToggle href="javascript:void(0);" class="hide-arrow"
+                                                id="dropdownBrowserState" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                                <i class="fa-solid fa-ellipsis-vertical"></i>
+
+                                            </a>
+                                            <div ngbDropdownMenu class="dropdown-menu-right"
+                                                aria-labelledby="dropdownBrowserState">
+                                                <a href="javascript:void(0)" ngbDropdownItem
+                                                    class="d-flex align-items-center"
+                                                    (click)="openUnlinkAddonModal(unLinkAddon,row)"><i
+                                                        data-feather="file-text" class="mr-50"></i>UnLink</a>
+                                                <!-- <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center"
+                                                    (click)="changeOutletStatus(content,row)">Change Status</a>
+                                                <a href="javascript:void(0)" ngbDropdownItem
+                                                    class="d-flex align-items-center"><i data-feather="trash-2"
+                                                        class="mr-50"></i>Delete</a> -->
+                                            </div>
+                                        </div>
+                                        <!-- <div class="ml-1 edit-icon">
+                                            <a href="javascript:void(0)">
+                                                <i class="fa-regular fa-pen-to-square"
+                                                    (click)="modalEditCustomization(editCustomization,row)"></i>
+                                            </a>
+                                        </div> -->
+                                    </div>
+                                </ng-template>
+                            </ngx-datatable-column>
+                        </ngx-datatable>
+                        <!--/ ngx-datatables responsive -->
+
+                    </div>
+                </section>
+
+            </div>
+            <div class="col-md-6">
+                <!-- outlet addon list -->
+                <section class="customer-page" id="ngx-datatable-Responsive">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Outlet Addon</h4>
+                            <div>
+                                <button class="btn btn-primary btn-add" (click)="openAddAddonModal(addAddon)"
+                                    rippleEffect><span>Add New
+                                        +</span></button>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-12">
+                                <div class="d-flex justify-content-between align-items-center m-1">
+                                    <label class="d-flex align-items-center">Show
+                                        <select class="form-control mx-25" [(ngModel)]="basicSelectedOption">
+                                            <option value="10">10</option>
+                                            <option value="25">25</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select>
+                                        entries</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12 d-flex justify-content-md-end">
+                                <div class="d-flex align-items-center justify-content-end pb-1 pl-1 pl-md-0 pb-md-0">
+                                    <div class="input-group mb-1 search-table">
+                                        <input type="search" placeholder="Search" class="form-control ml-25"
+                                            (keyup)="filterUpdate($event)" (search)="filterUpdate($event)" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ngx-datatables responsive -->
+                        <ngx-datatable #table class="bootstrap core-bootstrap" [columnMode]="ColumnMode.force"
+                            [headerHeight]="40" [rowHeight]="58" [footerHeight]="50" rowHeight="auto" [limit]="10"
+                            [rows]="rows2" [scrollbarH]="true">
+                            <ngx-datatable-column name="Category Name" prop="categoryName"
+                                [width]="150"></ngx-datatable-column>
+                            <ngx-datatable-column name="Min Selection" prop="minSelection"
+                                [width]="150"></ngx-datatable-column>
+                            <ngx-datatable-column name="Max Selection" prop="maxSelection"
+                                [width]="150"></ngx-datatable-column>
+                            <ngx-datatable-column name="Action" [width]="120" [sortable]="false">
+                                <ng-template let-row="row" ngx-datatable-cell-template>
+                                    <div class="d-flex align-items-center">
+                                        <div ngbDropdown container="body">
+                                            <a ngbDropdownToggle href="javascript:void(0);" class="hide-arrow"
+                                                id="dropdownBrowserState" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                                <i class="fa-solid fa-ellipsis-vertical"></i>
+
+                                            </a>
+                                            <div ngbDropdownMenu class="dropdown-menu-right"
+                                                aria-labelledby="dropdownBrowserState">
+                                                <a href="javascript:void(0)" ngbDropdownItem
+                                                    class="d-flex align-items-center"
+                                                    (click)="opneViewAddonProductModal(viewAddonProduct,row)"><i
+                                                        data-feather="file-text" class="mr-50"></i>Details</a>
+                                                <a href="javascript:void(0)" ngbDropdownItem
+                                                    class="d-flex align-items-center"
+                                                    (click)="openLinkModal(linkAddon,row)"><i data-feather="file-text"
+                                                        class="mr-50"></i>Link</a>
+
+                                            </div>
+                                        </div>
+                                        <div class="ml-1 edit-icon">
+                                            <a href="javascript:void(0)">
+                                                <i class="fa-regular fa-pen-to-square"
+                                                    (click)="openEditAddonModal(editAddon,row)"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </ngx-datatable-column>
+                        </ngx-datatable>
+                        <!--/ ngx-datatables responsive -->
+
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!-- open edit outlet addon category -->
+<ng-template #editAddon let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Edit Addon Category</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <form [formGroup]="editAddonForm" class="form form-vertical" (ngSubmit)="editAddonFormSubmit()">
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="first-name-vertical">Category Name</label>
+                        <input type="text" id="first-name-vertical" class="form-control" name="categoryName"
+                            placeholder="Category Name" formControlName="categoryName"
+                            [ngClass]="{ 'is-invalid': Submitted && eAddonC.categoryName.errors }" />
+                        <div *ngIf="Submitted && eAddonC.categoryName.errors" class="invalid-feedback">
+                            <div *ngIf="eAddonC.categoryName.errors.required">Category Name is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="email-id-vertical">Min Selection</label>
+                        <input type="number" id="email-id-vertical" class="form-control" name="email-id"
+                            placeholder="Min Selection" formControlName="minSelection"
+                            [ngClass]="{ 'is-invalid': Submitted && eAddonC.minSelection.errors }" />
+                        <div *ngIf="Submitted && eAddonC.minSelection.errors" class="invalid-feedback">
+                            <div *ngIf="eAddonC.minSelection.errors.required">Min Selection is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="email-id-vertical">Max Selection</label>
+                        <input type="number" id="email-id-vertical" class="form-control" name="email-id"
+                            placeholder="Max Selection" formControlName="maxSelection"
+                            [ngClass]="{ 'is-invalid': Submitted && eAddonC.maxSelection.errors }" />
+                        <div *ngIf="Submitted && eAddonC.maxSelection.errors" class="invalid-feedback">
+                            <div *ngIf="eAddonC.maxSelection.errors.required">Max Selection is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" (click)="modal.close('Accept click')"
+                        rippleEffect>
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary" rippleEffect>
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</ng-template>
+
+<!-- open add addon category Modal -->
+<ng-template #addAddon let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Add Addon Category</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <form [formGroup]="addAddonForm" class="form form-vertical" (ngSubmit)="addAddonFormSubmit()">
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="first-name-vertical">Category Name</label>
+                        <input type="text" id="first-name-vertical" class="form-control" name="categoryName"
+                            placeholder="Category Name" formControlName="categoryName"
+                            [ngClass]="{ 'is-invalid': Submitted && aAddonC.categoryName.errors }" />
+                        <div *ngIf="Submitted && aAddonC.categoryName.errors" class="invalid-feedback">
+                            <div *ngIf="aAddonC.categoryName.errors.required">Category Name is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="email-id-vertical">Min Selection</label>
+                        <input type="number" id="email-id-vertical" class="form-control" name="email-id"
+                            placeholder="Min Selection" formControlName="minSelection"
+                            [ngClass]="{ 'is-invalid': Submitted && aAddonC.minSelection.errors }" />
+                        <div *ngIf="Submitted && aAddonC.minSelection.errors" class="invalid-feedback">
+                            <div *ngIf="aAddonC.minSelection.errors.required">Min Selection is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="email-id-vertical">Max Selection</label>
+                        <input type="number" id="email-id-vertical" class="form-control" name="email-id"
+                            placeholder="Max Selection" formControlName="maxSelection"
+                            [ngClass]="{ 'is-invalid': Submitted && aAddonC.maxSelection.errors }" />
+                        <div *ngIf="Submitted && aAddonC.maxSelection.errors" class="invalid-feedback">
+                            <div *ngIf="aAddonC.maxSelection.errors.required">Max Selection is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" (click)="modal.close('Accept click')"
+                        rippleEffect>
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary" rippleEffect>
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</ng-template>
+
+<!-- opne view addon product Modal -->
+<ng-template #viewAddonProduct let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel6">Product List</h5>
+        <button class="btn btn-outline-primary btn-add-variant" (click)="modalAddVariation(addVariant)" rippleEffect><i
+                class="fa-regular fa-plus"></i></button>
+
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <div class="card variant-box" *ngFor="let product of addonCategory.productList">
+            <div class="card-body">
+                <div class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mb-2">
+                    <button class="btn btn-variant-edit" (click)="openEditAddonProductModal(editAddProduct,product)"
+                        rippleEffect><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button class="btn btn-variant-delete" rippleEffect><i class="fa-solid fa-trash"></i></button>
+                </div>
+                <div class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mb-1">
+                    <div><strong>Product Name:</strong></div>
+                    <div>{{product.productName}}</div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
+                    <div><strong>Product Price</strong></div>
+                    <div>₹{{product.productPrice}}</div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</ng-template>
+
+<!-- open edit addon product Modal -->
+<ng-template #editAddProduct let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Edit Product</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <form [formGroup]="editAddonProductForm" class="form form-vertical" (ngSubmit)="editAddonProductFormSubmit()">
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="first-name-vertical">Product Name</label>
+                        <input type="text" id="first-name-vertical" class="form-control" name="fname"
+                            placeholder="Product Name" formControlName="productName"
+                            [ngClass]="{ 'is-invalid': Submitted && eAddonP.productName.errors }" />
+                        <div *ngIf="Submitted && eAddonP.productName.errors" class="invalid-feedback">
+                            <div *ngIf="eAddonP.productName.errors.required">Product Name is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="email-id-vertical">Product Price</label>
+                        <input type="number" id="email-id-vertical" class="form-control" name="email-id"
+                            placeholder="Product Price" formControlName="productPrice"
+                            [ngClass]="{ 'is-invalid': Submitted && eAddonP.productPrice.errors }" />
+                        <div *ngIf="Submitted && eAddonP.productPrice.errors" class="invalid-feedback">
+                            <div *ngIf="eAddonP.productPrice.errors.required">Product Price is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" (click)="modal.close('Accept click')"
+                        rippleEffect>
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary" rippleEffect>
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</ng-template>
+
+<!-- open link addon Modal -->
+<ng-template #linkAddon let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel1">Link Addon</h4>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <p>
+            Are you sure you want to Link ?
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="block-btn btn btn-primary" (click)="modal.close('Cross click')" rippleEffect>
+            Cancel
+        </button>
+        <button type="button" class="block-btn btn btn-primary" (click)="linktoProduct()" rippleEffect>
+            Confirm
+        </button>
+    </div>
+</ng-template>
+
+<!-- opne unlink addon Modal -->
+<ng-template #unLinkAddon let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel1">Unlink Addon</h4>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <p>
+            Are you sure you want to Unlink ?
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="block-btn btn btn-primary" (click)="modal.close('Cross click')" rippleEffect>
+            Cancel
+        </button>
+        <button type="button" class="block-btn btn btn-primary" (click)="unlinkFromProduct()" rippleEffect>
+            Confirm
+        </button>
+    </div>
+</ng-template>
+
+<!-- open delete category Modal -->
+<ng-template #deleteCategory let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel160">Delete Category</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>Are You Sure You Want To Delete</div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="modal.dismiss('Cross click')">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="deleteCategories()">Confirm</button>
+
+    </div>
+</ng-template>
+
+<!-- opne delete product Modal -->
+<ng-template #deleteProducts let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel160">Delete Product</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>Are You Sure You Want To Delete</div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="modal.dismiss('Cross click')">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="deleteProduct()">Confirm</button>
+
+    </div>
+</ng-template>

@@ -1,0 +1,442 @@
+<div class="content-wrapper container-fluid p-0">
+    <div class="content-body">
+        <!-- content-header component -->
+        <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+        <!-- Outlet Details Start-->
+        <section id="outlet-details-page">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Outlet Details</h4>
+                    <div class="outlet-btn-sec">
+                        <!-- <button class="btn btn-primary btn-add" routerLink="/outlet-info/add-outlet"><span>Add New Outlet</span> </button> -->
+                        <button class="btn btn-primary btn-add" (click)="viewOffer(viewDetails)"><span>Offers</span>
+                        </button>
+                        <button class="btn btn-primary btn-add" (click)="viewOrderHistory(viewDetails)"><span>Order
+                                History</span> </button>
+                        <button class="btn btn-primary btn-add" (click)="viewMenu(viewDetails)"><span>Menu</span>
+                        </button>
+                        <button class="btn btn-primary btn-add"
+                            (click)="viewOutofStock(outofStock,viewDetails)"><span>Out of Stock</span> </button>
+                        <!-- routerLink="/userType/menu" -->
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="nav-vertical">
+                            <!-- <ul ngbNav #navVertical="ngbNav" class="nav nav-tabs nav-left flex-column">
+                                <li ngbNavItem>
+                                    <a ngbNavLink>About Outlet</a>
+                                    <ng-template ngbNavContent>
+                                        <div class="card card-profile">
+                                            <img src="assets/images/pages/users/merchant/outlet-image.png"
+                                                class="img-fluid card-img-top" alt="Profile Cover Photo" />
+                                            <div class="card-body">
+                                                <div class="profile-image-wrapper">
+                                                    <div class="profile-image">
+                                                        <div class="avatar">
+                                                            <img src="assets/images/pages/users/merchant/outlet-profile.jpg"
+                                                                alt="Profile Picture" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="outlet-name-details">
+                                                <h3>Kadhai Spices Restaurent</h3>
+                                                <h6 class="text-muted">15-B, Rajat Jayanti Complex, Scheme no 54, Vijay Nagar,
+                                                    Indore</h6>
+                                                <div class="badge badge-light-primary profile-badge">Vijay Nagar</div>
+                                            </div>
+                                                <hr class="mb-2" />
+                                                <div class="details-section">
+                                                    <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <h4 class="text-secondary font-weight-bolder">Basic Details</h4>
+                                                        
+                                                        <div class="row">
+                                                            <div class="col-lg-5"><p><strong>Merchant Name:</strong></p></div>
+                                                            <div class="col-lg-7"><p>Arvind Kejriwal</p></div>
+                                                            <div class="col-lg-5"><p><strong>Trade Name:</strong></p></div>
+                                                            <div class="col-lg-7"><p>Lapinoz</p></div>
+                                                            <div class="col-lg-5"><p><strong>Merchant Type:</strong></p></div>
+                                                            <div class="col-lg-7"><p>Individual</p></div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <h4 class="text-secondary font-weight-bolder">Outlet Timing</h4>
+                                                        
+                                                        <div class="row">
+                                                            <div class="col-lg-5">
+                                                                <p><strong> Opening Time :</strong></p>
+                                                            </div>
+                                                            <div class="col-lg-7">
+                                                                <p>09:10 AM</p>
+                                                            </div>
+                                                            <div class="col-lg-5">
+                                                                <p><strong>Closing Time:</strong></p>
+                                                            </div>
+                                                            <div class="col-lg-7">
+                                                                <p>11:00 PM</p>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 mt-2">
+                                                        <h4 class="text-secondary font-weight-bolder">Contact Details</h4>
+                                                        
+                                                        <div class="row">
+                                                            <div class="col-lg-5">
+                                                                <p><strong>Phone:</strong></p>
+                                                            </div>
+                                                            <div class="col-lg-7">
+                                                                <p>7566149967</p>
+                                                            </div>
+                                                            <div class="col-lg-5">
+                                                                <p><strong>Email:</strong></p>
+                                                            </div>
+                                                            <div class="col-lg-7">
+                                                                <p>test@gmail.com</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </li>
+                                <li ngbNavItem>
+                                    <a ngbNavLink>Lincence Details</a>
+                                    <ng-template ngbNavContent>
+                                        <div class="card card-profile">
+                                            <img src="assets/images/pages/users/merchant/outlet-image.png" class="img-fluid card-img-top"
+                                                alt="Profile Cover Photo" />
+                                            <div class="card-body">
+                                                <div class="profile-image-wrapper">
+                                                    <div class="profile-image">
+                                                        <div class="avatar">
+                                                            <img src="assets/images/pages/users/merchant/outlet-profile.jpg" alt="Profile Picture" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <h3>Kadhai Spices Restaurent</h3>
+                                                <h6 class="text-muted">15-B, Rajat Jayanti Complex, Scheme no 54, Vijay Nagar,
+                                                    Indore</h6>
+                                                <div class="badge badge-light-primary profile-badge">Vijay Nagar</div>
+                                                <hr class="mb-2" />
+                                                <div class="details-section">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <h4 class="text-secondary font-weight-bolder">License Details</h4>
+                                        
+                                                            <div class="row">
+                                                                <div class="col-lg-5">
+                                                                    <p><strong>Name On Licence:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>Farji Licencse</p>
+                                                                </div>
+                                                                <div class="col-lg-5">
+                                                                    <p><strong>Licence Number:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>1121225455</p>
+                                                                </div>
+                                                                
+                                                            </div>
+                                        
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <h4 class="text-secondary font-weight-bolder">Issued Date & Tenure </h4>
+                                        
+                                                            <div class="row">
+                                                                <div class="col-lg-5">
+                                                                    <p><strong>Issued On:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>11/05/2023</p>
+                                                                </div>
+                                                                <div class="col-lg-5">
+                                                                    <p><strong>Tenure:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>5Years</p>
+                                                                </div>
+                                        
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </li>
+                                <li ngbNavItem>
+                                    <a ngbNavLink>Authorized Person Detail </a>
+                                    <ng-template ngbNavContent>
+                                        <div class="card card-profile">
+                                            <img src="assets/images/pages/users/merchant/outlet-image.png" class="img-fluid card-img-top"
+                                                alt="Profile Cover Photo" />
+                                            <div class="card-body">
+                                                <div class="profile-image-wrapper">
+                                                    <div class="profile-image">
+                                                        <div class="avatar">
+                                                            <img src="assets/images/pages/users/merchant/outlet-profile.jpg" alt="Profile Picture" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <h3>Kadhai Spices Restaurent</h3>
+                                                <h6 class="text-muted">15-B, Rajat Jayanti Complex, Scheme no 54, Vijay Nagar,
+                                                    Indore</h6>
+                                                <div class="badge badge-light-primary profile-badge">Vijay Nagar</div>
+                                                <hr class="mb-2" />
+                                                <div class="details-section">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <h4 class="text-secondary font-weight-bolder">Authorized Person Detail</h4>
+                                        
+                                                            <div class="row">
+                                                                <div class="col-lg-5">
+                                                                    <p><strong>User Id:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>@#235152</p>
+                                                                </div>
+                                                                <div class="col-lg-5">
+                                                                    <p><strong>Pan:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>BHWPKSS8596</p>
+                                                                </div>
+                                                                <div class="col-lg-5">
+                                                                    <p><strong>Phone:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>7566149967</p>
+                                                                </div>
+                                                                <div class="col-lg-5">
+                                                                    <p><strong>Email:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>test@gmail.com</p>
+                                                                </div>
+                                                            </div>
+                                        
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <h4 class="text-secondary font-weight-bolder">Basic Details</h4>
+                                        
+                                                            <div class="row">
+                                                                <div class="col-lg-5">
+                                                                    <p><strong> Name:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>Arvind Kejriwal</p>
+                                                                </div>
+                                                                <div class="col-lg-5">
+                                                                    <p><strong> Seller Id :</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>#dsds526</p>
+                                                                </div>
+                                                                <div class="col-lg-5">
+                                                                    <p><strong>Agent Id:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>#12352</p>   
+                                                                </div>
+                                        
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </li>
+                            </ul>
+                            <div [ngbNavOutlet]="navVertical"></div> -->
+                            <div class="card card-profile">
+                                <img src="{{viewDetails?.outletImage[0]}}" class="img-fluid card-img-top"
+                                    alt="Profile Cover Photo" />
+                                <div class="card-body">
+                                    <div class="profile-image-wrapper">
+                                        <div class="profile-image">
+                                            <div class="avatar">
+                                                <img src="{{viewDetails?.outletImage[0]}}" alt="Profile Picture" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="outlet-name-details">
+                                        <h3>{{viewDetails?.outletName}}</h3>
+                                        <h6 class="text-muted">{{viewDetails?.shopAddress}}</h6>
+                                        <div class="badge badge-light-primary profile-badge">{{viewDetails?.area}}</div>
+                                    </div>
+                                    <hr class="mb-2" />
+                                    <div class="details-section">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <h4 class="text-secondary font-weight-bolder">Basic Details</h4>
+
+                                                <div class="row">
+                                                    <div class="col-lg-5">
+                                                        <p><strong>Merchant Name:</strong></p>
+                                                    </div>
+                                                    <div class="col-lg-7">
+                                                        <p>{{sellerDetails?.basicDetails?.sellerName}}</p>
+                                                    </div>
+                                                    <div class="col-lg-5">
+                                                        <p><strong>Trade Name:</strong></p>
+                                                    </div>
+                                                    <div class="col-lg-7">
+                                                        <p>{{sellerDetails?.basicDetails?.tradeName}}</p>
+                                                    </div>
+                                                    <div class="col-lg-5">
+                                                        <p><strong>Merchant Type:</strong></p>
+                                                    </div>
+                                                    <div class="col-lg-7">
+                                                        <p>{{sellerDetails?.basicDetails?.sellerType}}</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <h4 class="text-secondary font-weight-bolder">Outlet Timing</h4>
+
+                                                <div class="row">
+                                                    <div class="col-lg-5">
+                                                        <p><strong> Opening Time :</strong></p>
+                                                    </div>
+                                                    <div class="col-lg-7">
+                                                        <p>{{openingTime}}</p>
+                                                    </div>
+                                                    <div class="col-lg-5">
+                                                        <p><strong>Closing Time:</strong></p>
+                                                    </div>
+                                                    <div class="col-lg-7">
+                                                        <p>{{closingTime}}</p>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 mt-2">
+                                                <h4 class="text-secondary font-weight-bolder">Contact Details</h4>
+
+                                                <div class="row">
+                                                    <div class="col-lg-5">
+                                                        <p><strong>Phone:</strong></p>
+                                                    </div>
+                                                    <div class="col-lg-7">
+                                                        <p>{{sellerDetails?.authorizedPersonDetails?.phone}}</p>
+                                                    </div>
+                                                    <div class="col-lg-5">
+                                                        <p><strong>Email:</strong></p>
+                                                    </div>
+                                                    <div class="col-lg-7">
+                                                        <p>{{sellerDetails?.authorizedPersonDetails?.email}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-3">
+                        
+                    </div> -->
+                </div>
+            </div>
+
+        </section>
+        <!-- Outlet Details End-->
+    </div>
+</div>
+
+<ng-template #outofStock let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel160">Change Outlet Status</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0">
+        <section id="customer-page ngx-datatable-Responsive">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">All Outlet</h4>
+                    <div>
+                        <!-- <button type="button" class="btn btn-primary mr-1" routerLink="/outlet-info/add-outlet">
+                            Add Outlet +
+                        </button> -->
+                        <!-- <button type="button" class="btn btn-primary" routerLink="/userType/outletDetails" rippleEffect>
+                            Outlet Details
+                        </button> -->
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex justify-content-between align-items-center m-1">
+                            <label class="d-flex align-items-center">Show
+                                <select class="form-control mx-25" [(ngModel)]="basicSelectedOption">
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select>
+                                entries</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12 d-flex justify-content-md-end">
+                        <div class="d-flex align-items-center justify-content-end pb-1 pl-1 pl-md-0 pb-md-0">
+
+                            <div class="input-group mb-1 search-table">
+                                <input type="search" placeholder="Search" class="form-control ml-25"
+                                    (keyup)="filterUpdate($event)" (search)="filterUpdate($event)" />
+                            </div>
+                            <!-- <button csvLink (click)="downloadCSV($event)"
+                                class="btn btn-outline-secondary float-right csv-export" rippleEffect><img
+                                    src="assets/images/icons/csv.png" alt=""> </button> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ngx-datatables responsive -->
+                <ngx-datatable #table class="bootstrap core-bootstrap" [columnMode]="ColumnMode.force"
+                    [headerHeight]="40" [rowHeight]="58" [footerHeight]="50" rowHeight="auto" [limit]="10" [rows]="rows"
+                    [scrollbarH]="true">
+                    <ngx-datatable-column name="Product Name" prop="productName" [width]="50"></ngx-datatable-column>
+                    <ngx-datatable-column name="Action" [width]="50" [sortable]="false">
+                        
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            
+                            <button class="btn btn-primary btn-add" (click)="oenUpdateStockModal(updateStock,row)">Update Stock</button>
+                        </ng-template>
+                    </ngx-datatable-column>
+                </ngx-datatable>
+                <!--/ ngx-datatables responsive -->
+            </div>
+        </section>
+    </div>
+
+</ng-template>
+
+<!-- open change outofstock Modal -->
+<ng-template #updateStock let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel160">Update Stock</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0">Are You Sure You Want to Update</div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="modal.dismiss('Cross click')">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="updateStocks()">Confirm</button>
+    </div>
+</ng-template>

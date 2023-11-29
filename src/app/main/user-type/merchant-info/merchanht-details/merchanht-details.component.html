@@ -1,0 +1,390 @@
+
+<div class="content-wrapper container-fluid p-0">
+    
+    <div class="content-body">
+        <!-- content-header component -->
+        <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+        <!-- Outlet Details Start-->
+        <section id="outlet-details-page">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Seller Details-{{sellerInfo?.basicDetails?.sellerName}}</h4>
+                    <div class="outlet-btn-sec">
+                        <button class="btn btn-primary btn-add" (click)="addOutlet(sellerData)"><span>Add New
+                                Outlet</span> </button>
+                        <!-- <button class="btn btn-primary btn-add" routerLink="/userType/offers"><span>Offers</span> </button>
+                        <button class="btn btn-primary btn-add" routerLink="/userType/orderHistory"><span>Order History</span> </button>
+                        <button class="btn btn-primary btn-add" routerLink="/userType/menu"><span>Menu</span> </button> -->
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card card-profile">
+
+                            <div class="card-body">
+
+                                
+                                <div class="details-section">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <h4 class="text-secondary font-weight-bolder">Authorized
+                                                Person Detail</h4>
+
+                                            <div class="row">
+                                               <!--  <div class="col-lg-5">
+                                                    <p><strong>User Id:</strong></p>
+                                                </div>
+                                                <div class="col-lg-7">
+                                                    <p>{{sellerData?.userId}}</p>
+                                                </div> -->
+                                                <div class="col-lg-5">
+                                                    <p><strong>Pan:</strong></p>
+                                                </div>
+                                                <div class="col-lg-7">
+                                                    <p>{{sellerInfo?.authorizedPersonDetails?.pan}}</p>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <p><strong>Phone:</strong></p>
+                                                </div>
+                                                <div class="col-lg-7">
+                                                    <p>{{sellerInfo?.authorizedPersonDetails?.phone}}</p>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <p><strong>Email:</strong></p>
+                                                </div>
+                                                <div class="col-lg-7">
+                                                    <p>{{sellerInfo?.authorizedPersonDetails?.email}}</p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <h4 class="text-secondary font-weight-bolder">Basic Details
+                                            </h4>
+
+                                            <div class="row">
+                                                <div class="col-lg-5">
+                                                    <p><strong> Name:</strong></p>
+                                                </div>
+                                                <div class="col-lg-7">
+                                                    <p>{{sellerInfo?.basicDetails?.sellerName}}</p>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <p><strong> Seller Id :</strong></p>
+                                                </div>
+                                                <div class="col-lg-7">
+                                                    <p>{{sellerInfo?.sellerId}}</p>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <p><strong>Agent Id:</strong></p>
+                                                </div>
+                                                <div class="col-lg-7">
+                                                    <p>{{sellerInfo?.agentId}}</p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <h4 class="text-secondary font-weight-bolder">License
+                                                Details</h4>
+
+                                            <div class="row">
+                                                <div class="col-lg-5">
+                                                    <p><strong>Name On Licence:</strong></p>
+                                                </div>
+                                                <div class="col-lg-7">
+                                                    <p>{{sellerInfo?.licenseDetails?.nameOnlicence}}</p>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <p><strong>Licence Number:</strong></p>
+                                                </div>
+                                                <div class="col-lg-7">
+                                                    <p>{{sellerInfo?.licenseDetails?.licenceNumber}}</p>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <p><strong>Issued On:</strong></p>
+                                                </div>
+                                                <div class="col-lg-7">
+                                                    <p>{{sellerInfo?.licenseDetails?.issuedOn}}</p>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <p><strong>Tenure:</strong></p>
+                                                </div>
+                                                <div class="col-lg-7">
+                                                    <p>{{sellerInfo?.licenseDetails?.tenure}} Years</p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card card-profile">
+
+                            <div class="card-body">
+
+                                
+                                <div class="details-section">
+                                    <div class="row">
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- <div class="nav-vertical">
+                            <ul ngbNav #navVertical="ngbNav" class="nav nav-tabs nav-left flex-column">
+                                <li ngbNavItem>
+                                    <a ngbNavLink>About Outlet</a>
+                                    <ng-template ngbNavContent>
+                                        <div class="card card-profile">
+                                            <img src="assets/images/pages/users/merchant/outlet-image.png"
+                                                class="img-fluid card-img-top" alt="Profile Cover Photo" />
+                                            <div class="card-body">
+                                                <div class="profile-image-wrapper">
+                                                    <div class="profile-image">
+                                                        <div class="avatar">
+                                                            <img src="assets/images/pages/users/merchant/outlet-profile.jpg"
+                                                                alt="Profile Picture" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <h3>Kadhai Spices Restaurent</h3>
+                                                <h6 class="text-muted">15-B, Rajat Jayanti Complex, Scheme no 54, Vijay
+                                                    Nagar,
+                                                    Indore</h6>
+                                                <div class="badge badge-light-primary profile-badge">Vijay Nagar</div>
+                                                <hr class="mb-2" />
+                                                <div class="details-section">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <h4 class="text-secondary font-weight-bolder">Basic Details
+                                                            </h4>
+
+                                                            <div class="row">
+                                                                <div class="col-lg-5">
+                                                                    <p><strong>Merchant Name:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>Arvind Kejriwal</p>
+                                                                </div>
+                                                                <div class="col-lg-5">
+                                                                    <p><strong>Trade Name:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>Lapinoz</p>
+                                                                </div>
+                                                                <div class="col-lg-5">
+                                                                    <p><strong>Merchant Type:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>Individual</p>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <h4 class="text-secondary font-weight-bolder">Outlet Timing
+                                                            </h4>
+
+                                                            <div class="row">
+                                                                <div class="col-lg-5">
+                                                                    <p><strong> Opening Time :</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>09:10 AM</p>
+                                                                </div>
+                                                                <div class="col-lg-5">
+                                                                    <p><strong>Closing Time:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>11:00 PM</p>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 mt-2">
+                                                            <h4 class="text-secondary font-weight-bolder">Contact
+                                                                Details</h4>
+
+                                                            <div class="row">
+                                                                <div class="col-lg-5">
+                                                                    <p><strong>Phone:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>7566149967</p>
+                                                                </div>
+                                                                <div class="col-lg-5">
+                                                                    <p><strong>Email:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>test@gmail.com</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </li>
+                                <li ngbNavItem>
+                                    <a ngbNavLink>Lincence Details</a>
+                                    <ng-template ngbNavContent>
+                                        <div class="card card-profile">
+
+                                            <div class="card-body">
+
+                                                <hr class="mb-2" />
+                                                <div class="details-section">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <h4 class="text-secondary font-weight-bolder">License
+                                                                Details</h4>
+
+                                                            <div class="row">
+                                                                <div class="col-lg-5">
+                                                                    <p><strong>Name On Licence:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>Farji Licencse</p>
+                                                                </div>
+                                                                <div class="col-lg-5">
+                                                                    <p><strong>Licence Number:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>1121225455</p>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <h4 class="text-secondary font-weight-bolder">Issued Date &
+                                                                Tenure </h4>
+
+                                                            <div class="row">
+                                                                <div class="col-lg-5">
+                                                                    <p><strong>Issued On:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>11/05/2023</p>
+                                                                </div>
+                                                                <div class="col-lg-5">
+                                                                    <p><strong>Tenure:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>5Years</p>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </li>
+                                <li ngbNavItem>
+                                    <a ngbNavLink>Authorized Person Detail </a>
+                                    <ng-template ngbNavContent>
+                                        <div class="card card-profile">
+
+                                            <div class="card-body">
+
+                                                <hr class="mb-2" />
+                                                <div class="details-section">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <h4 class="text-secondary font-weight-bolder">Authorized
+                                                                Person Detail</h4>
+
+                                                            <div class="row">
+                                                                <div class="col-lg-5">
+                                                                    <p><strong>User Id:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>@#235152</p>
+                                                                </div>
+                                                                <div class="col-lg-5">
+                                                                    <p><strong>Pan:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>BHWPKSS8596</p>
+                                                                </div>
+                                                                <div class="col-lg-5">
+                                                                    <p><strong>Phone:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>7566149967</p>
+                                                                </div>
+                                                                <div class="col-lg-5">
+                                                                    <p><strong>Email:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>test@gmail.com</p>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <h4 class="text-secondary font-weight-bolder">Basic Details
+                                                            </h4>
+
+                                                            <div class="row">
+                                                                <div class="col-lg-5">
+                                                                    <p><strong> Name:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>Arvind Kejriwal</p>
+                                                                </div>
+                                                                <div class="col-lg-5">
+                                                                    <p><strong> Seller Id :</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>#dsds526</p>
+                                                                </div>
+                                                                <div class="col-lg-5">
+                                                                    <p><strong>Agent Id:</strong></p>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <p>#12352</p>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </li>
+                            </ul>
+                            <div [ngbNavOutlet]="navVertical"></div>
+
+                        </div> -->
+                    </div>
+                    <div class="col-md-3">
+                        <div class="outlist-main">
+                            <ul class="outlet-list" *ngFor="let outlet of outletList">
+                                <li>
+                                    <a (click)="viewOutletDetails(outlet)">{{outlet.outletName}}</a>
+                                </li>
+                               
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- Outlet Details End-->
+    </div>
+</div>

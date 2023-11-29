@@ -1,0 +1,633 @@
+<div class="content-wrapper container-fluid p-0">
+    <div class="content-body">
+        <!-- content-header component -->
+        <app-content-header [contentHeader]="contentHeader"></app-content-header>
+        <div id="promotion-page">
+            <div class="offers-section">
+                <div class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
+                    <h4 class="card-title">Offers</h4>
+                    <div class="outlet-btn-sec mb-2">
+                        <button class="btn btn-primary btn-add" (click)="modalOfferAdd(modalAdd)" rippleEffect>Add
+                            Offers <i class="fa-regular fa-plus"></i></button>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="card offer-box">
+                            <div class="card-body">
+                                <div
+                                    class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
+                                    <button class="btn btn-offer-edit" (click)="modalOfferEdit(modalEdit)"
+                                        rippleEffect><i class="fa-regular fa-pen-to-square"></i></button>
+                                    <button class="btn btn-offer-delete" (click)="modalOfferDelete(modalDelete)"
+                                        rippleEffect><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                                <a class="offer-outlet">
+                                    <p>Apply this offer & get flat 15% OFF on this order, order above ₹200 No upper
+                                        limit
+                                    </p>
+                                    <h4>15%</h4>
+                                    <h5>OFF</h5>
+                                    <div class="expiry-date-offer">
+                                    <p>Start Date: <span> 01/02/2023</span></p>
+                                    <p>End Date: <span> 01/02/2023</span></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card offer-box">
+                            <div class="card-body">
+                                <div
+                                    class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
+                                    <button class="btn btn-offer-edit" (click)="modalOfferEdit(modalEdit)"
+                                        rippleEffect><i class="fa-regular fa-pen-to-square"></i></button>
+                                    <button class="btn btn-offer-delete" (click)="modalOfferDelete(modalDelete)"
+                                        rippleEffect><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                                <a class="offer-outlet">
+                                    <p>Apply this offer & get flat 25% OFF on this order, order above ₹250 No upper
+                                        limit
+                                    </p>
+                                    <h4>25%</h4>
+                                    <h5>OFF</h5>
+                                    <div class="expiry-date-offer">
+                                        <p>Start Date: <span> 01/02/2023</span></p>
+                                        <p>End Date: <span> 01/02/2023</span></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card offer-box">
+                            <div class="card-body">
+                                <div
+                                    class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
+                                    <button class="btn btn-offer-edit" (click)="modalOfferEdit(modalEdit)"
+                                        rippleEffect><i class="fa-regular fa-pen-to-square"></i></button>
+                                    <button class="btn btn-offer-delete" (click)="modalOfferDelete(modalDelete)"
+                                        rippleEffect><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                                <a class="offer-outlet">
+                                    <p>Apply this offer & get flat 35% OFF on this order, order above ₹300 No upper
+                                        limit
+                                    </p>
+                                    <h4>35%</h4>
+                                    <h5>OFF</h5>
+                                    <div class="expiry-date-offer">
+                                        <p>Start Date: <span> 01/02/2023</span></p>
+                                        <p>End Date: <span> 01/02/2023</span></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card offer-box">
+                            <div class="card-body">
+                                <div
+                                    class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
+                                    <button class="btn btn-offer-edit" (click)="modalOfferEdit(modalEdit)"
+                                        rippleEffect><i class="fa-regular fa-pen-to-square"></i></button>
+                                    <button class="btn btn-offer-delete" (click)="modalOfferDelete(modalDelete)"
+                                        rippleEffect><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                                <a class="offer-outlet">
+                                    <p>Apply this offer & get flat 50% OFF on this order, order above ₹400 No upper
+                                        limit
+                                    </p>
+                                    <h4>50%</h4>
+                                    <h5>OFF</h5>
+                                    <div class="expiry-date-offer">
+                                        <p>Start Date: <span> 01/02/2023</span></p>
+                                        <p>End Date: <span> 01/02/2023</span></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card offer-box">
+                            <div class="card-body">
+                                <div
+                                    class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
+                                    <button class="btn btn-offer-edit" (click)="modalOfferEdit(modalEdit)"
+                                        rippleEffect><i class="fa-regular fa-pen-to-square"></i></button>
+                                    <button class="btn btn-offer-delete" (click)="modalOfferDelete(modalDelete)"
+                                        rippleEffect><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                                <a class="offer-outlet">
+                                    <p>Apply this offer & get flat 75% OFF on this order, order above ₹600 No upper
+                                        limit
+                                    </p>
+                                    <h4>75%</h4>
+                                    <h5>OFF</h5>
+                                    <div class="expiry-date-offer">
+                                        <p>Start Date: <span> 01/02/2023</span></p>
+                                        <p>End Date: <span> 01/02/2023</span></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card offer-box">
+                            <div class="card-body">
+                                <div
+                                    class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
+                                    <button class="btn btn-offer-edit" (click)="modalOfferEdit(modalEdit)"
+                                        rippleEffect><i class="fa-regular fa-pen-to-square"></i></button>
+                                    <button class="btn btn-offer-delete" (click)="modalOfferDelete(modalDelete)"
+                                        rippleEffect><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                                <a class="offer-outlet">
+                                    <p>Apply this offer & get flat 80% OFF on this order, order above ₹1000 No upper
+                                        limit
+                                    </p>
+                                    <h4>80%</h4>
+                                    <h5>OFF</h5>
+                                    <div class="expiry-date-offer">
+                                        <p>Start Date: <span> 01/02/2023</span></p>
+                                        <p>End Date: <span> 01/02/2023</span></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="promo-code-section mt-3">
+                <div class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
+                    <h4 class="card-title">Promo Code</h4>
+                    <div class="outlet-btn-sec mb-2">
+                        <button class="btn btn-primary btn-add" (click)="modalPromoAdd(promoAdd)" rippleEffect>Add Promo
+                            Code
+                            <i class="fa-regular fa-plus"></i></button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="promo-box">
+                            <div class="promo">
+                                <div
+                                    class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
+                                    <button class="btn btn-offer-edit" (click)="modalPromoEdit(promoEdit)"
+                                        rippleEffect><i class="fa-regular fa-pen-to-square"></i></button>
+                                    <button class="btn btn-offer-delete" (click)="modalPromoDelete(promoDelete)"
+                                        rippleEffect><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                                <h6>Deal</h6>
+                                <h4>Deal 99</h4>
+                                <small>Expiry Date: 04/06/2023</small>
+                            </div>
+                            <div class="promo-content-body">
+                                <ul>
+                                    <li>Valid for all users</li>
+                                    <li>Min. order amount is ₹350</li>
+                                    <li>Promo quantity is 800</li>
+                                </ul>
+                                <button class="btn btn-outline-primary">View Outlet</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="promo-box">
+                            <div class="promo">
+                                <div class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
+                                    <button class="btn btn-offer-edit" (click)="modalPromoEdit(promoEdit)" rippleEffect><i
+                                            class="fa-regular fa-pen-to-square"></i></button>
+                                    <button class="btn btn-offer-delete" (click)="modalPromoDelete(promoDelete)" rippleEffect><i
+                                            class="fa-solid fa-trash"></i></button>
+                                </div>
+                                <h6>Firstfreeorder</h6>
+                                <h4>Firstfreeorder</h4>
+                                <small>Expiry Date: 01/08/2023</small>
+                            </div>
+                            <div class="promo-content-body">
+                                <ul>
+                                    <li>Valid for all users</li>
+                                    <li>Min. order amount is ₹0</li>
+                                    <li>Promo quantity is 100</li>
+                                </ul>
+                                <button class="btn btn-outline-primary">View Outlet</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="promo-box">
+                            <div class="promo">
+                                <div class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
+                                    <button class="btn btn-offer-edit" (click)="modalPromoEdit(promoEdit)" rippleEffect><i
+                                            class="fa-regular fa-pen-to-square"></i></button>
+                                    <button class="btn btn-offer-delete" (click)="modalPromoDelete(promoDelete)" rippleEffect><i
+                                            class="fa-solid fa-trash"></i></button>
+                                </div>
+                                <h6>Sunday</h6>
+                                <h4>Sunday 50%</h4>
+                                <small>Expiry Date: 05/05/2023</small>
+                            </div>
+                            <div class="promo-content-body">
+                                <ul>
+                                    <li>Valid for all users</li>
+                                    <li>Min. order amount is ₹600</li>
+                                    <li>Promo quantity is 150</li>
+                                </ul>
+                                <button class="btn btn-outline-primary">View Outlet</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="promo-box">
+                            <div class="promo">
+                                <div class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
+                                    <button class="btn btn-offer-edit" (click)="modalPromoEdit(promoEdit)" rippleEffect><i
+                                            class="fa-regular fa-pen-to-square"></i></button>
+                                    <button class="btn btn-offer-delete" (click)="modalPromoDelete(promoDelete)" rippleEffect><i
+                                            class="fa-solid fa-trash"></i></button>
+                                </div>
+                                <h6>Max Fifteen</h6>
+                                <h4>Maximum Fifteen 60%</h4>
+                                <small>Expiry Date: 04/03/2023</small>
+                            </div>
+                            <div class="promo-content-body">
+                                <ul>
+                                    <li>Valid for all users</li>
+                                    <li>Min. order amount is ₹250</li>
+                                    <li>Promo quantity is 15</li>
+                                </ul>
+                                <button class="btn btn-outline-primary">View Outlet</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal add offer-->
+<ng-template #modalAdd let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Add Offers</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <form class="form form-vertical">
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="first-name-vertical">Offer Name</label>
+                        <input type="text" id="first-name-vertical" class="form-control" name="fname"
+                            placeholder="Offer Name" />
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="email-id-vertical">Percent Off</label>
+                        <input type="number" id="email-id-vertical" class="form-control" name="percent"
+                            placeholder="Percent Off" />
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="email-id-vertical">Start Date</label>
+                        <ng2-flatpickr [ngClass]="'firstsecond'" [config]="basicDateOptions" name="basicDate"></ng2-flatpickr>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="email-id-vertical">End Date</label>
+                        <ng2-flatpickr [ngClass]="'firstsecond'" [config]="basicDateOptions" name="basicDate"></ng2-flatpickr>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <label for="basicTextarea">Offer Description</label>
+                    <fieldset class="form-group">
+                        <textarea class="form-control" id="basicTextarea" rows="3"
+                            placeholder="Offer Description"></textarea>
+                    </fieldset>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
+                        Cancel
+                    </button>
+                    <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</ng-template>
+<!-- / Modal add offer -->
+
+<!-- Modal edit offer-->
+<ng-template #modalEdit let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Edit Offers</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <form class="form form-vertical">
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="first-name-vertical">Offer Name</label>
+                        <input type="text" id="first-name-vertical" class="form-control" name="fname"
+                            placeholder="Offer Name" />
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="email-id-vertical">Percent Off</label>
+                        <input type="number" id="email-id-vertical" class="form-control" name="percent"
+                            placeholder="Percent Off" />
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="email-id-vertical">Start Date</label>
+                        <ng2-flatpickr [ngClass]="'firstsecond'" [config]="basicDateOptions" name="basicDate"></ng2-flatpickr>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="email-id-vertical">End Date</label>
+                        <ng2-flatpickr [ngClass]="'firstsecond'" [config]="basicDateOptions" name="basicDate"></ng2-flatpickr>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <label for="basicTextarea">Offer Description</label>
+                    <fieldset class="form-group">
+                        <textarea class="form-control" id="basicTextarea" rows="3"
+                            placeholder="Offer Description"></textarea>
+                    </fieldset>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
+                        Cancel
+                    </button>
+                    <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</ng-template>
+<!-- / Modal edit offer -->
+
+<!-- Modal delete offer-->
+<ng-template #modalDelete let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Delete Offers</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <p>
+            Are you sure you want to Delete ?
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
+            Cancel
+        </button>
+        <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
+            Delete
+        </button>
+    </div>
+</ng-template>
+<!-- / Modal delete offer -->
+
+<!-- Modal add promo-->
+<ng-template #promoAdd let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Add Promo Code</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <form class="form">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="first-name-column">Promo Code Name</label>
+                        <input type="text" id="first-name-column" class="form-control" placeholder="Promo Code Name"
+                            name="fname-column" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="last-name-column">Promo Code Discount</label>
+                        <input type="text" id="last-name-column" class="form-control" placeholder="Promo Code Discount"
+                            name="lname-column" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="city-column">Minimum Value</label>
+                        <input type="text" id="city-column" class="form-control" placeholder="Minimum Value"
+                            name="city-column" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="basicSelect">Commission ON</label>
+                        <select class="form-control" id="basicSelect">
+                            <option>5%</option>
+                            <option>10%</option>
+                            <option>15%</option>
+                            <option>20%</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="company-column">Total No. of Vauchers</label>
+                        <input type="text" id="company-column" class="form-control" name="vauchers"
+                            placeholder="Total No. of Vauchers" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="company-column">Promo Code Validity</label>
+                        <input type="text" id="company-column" class="form-control" name="validity"
+                            placeholder="Promo Code Validity" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="company-column">No. of Redeems Allowed(Per user)</label>
+                        <input type="text" id="company-column" class="form-control" name="validity"
+                            placeholder="Promo Code Validity" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="basicSelect">Select Restuarent</label>
+                        <select class="form-control" id="basicSelect">
+                            <option>All</option>
+                            <option>Apna Sweets</option>
+                            <option>Fablo</option>
+                            <option>Sharma Sweets</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <label for="basicTextarea">Promo Code Description</label>
+                    <fieldset class="form-group">
+                        <textarea class="form-control" id="basicTextarea" rows="3" placeholder="Description"></textarea>
+                    </fieldset>
+                </div>
+
+                <div class="col-12 mt-1 mb-1 text-right">
+                    <button type="button" class="btn btn-outline-primary mr-1" (click)="modal.close('Accept click')"
+                        rippleEffect>
+                        Cancel
+                    </button>
+                    <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</ng-template>
+<!-- / Modal add promo -->
+
+<!-- Modal Edit promo-->
+<ng-template #promoEdit let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Edit Promo Code</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <form class="form">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="first-name-column">Promo Code Name</label>
+                        <input type="text" id="first-name-column" class="form-control" placeholder="Promo Code Name"
+                            name="fname-column" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="last-name-column">Promo Code Discount</label>
+                        <input type="text" id="last-name-column" class="form-control" placeholder="Promo Code Discount"
+                            name="lname-column" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="city-column">Minimum Value</label>
+                        <input type="text" id="city-column" class="form-control" placeholder="Minimum Value"
+                            name="city-column" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="basicSelect">Commission ON</label>
+                        <select class="form-control" id="basicSelect">
+                            <option>5%</option>
+                            <option>10%</option>
+                            <option>15%</option>
+                            <option>20%</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="company-column">Total No. of Vauchers</label>
+                        <input type="text" id="company-column" class="form-control" name="vauchers"
+                            placeholder="Total No. of Vauchers" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="company-column">Promo Code Validity</label>
+                        <input type="text" id="company-column" class="form-control" name="validity"
+                            placeholder="Promo Code Validity" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="company-column">No. of Redeems Allowed(Per user)</label>
+                        <input type="text" id="company-column" class="form-control" name="validity"
+                            placeholder="Promo Code Validity" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="basicSelect">Select Restuarent</label>
+                        <select class="form-control" id="basicSelect">
+                            <option>All</option>
+                            <option>Apna Sweets</option>
+                            <option>Fablo</option>
+                            <option>Sharma Sweets</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <label for="basicTextarea">Promo Code Description</label>
+                    <fieldset class="form-group">
+                        <textarea class="form-control" id="basicTextarea" rows="3" placeholder="Description"></textarea>
+                    </fieldset>
+                </div>
+
+                <div class="col-12 mt-1 mb-1 text-right">
+                    <button type="button" class="btn btn-outline-primary mr-1" (click)="modal.close('Accept click')"
+                        rippleEffect>
+                        Cancel
+                    </button>
+                    <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</ng-template>
+<!-- / Modal Edit promo -->
+
+<!-- Modal delete Promo-->
+<ng-template #promoDelete let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Delete Promo</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <p>
+            Are you sure you want to Delete ?
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" (click)="modal.close('Accept click')" rippleEffect>
+            Cancel
+        </button>
+        <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
+            Delete
+        </button>
+    </div>
+</ng-template>
+<!-- / Modal delete promo -->

@@ -1,0 +1,185 @@
+<div class="content-wrapper container-fluid p-0">
+    <div class="content-body">
+        <!-- content-header component -->
+        
+        <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+        <!-- home page content start -->
+        <section id="home-page">
+            <div class="order-count" >
+                <h3>Order Counts</h3>
+                <div class="row">
+                    <!-- Dynamic data Card -->
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="card card-pending">
+                            <div class="card-header">
+                                <div class="avatar bg-light-success bg-pending p-50 m-0">
+                                    <div class="avatar-content">
+                                        <img src="assets/images/icons/pending.png" alt="">
+                                    </div>
+                                </div>
+                                <div>
+                                    <h2 class="font-weight-bolder mb-0">{{pending}}</h2>
+                                    <p class="card-text">Pending</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="card card-preparing">
+                            <div class="card-header">
+                                <div class="avatar bg-light-success bg-preparing p-50 m-0">
+                                    <div class="avatar-content">
+                                        <img src="assets/images/icons/preparing.png" alt="">
+                                    </div>
+                                </div>
+                                <div>
+                                    <h2 class="font-weight-bolder mb-0">{{preparing}}</h2>
+                                    <p class="card-text">Preparing</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="card card-ready">
+                            <div class="card-header">
+                                <div class="avatar bg-light-success bg-ready p-50 m-0">
+                                    <div class="avatar-content">
+                                        <img src="assets/images/icons/ready.png" alt="">
+                                    </div>
+                                </div>
+                                <div>
+                                    <h2 class="font-weight-bolder mb-0">{{ready}}</h2>
+                                    <p class="card-text">Ready</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="card card-dispatched">
+                            <div class="card-header">
+                                <div class="avatar bg-light-success bg-dispatched p-50 m-0">
+                                    <div class="avatar-content">
+                                        <img src="assets/images/icons/dispatched.png" alt="">
+                                    </div>
+                                </div>
+                                <div>
+                                    <h2 class="font-weight-bolder mb-0">{{dispatched}}</h2>
+                                    <p class="card-text">Dispatched</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="card card-delivered">
+                            <div class="card-header">
+                                <div class="avatar bg-light-success bg-delivered p-50 m-0">
+                                    <div class="avatar-content">
+                                        <img src="assets/images/icons/delivered.png" alt="">
+                                    </div>
+                                </div>
+                                <div>
+                                    <h2 class="font-weight-bolder mb-0">{{delivered}}</h2>
+                                    <p class="card-text">Delivered</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="card card-cancelled">
+                            <div class="card-header">
+                                <div class="avatar bg-light-success bg-cancelled p-50 m-0">
+                                    <div class="avatar-content">
+                                        <img src="assets/images/icons/cancelled.png" alt="">
+                                    </div>
+                                </div>
+                                <div>
+                                    <h2 class="font-weight-bolder mb-0">{{cancelled}}</h2>
+                                    <p class="card-text">Cancelled</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ Dynamic data Card -->
+                </div>
+            </div>
+            <hr>
+            <div class="outlet-status">
+                <h3>Outlet Status</h3>
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="card card-pending">
+                            <div class="card-header">
+                                <div class="avatar bg-light-success bg-pending p-50 m-0">
+                                    <div class="avatar-content">
+                                        <img src="assets/images/icons/visible.png" alt="">
+                                    </div>
+                                </div>
+                                <div>
+                                    <h2 class="font-weight-bolder mb-0">{{notVisible}}</h2>
+                                    <p class="card-text">Not Visible</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="card card-cancelled">
+                            <div class="card-header">
+                                <div class="avatar bg-light-success bg-cancelled p-50 m-0">
+                                    <div class="avatar-content">
+                                        <img src="assets/images/icons/not-visible.png" alt="">
+                                    </div>
+                                </div>
+                                <div>
+                                    <h2 class="font-weight-bolder mb-0">{{visible}}</h2>
+                                    <p class="card-text">Visible</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="card card-ready">
+                            <div class="card-header">
+                                <div class="avatar bg-light-success bg-ready p-50 m-0">
+                                    <div class="avatar-content">
+                                        <img src="assets/images/icons/open.png" alt="">
+                                    </div>
+                                </div>
+                                <div>
+                                    <h2 class="font-weight-bolder mb-0">{{open}}</h2>
+                                    <p class="card-text">Open</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="card card-cancelled">
+                            <div class="card-header">
+                                <div class="avatar bg-light-success bg-cancelled p-50 m-0">
+                                    <div class="avatar-content">
+                                        <img src="assets/images/icons/close.png" alt="">
+                                    </div>
+                                </div>
+                                <div>
+                                    <h2 class="font-weight-bolder mb-0">{{closed}}</h2>
+                                    <p class="card-text">Closed</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- home page contentend -->
+    </div>
+</div>
