@@ -82,8 +82,17 @@
                                     *ngFor="let product of productList">
                                     <button type="button" (click)="modalProductView(productView,product)" rippleEffect>
                                         <div class="media">
-                                            <div class="media-body my-auto">
-                                                <h6 class="mb-0">{{product.productName}}</h6>
+                                            <div class="media-body my-auto d-flex">
+                                                <img
+                                                    *ngIf="product?.isVeg"
+                                                    src="assets/images/veg.png"
+                                                />
+                                                <img
+                                                    *ngIf="!product?.isVeg"
+                                                    src="assets/images/nonveg.png"
+                                                    width="20px"
+                                                />
+                                                <h6 class="mb-0">{{product.productName}}:₹{{product.displayPrice}}</h6>
                                             </div>
                                         </div>
                                     </button>
