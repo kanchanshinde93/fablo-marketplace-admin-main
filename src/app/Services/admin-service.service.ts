@@ -10,6 +10,7 @@ export class AdminServiceService {
   private apiUrl = environment.apiUrl;
   private menuUrl = environment.menuUrl;
   private orderUrl = environment.orderUrl;
+  private userUrl=environment.userUrl
   Header = () => {
     let headers = new HttpHeaders();
     // headers = headers.append('content-type', 'application/json');
@@ -452,6 +453,16 @@ getSellerInfo(body: any) {
   deleteCategory(body: any) {
     return this.http
       .post(this.menuUrl + "/v1/delete", body, this.Header())
+      .pipe(
+        map((res: any) => {
+          return res;
+        })
+      );
+  }
+  //sellerstutesChange
+  sellerStatusChange(body: any) {
+    return this.http
+      .post(this.userUrl + "/v1/seller/verify", body, this.Header())
       .pipe(
         map((res: any) => {
           return res;

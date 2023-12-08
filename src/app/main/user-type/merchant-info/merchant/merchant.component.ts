@@ -8,6 +8,7 @@ import { AdminServiceService } from 'app/Services/admin-service.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
 import { log } from 'console';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-merchant',
@@ -33,7 +34,8 @@ export class MerchantComponent implements OnInit {
   filteredData = [];
   formula: string = 'MerchantList';
   sellerList: any;
-  constructor(private router: Router, private modalService: NgbModal,private spinner: NgxSpinnerService, private adminService: AdminServiceService) { }
+  sellerId:any
+  constructor(private router: Router, private modalService: NgbModal,private toastr:ToastrService,private spinner: NgxSpinnerService, private adminService: AdminServiceService) { }
 
   public contentHeader: object
 
@@ -150,5 +152,32 @@ export class MerchantComponent implements OnInit {
       centered: true,
       size: "lg"
     });
+  }
+
+  statusChange(data:any,row:any){
+    console.log(row.sellerId);
+    this.sellerId=row.sellerId
+ this.modalService.open(data, {
+      centered: true,
+      size: "md"
+    });
+  }
+  sellerStatusChange(){
+    let body={
+        "sellerId": this.sellerId,
+        "verify": true
+    }
+    this.adminService.sellerStatusChange(body).subscribe((res:any)=>{
+      if(res.status){
+        this.toastr.success(res.message,"Success!");
+        this.allSeller();
+        this.modalService.dismissAll();
+      }else{
+        this.toastr.error(res.message,"error!");
+        this.allSeller();
+        this.modalService.dismissAll();
+      }
+    })
+   
   }
 }

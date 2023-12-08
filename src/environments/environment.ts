@@ -7,7 +7,8 @@ export const environment = {
   hmr: false,
   apiUrl: 'https://admin.fablocdn.com',
   menuUrl: 'https://inventory.fablocdn.com',
-  orderUrl: 'https://order.fablocdn.com'
+  orderUrl: 'https://order.fablocdn.com',
+  userUrl:"https://user.fablocdn.com"
 };
 
 /*
