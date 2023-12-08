@@ -966,18 +966,18 @@ export class MenuComponent implements OnInit {
     const formData = {
       categoryId:this.deleteCategoryByID.categoryId
     }
-    // this.adminService.deleteCategory(formData).subscribe((res:any)=>{
-    //   if(res.status){
-    //     this.toastr.success(res.message,"Success!");
-    //     this.allCategory();
-    //     this.subCategoryById();
-    //     this.modalRef.close();
-    //   }else{
-    //     this.toastr.error(res.message,"error!");
-    //     this.allCategory();
-    //     this.subCategoryById();
-    //   }
-    // });
+    this.adminService.deleteCategory(formData).subscribe((res:any)=>{
+      if(res.status){
+        this.toastr.success(res.message,"Success!");
+        this.allCategory();
+        this.subCategoryById();
+        this.modalRef.close();
+      }else{
+        this.toastr.error(res.message,"error!");
+        this.allCategory();
+        this.subCategoryById();
+      }
+    });
   }
 
   // open deleteProduct Modal
@@ -994,15 +994,15 @@ export class MenuComponent implements OnInit {
     const formData = {
       productId:this.deleteProductById.productId
     }
-    // this.adminService.deleteCategory(formData).subscribe((res:any)=>{
-    //   if(res.items){
-    //     this.toastr.success(res.message,"Success!");
-    //     this.getProductBySubId(this.prodBySub);
-    //     this.modalRef.close();
-    //   }else{
-    //     this.toastr.error(res.message,"error!");
-    //   }
-    // });
+    this.adminService.deleteCategory(formData).subscribe((res:any)=>{
+      if(res.items){
+        this.toastr.success(res.message,"Success!");
+        this.getProductBySubId(this.prodBySub);
+        this.modalRef.close();
+      }else{
+        this.toastr.error(res.message,"error!");
+      }
+    });
   }
   // modal delete variant
   modalDeleteVariant(data) {

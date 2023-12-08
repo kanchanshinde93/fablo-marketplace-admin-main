@@ -15,6 +15,10 @@
                                 <p [ngClass]="getColor(orderData.status)">{{orderData.status}}</p>
                             </div>
                             <div class="order-info">
+                                <p><strong>Settlement amount</strong></p>
+                                <p>₹{{orderData.amount.totalAmount - orderData.amount.discountedAmount}}</p>
+                            </div>
+                            <div class="order-info">
                                 <p><strong>Payment Mode</strong></p>
                                 <p>{{orderData.payment.paymentMode}}</p>
                             </div>
