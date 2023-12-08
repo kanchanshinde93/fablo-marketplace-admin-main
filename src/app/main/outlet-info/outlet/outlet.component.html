@@ -54,7 +54,9 @@
                     <ngx-datatable-column name="Is Closed" prop="isClosed" [width]="150">
                         <ng-template let-closeStatus="value" ngx-datatable-cell-template>
                             <div class="badge badge-pill" [ngClass]="selectButtonClass(closeStatus)">
-                              {{ closeStatus }}
+                              <!-- {{ closeStatus }} --> {{
+                                closeStatus
+                                ? 'Close' : 'Open' }}
                             </div>
                           </ng-template>
                     </ngx-datatable-column>

@@ -1004,6 +1004,7 @@ export class MenuComponent implements OnInit {
       }
     });
   }
+  
   // modal delete variant
   modalDeleteVariant(data) {
     this.modalService.open(data, {
