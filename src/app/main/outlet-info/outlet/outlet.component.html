@@ -51,7 +51,7 @@
                     [scrollbarH]="true">
                     <ngx-datatable-column name="Seller Id" prop="sellerId" [width]="150"></ngx-datatable-column>
                     <ngx-datatable-column name="Outlet Name" prop="outletName" [width]="150"></ngx-datatable-column>
-                    <ngx-datatable-column name="Is Closed" prop="isClosed" [width]="150">
+                    <ngx-datatable-column name="Status" prop="isClosed" [width]="150">
                         <ng-template let-closeStatus="value" ngx-datatable-cell-template>
                             <div class="badge badge-pill" [ngClass]="selectButtonClass(closeStatus)">
                               <!-- {{ closeStatus }} --> {{
