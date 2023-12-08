@@ -36,6 +36,7 @@ export class OutletComponent implements OnInit {
   outletData: any;
   previousImage: any;
   changeById: any;
+  outetverifiedId:any
 
   constructor(private modalService: NgbModal, private router:Router ,private toastr:ToastrService , private fb: FormBuilder, private adminService: AdminServiceService) { }
 
@@ -180,7 +181,36 @@ outletStatusChange(){
   })
 }
 
+VerifiedOutletStatus(data:any,outlet:any){
+  console.log(outlet.outletId);
+  this.outetverifiedId=outlet.outletId
+  
+  this.modalService.open(data,{
+    centered:true,
+    scrollable:true,
+    size:'md'
+  });
+}
 
+VerifiedoutletChange(){
+  let body={
+      "outletId":this.outetverifiedId,
+      "status":true
+   }
+   console.log(body);
+   
+  this.adminService.verifiedoutlet(body).subscribe((res:any)=>{
+    if(res.status){
+      this.toastr.success(res.message,"Success!");
+      this.allOutlet();
+      this.modalService.dismissAll();
+    }else{
+      this.toastr.error(res.message,"error!");
+      this.allOutlet();
+      this.modalService.dismissAll();
+    }
+  })
+}
 
   filterUpdate(event: any) {
     const val = event.target.value.toLowerCase();

@@ -469,4 +469,14 @@ getSellerInfo(body: any) {
         })
       );
   }
+
+  verifiedoutlet(body:any){
+    return this.http
+    .post(this.menuUrl + "/v1/outlet/verify", body, this.Header())
+    .pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
+  }
 }
