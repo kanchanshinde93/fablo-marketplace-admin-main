@@ -6,7 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
 import { TicketComponent } from './ticket/ticket.component';
 import { Ng2FlatpickrModule } from 'ng2-flatpickr';
-
+import { NgxSpinnerModule } from 'ngx-spinner';
 const routes: Routes = [
  
   {
@@ -30,6 +30,7 @@ const routes: Routes = [
     NgbModule,
     Ng2FlatpickrModule,
     ContentHeaderModule,
+    NgxSpinnerModule,
     RouterModule.forChild(routes)
   ]
 })

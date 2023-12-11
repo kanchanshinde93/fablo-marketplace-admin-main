@@ -10,6 +10,7 @@ import {
 import { FlatpickrOptions } from "ng2-flatpickr";
 import { FileUploader } from "ng2-file-upload";
 import { AdvertisementService } from "app/Services/advertisement.service";
+import { NgxSpinnerService } from "ngx-spinner";
 
 const URL = "https://your-url.com";
 @Component({
@@ -31,7 +32,8 @@ export class AdvertiesmentComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private adServices: AdvertisementService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private spinner: NgxSpinnerService
   ) {}
 
   public contentHeader: object;
@@ -74,7 +76,9 @@ export class AdvertiesmentComponent implements OnInit {
   }
   //getbanners
   getBanners() {
+    this.spinner.show()
     this.adServices.getAllBanners().subscribe((data: any) => {
+      this.spinner.hide()
       if (!data.status) {
         this.bannerList = [];
       }

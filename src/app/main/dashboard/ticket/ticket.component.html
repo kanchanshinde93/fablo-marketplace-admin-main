@@ -2,7 +2,9 @@
     <div class="card card-congratulation-medal">
         <div class="card-body" *ngIf="showticketfirsttime">
             <h1>Tickets </h1>
+         
             <div class="row match-height">
+                <p style="padding-top: 45px;">{{noDataFound}}</p>
                 <div class="col-12 col-md-6 col-lg-6" *ngFor="let ticket of ticketList">
                     <div class="card-body">
                         <div class="outlet-body">
@@ -27,9 +29,11 @@
 
         <div class="card-body" *ngIf="!showticketfirsttime">
             <h1>Tickets </h1>
+          
             <div class="row match-height">
-
+            
                 <div class="col-12 col-md-6 col-lg-6">
+                  
                     <div class="card-body" *ngFor="let ticket of allTickets">
                         <div class="outlet-body">
                             <div class="parent1">
@@ -86,3 +90,6 @@
         </div>
     </div>
 </div>
+
+
+<ngx-spinner bdColor = "rgb(51 51 51 / 15%)" size = "medium" color = "#3e88eb" type = "ball-fussion" [fullScreen] = "false"><p style="color: white" > Loading... </p></ngx-spinner>

@@ -6,6 +6,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { AdminServiceService } from 'app/Services/admin-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-outlet',
   templateUrl: './outlet.component.html',
@@ -38,7 +39,7 @@ export class OutletComponent implements OnInit {
   changeById: any;
   outetverifiedId:any
 
-  constructor(private modalService: NgbModal, private router:Router ,private toastr:ToastrService , private fb: FormBuilder, private adminService: AdminServiceService) { }
+  constructor(private modalService: NgbModal, private router:Router ,private spinner: NgxSpinnerService,private toastr:ToastrService , private fb: FormBuilder, private adminService: AdminServiceService) { }
 
   public contentHeader: object
 
@@ -78,7 +79,9 @@ export class OutletComponent implements OnInit {
   }
 
   allOutlet() {
+    this.spinner.show();
     this.adminService.getAllOutlet().subscribe((data: any) => {
+      this.spinner.hide();
       this.outletList = data.items;
       this.rows = data.items;
       this.tempData = this.rows;
