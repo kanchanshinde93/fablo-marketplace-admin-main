@@ -37,7 +37,9 @@ export class TicketComponent implements OnInit {
   Status: String = 'All';
   ticketList: any;
   ticketData: any;
+  showticketfirsttime:boolean=true;
   allTickets: any;
+  ticketDetails: any;
   constructor(private modalService: NgbModal, private adminService:AdminServiceService) { }
 
   public contentHeader: object
@@ -126,6 +128,16 @@ export class TicketComponent implements OnInit {
   }
   onActivate(event: any) {
     // console.log('Activate Event', event.type);
+  }
+  viewDetailsTicket(ticketid:any){
+    console.log( this.showticketfirsttime)
+    console.log(ticketid);
+    
+    this.showticketfirsttime=false;
+    // this.allTicket()
+    this.adminService.ViewTicketDetails(ticketid).subscribe((data: any) => {
+      this.ticketDetails = data.items;
+    });
   }
 }
 

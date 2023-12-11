@@ -479,4 +479,13 @@ getSellerInfo(body: any) {
       })
     );
   }
+  ViewTicketDetails(ticketId: any) {
+    return this.http
+      .get(this.apiUrl + "/v1/support/details/" + ticketId, this.Header())
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      );
+  }
 }
