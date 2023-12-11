@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-5">
+                        <!-- <div class="col-md-5">
                             <div class="card" *ngFor="let ticket of ticketList">
                                 <div class="card-body">
                                     <h4 class="card-title">{{ticket.issue}}</h4>
@@ -42,13 +42,34 @@
                                     <p class="card-text">
                                         <strong>Order Items :</strong> <span> chicken roll X1</span> 
                                     </p>
-                                    <button class="btn btn-outline-primary" (click)="viewDetails(ticket)">View Details</button>
+                                    <button class="btn" (click)="viewDetails(ticket)">View Details</button>
+                                </div>
+                            </div>                         
+                        </div> -->
+                        <div class="col-12 col-md-6 col-lg-6">
+                            <div class="card" *ngFor="let ticket of ticketList">
+                                <div class="outlet-body">
+                                    <div class="parent1">
+                                        <div class="area-parent">
+                                            <h5>{{ticket.issue}}</h5>
+                                        </div>
+                                        <div class="area-btn">
+                                            <h5>{{ticket.status}}</h5>
+                                        </div>
+        
+                                    </div>
+                                    <div class="ticket-btn">
+                                        <h4>Ticket ID : <span>{{ticket.ticketId}}</span></h4>
+                                        <button class="btn" (click)="viewDetails(ticket)">View Details</button>
+                                    </div>
                                 </div>
                             </div>
-                            
                         </div>
+                        
+                        <!-- sbxdhsvhvs -->
+                        <!-- wdbwhjdvjwvjh -->
                         <ng-container *ngIf="isShow">
-                            <div class="col-md-7">
+                            <div class="col-md-4">
                                 <div class="card view-details">
                                     <div class="Cross-btn mr-1">
                                         

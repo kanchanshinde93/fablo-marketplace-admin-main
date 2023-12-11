@@ -1,0 +1,254 @@
+
+    // button.btn.btn-outline-primary{
+    //     background-color: #148AE5;
+    //     color: #fff !important;
+    //     padding: 5px 29px;
+    //     box-shadow: 0 4px 8px 0 rgba(126, 126, 126, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    //     text-align: center;
+    //     border-radius: 5px;
+    //     font-size: 14px;
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    // }
+    button.btn {
+        background-color: #74a9f0;
+        color: white;
+    }
+
+
+
+
+
+    .outlet-body {
+        flex: 1 1 auto;
+        min-height: 1px;
+        border-radius: 8px;
+        background-color: #F8F9FD;
+        display: grid;
+        box-shadow: 4px 8px 15px -3px rgb(201 199 199/ 75%);
+        -webkit-box-shadow: 4px 8px 15px -3px rgb(201 199 199 / 75%);
+        -moz-box-shadow: 4px 8px 15px -3px rgba(201, 199, 199, 0.75);
+        padding: 1.5rem;
+    
+        align-items: center;
+    }
+    
+    .card-congratulations {
+        background: white;
+        color: #000000;
+        box-shadow: 0 4px 24px 0 rgba(34, 41, 47, 0.1);
+    }
+    
+    .ticket-btn a {
+        background-color: #148AE5;
+        color: #fff !important;
+        padding: 5px 29px;
+        box-shadow: 0 4px 8px 0 rgb(126 126 126 / 20%), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        text-align: center;
+        border-radius: 5px;
+        font-size: 14px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .ticket-btn {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 80px;
+    }
+    
+    .outlet-body h5 {
+        font-size: 20px;
+    }
+    
+    
+    .outlet-body h1 {
+        font-size: 24px;
+        color: black;
+    }
+    
+    .order-btn {
+        padding-top: 30px;
+    }
+    
+    .outlet-body h5 {
+        font-size: 20px;
+        letter-spacing: 0.5px;
+        color: black;
+    }
+    
+    .parent1 {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .ticket-card {
+        display: grid;
+        place-items: flex-end;
+    }
+    
+    .ticket-btn h4 {
+        color: black;
+    }
+    
+    .ticket-btn span {
+        opacity: 56%;
+    }
+    
+    // .outlet-body::before {
+    //     content: "Pending";
+    //     position: absolute;
+    //     top: 0;
+    //     background-color: #EC0A37;
+    //     right: 21px;
+    //     color: white;
+    //     letter-spacing: 1px;
+    //     padding: 10px 39px;
+    //     border-radius: 0px 0px 5px 5px;
+    //     font-size: 14px;
+    //     box-shadow: 4px 8px 15px -3px rgba(201, 199, 199, 0.75);
+    //     -webkit-box-shadow: 4px 8px 15px -3px rgba(201, 199, 199, 0.75);
+    //     -moz-box-shadow: 4px 8px 15px -3px rgba(201, 199, 199, 0.75);
+    // }
+    .area-btn h5 {
+        content: "";
+        position: absolute;
+        top: 0;
+        background-color: #EC0A37;
+        right: 21px;
+        color: white;
+        letter-spacing: 1px;
+        padding: 10px 39px;
+        border-radius: 0px 0px 5px 5px;
+        font-size: 14px;
+        box-shadow: 4px 8px 15px -3px rgba(201, 199, 199, 0.75);
+        -webkit-box-shadow: 4px 8px 15px -3px rgba(201, 199, 199, 0.75);
+        -moz-box-shadow: 4px 8px 15px -3px rgba(201, 199, 199, 0.75);
+    }
+    
+    .outlet-body {
+        position: relative;
+    }
+    
+    .outlet1-body {
+        flex: 1 1 auto;
+        min-height: 1px;
+        border-radius: 8px;
+        background-color: #F8F9FD;
+        display: grid;
+        box-shadow: 4px 8px 15px -3px rgb(201 199 199/ 75%);
+        -webkit-box-shadow: 4px 8px 15px -3px rgb(201 199 199 / 75%);
+        -moz-box-shadow: 4px 8px 15px -3px rgba(201, 199, 199, 0.75);
+        padding: 1.5rem;
+        align-items: center;
+    }
+    
+    .card-congratulations {
+        background: white;
+        color: #000000;
+        box-shadow: 0 4px 24px 0 rgba(34, 41, 47, 0.1);
+    }
+    
+    .outlet1-body h5 {
+        font-size: 20px;
+    }
+    
+    
+    .outlet1-body h1 {
+        font-size: 24px;
+        color: black;
+    }
+    
+    
+    .outlet1-body h5 {
+        font-size: 20px;
+        letter-spacing: 0.5px;
+        color: #000000;
+    }
+    
+    .product h5 {
+        font-size: 20px;
+        letter-spacing: 0.5px;
+        color: #4ebf8b;
+    }
+    
+    .product {
+        display: flex;
+        padding-top: 45px;
+        justify-content: space-between;
+    }
+    
+    
+    .product-ctn {
+        display: grid;
+        place-items: flex-end;
+    }
+    
+    
+    h4.font-weight-normal {
+        color: #148AE5;
+        font-size: 18px;
+        font-weight: bold;
+        letter-spacing: 0.08em;
+    }
+    
+    p.card-text {
+        font-size: 18px;
+        padding-top: 30px;
+    }
+    
+    section#\ home-page {
+        word-wrap: break-word;
+        background-clip: border-box;
+        border: 1px solid rgba(34, 41, 47, 0.125);
+        margin-bottom: 20px;
+        border-radius: 13px 13px 0px 0px;
+        padding: 18px;
+    }
+    
+    .product2 {
+        display: flex;
+        padding-top: 50px;
+        justify-content: space-between;
+    }
+    
+    .product2-ctn {
+        display: grid;
+        place-items: flex-end;
+    }
+    
+    p.ticket-details-text {
+        font-size: 17px;
+        letter-spacing: 1px;
+        // font-family: outfit light;
+    }
+    
+    .outlet1-body::before {
+        content: "OPEN";
+        position: absolute;
+        top: 0;
+        background-color: #2abf00;
+        right: 21px;
+        color: white;
+        letter-spacing: 1px;
+        padding: 8px 50px;
+        border-radius: 0px 0px 5px 5px;
+        font-size: 14px;
+        // font-family: outfit light;
+        box-shadow: 4px 8px 15px -3px rgba(201, 199, 199, 0.75);
+        -webkit-box-shadow: 4px 8px 15px -3px rgba(201, 199, 199, 0.75);
+        -moz-box-shadow: 4px 8px 15px -3px rgba(201, 199, 199, 0.75);
+    }
+    
+    .outlet1-body {
+        position: relative;
+    }
+    
+    .modal .modal-footer {
+        padding: 2.8rem 1.4rem;
+    }
+    .ticket {
+        padding-top: 25px;
+    }

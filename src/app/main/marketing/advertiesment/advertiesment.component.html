@@ -3,30 +3,22 @@
     <!-- content-header component -->
     <app-content-header [contentHeader]="contentHeader"></app-content-header>
     <div id="promotion-page">
-      <div class="promo-code-section mt-2">
-        <div
-          class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0"
-        >
-          <h4 class="card-title">Banners</h4>
+      <div class="promo-code-section">
+        <div class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
+          <h4 class="card-title"></h4>
           <div class="outlet-btn-sec mb-2">
-            <button
-              class="btn btn-primary btn-add"
-              (click)="modalBannerAdd(bannerAdd)"
-              rippleEffect
-            >
+            <button class="btn btn-primary btn-add" (click)="modalBannerAdd(bannerAdd)" rippleEffect>
               Add Banners <i class="fa-regular fa-plus"></i>
             </button>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-3 mb-2" *ngFor="let banner of bannerList">
+          <div class="col-md-4 mb-2" *ngFor="let banner of bannerList">
             <div class="promo-box">
               <div class="promo banner-image">
-                <div class="overlay"></div>
+                <!-- <div class="overlay"></div> -->
                 <img src="{{ banner.url }}" alt="" />
-                <div
-                  class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0"
-                >
+                <div class="d-flex align-items-baseline justify-content-between">
                   <!-- <button
                     class="btn btn-offer-edit"
                     (click)="modalBannerEdit(bannerEdit)"
@@ -46,11 +38,9 @@
               <div class="banner-content-body">
                 <h6>{{ banner.type }}</h6>
                 <h4>By Apna Sweets</h4>
-                <div
-                  class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mt-1"
-                >
-                  <small>Start Date: 04/02/2023</small>
-                  <small>End Date: 04/06/2023</small>
+                <div class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mt-1">
+                  <!-- <small>Start Date: 04/02/2023</small>
+                  <small>End Date: 04/06/2023</small> -->
                 </div>
               </div>
             </div>
@@ -133,55 +123,39 @@
   <!-- <button class="btn" (click)="addBannerSubmit()">hello</button> -->
   <div class="modal-header">
     <h5 class="modal-title" id="exampleModalCenterTitle">Add banner</h5>
-    <button
-      type="button"
-      class="close"
-      (click)="modal.dismiss('Cross click')"
-      aria-label="Close"
-    >
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body" tabindex="0" >
+  <div class="modal-body" tabindex="0">
     <form class="form form-vertical" [formGroup]="addBannersForm" (ngSubmit)="addBannerSubmit()">
       <div class="row">
         <div class="col-12">
           <div class="form-group">
-            <label >Banner Title</label>
-            <input
-              type="text"
-              class="form-control"
-              name="type"
-              placeholder="Banner Title"
-              formControlName="type" [ngClass]="{
+            <label>Banner Title</label>
+            <input type="text" class="form-control" name="type" placeholder="Banner Title" formControlName="type"
+              [ngClass]="{
                 'is-invalid': submitted && f.type.errors
-              }"
-            />
+              }" />
             <div *ngIf="submitted && f.type.errors" class="invalid-feedback">
               <div *ngIf="f.type.errors.required"> Banner Title is required</div>
+            </div>
           </div>
-        </div>
         </div>
         <div class="col-12">
           <div class="form-group">
-            <label >Tag</label>
-            <input
-              type="text"
-              class="form-control"
-              name="tag"
-              placeholder="Tag"
-              formControlName="tag" [ngClass]="{
+            <label>Tag</label>
+            <input type="text" class="form-control" name="tag" placeholder="Tag" formControlName="tag" [ngClass]="{
                 'is-invalid': submitted && f.tag.errors
-              }"
-            />
+              }" />
             <div *ngIf="submitted && f.tag.errors" class="invalid-feedback">
               <div *ngIf="f.tag.errors.required"> Tag is required</div>
-          </div>
+            </div>
           </div>
         </div>
-        
-      <div class="col-12">
-         <!--  <fieldset class="form-group">
+
+        <div class="col-12">
+          <!--  <fieldset class="form-group">
             <label>Banner Image</label>
             <div class="custom-file">
               <input
@@ -200,35 +174,27 @@
           </fieldset> -->
           <div class="form-group">
             <label for="file">Choose Banner</label>
-            <input 
-                formControlName="image"
-                id="file" 
-                type="file" 
-                class="form-control"
-                (change)="onFileChange($event)" [ngClass]="{
-                  'is-invalid': submitted && f.image.errors }" >
-              <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
-                  <div *ngIf="f.image.errors.required"> image is required</div>
-              </div>
+            <input formControlName="image" id="file" type="file" class="form-control" (change)="onFileChange($event)"
+              [ngClass]="{
+                  'is-invalid': submitted && f.image.errors }">
+            <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
+              <div *ngIf="f.image.errors.required"> image is required</div>
+            </div>
           </div>
-        </div> 
-        
+        </div>
+
         <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-outline-primary"
-            (click)="modal.close('Accept click')"
-            rippleEffect>
+          <button type="button" class="btn btn-outline-primary" (click)="modal.close('Accept click')" rippleEffect>
             Cancel
           </button>
-          <button  type="submit" class="btn btn-primary">
+          <button type="submit" class="btn btn-primary">
             Submit
           </button>
         </div>
       </div>
     </form>
   </div>
-  
+
 </ng-template>
 <!-- / Modal add promo -->
 
@@ -236,12 +202,7 @@
 <ng-template #bannerEdit let-modal>
   <div class="modal-header">
     <h5 class="modal-title" id="exampleModalCenterTitle">Edit Promo Code</h5>
-    <button
-      type="button"
-      class="close"
-      (click)="modal.dismiss('Cross click')"
-      aria-label="Close"
-    >
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -251,59 +212,33 @@
         <div class="col-12">
           <div class="form-group">
             <label for="first-name-vertical">Banner Title</label>
-            <input
-              type="text"
-              id="first-name-vertical"
-              class="form-control"
-              name="fname"
-              placeholder="Banner Title"
-            />
+            <input type="text" id="first-name-vertical" class="form-control" name="fname" placeholder="Banner Title" />
           </div>
         </div>
         <div class="col-12">
           <div class="form-group">
             <label for="email-id-vertical">by Outlet</label>
-            <input
-              type="text"
-              id="email-id-vertical"
-              class="form-control"
-              name="percent"
-              placeholder="Outlet Name"
-            />
+            <input type="text" id="email-id-vertical" class="form-control" name="percent" placeholder="Outlet Name" />
           </div>
         </div>
         <div class="col-12">
           <div class="form-group">
             <label for="email-id-vertical">Start Date</label>
-            <ng2-flatpickr
-              [ngClass]="'firstsecond'"
-              [config]="basicDateOptions"
-              name="basicDate"
-            ></ng2-flatpickr>
+            <ng2-flatpickr [ngClass]="'firstsecond'" [config]="basicDateOptions" name="basicDate"></ng2-flatpickr>
           </div>
         </div>
         <div class="col-12">
           <div class="form-group">
             <label for="email-id-vertical">End Date</label>
-            <ng2-flatpickr
-              [ngClass]="'firstsecond'"
-              [config]="basicDateOptions"
-              name="basicDate"
-            ></ng2-flatpickr>
+            <ng2-flatpickr [ngClass]="'firstsecond'" [config]="basicDateOptions" name="basicDate"></ng2-flatpickr>
           </div>
         </div>
         <div class="col-12">
           <fieldset class="form-group">
             <label for="file-upload-single">Banner Image</label>
             <div class="custom-file">
-              <input
-                type="file"
-                class="custom-file-input"
-                type="file"
-                ng2FileSelect
-                [uploader]="uploader"
-                id="file-upload-single"
-              />
+              <input type="file" class="custom-file-input" type="file" ng2FileSelect [uploader]="uploader"
+                id="file-upload-single" />
               <label class="custom-file-label">Choose Banner</label>
             </div>
           </fieldset>
@@ -311,29 +246,14 @@
         <div class="col-12">
           <label for="basicTextarea">Banner Description</label>
           <fieldset class="form-group">
-            <textarea
-              class="form-control"
-              id="basicTextarea"
-              rows="3"
-              placeholder="Description"
-            ></textarea>
+            <textarea class="form-control" id="basicTextarea" rows="3" placeholder="Description"></textarea>
           </fieldset>
         </div>
         <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-outline-primary"
-            (click)="modal.close('Accept click')"
-            rippleEffect
-          >
+          <button type="button" class="btn btn-outline-primary" (click)="modal.close('Accept click')" rippleEffect>
             Cancel
           </button>
-          <button
-            type="button"
-            class="btn btn-primary"
-            (click)="modal.close('Accept click')"
-            rippleEffect
-          >
+          <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
             Submit
           </button>
         </div>
@@ -347,12 +267,7 @@
 <ng-template #bannerDelete let-modal>
   <div class="modal-header">
     <h5 class="modal-title" id="exampleModalCenterTitle">Delete Promo</h5>
-    <button
-      type="button"
-      class="close"
-      (click)="modal.dismiss('Cross click')"
-      aria-label="Close"
-    >
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -360,20 +275,10 @@
     <p>Are you sure you want to Delete ?</p>
   </div>
   <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-outline-primary"
-      (click)="modal.close('Accept click')"
-      rippleEffect
-    >
+    <button type="button" class="btn btn-outline-primary" (click)="modal.close('Accept click')" rippleEffect>
       Cancel
     </button>
-    <button
-      type="button"
-      class="btn btn-primary"
-      (click)="modal.close('Accept click')"
-      rippleEffect
-    >
+    <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
       Delete
     </button>
   </div>
