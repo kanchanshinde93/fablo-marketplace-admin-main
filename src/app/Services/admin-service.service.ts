@@ -10,6 +10,7 @@ export class AdminServiceService {
   private apiUrl = environment.apiUrl;
   private menuUrl = environment.menuUrl;
   private orderUrl = environment.orderUrl;
+  private userUrl=environment.userUrl
   Header = () => {
     let headers = new HttpHeaders();
     // headers = headers.append('content-type', 'application/json');
@@ -457,5 +458,25 @@ getSellerInfo(body: any) {
           return res;
         })
       );
+  }
+  //sellerstutesChange
+  sellerStatusChange(body: any) {
+    return this.http
+      .post(this.userUrl + "/v1/seller/verify", body, this.Header())
+      .pipe(
+        map((res: any) => {
+          return res;
+        })
+      );
+  }
+
+  verifiedoutlet(body:any){
+    return this.http
+    .post(this.menuUrl + "/v1/outlet/verify", body, this.Header())
+    .pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
   }
 }

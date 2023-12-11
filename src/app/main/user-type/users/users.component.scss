@@ -1,0 +1,71 @@
+section#users-page .card{
+    border-bottom: none;
+    box-shadow: 4px 8px 15px -3px rgba(201, 199, 199, 0.75);
+}
+.color {
+    border: 1px solid #AFB4E4;
+    color: #AFB4E4;
+    font-size: 15px;
+    letter-spacing: 1px;
+    padding: 0.786rem 1.5rem;
+}
+.color1 {
+    border: 1px solid #B59000;
+    color: #B59000 ;
+    font-size: 15px;
+    letter-spacing: 1px;
+    padding: 0.786rem 1.5rem;
+}
+.color2 {
+    border: 1px solid #05B462;
+    color: #05B462;
+    font-size: 15px;
+    letter-spacing: 1px;
+    padding: 0.786rem 1.5rem;
+}
+.color3 {
+    border: 1px solid #BC7171;
+    color: #BC7171;
+    font-size: 15px;
+    letter-spacing: 1px;
+    padding: 0.786rem 1.5rem;
+}
+.user-content  h2 {
+    font-size: 20px;
+    color: black;
+}
+.view-btn {
+    padding-top: 20px;
+}
+.user-image img {
+    height: 100%;
+    width: 100%;
+    max-width: 91px;
+}
+.user-content  p{
+    font-size: 17px;
+    margin: 15px 0px;
+    /* letter-spacing: 1px; */
+}
+.progress-wrapper {
+    padding-top: 9px;
+}
+.view-btn{
+    padding-top: 25px;
+}
+
+.bg-primary {
+    background-color: #b9bee7 !important;
+}
+
+  .progress-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #AFB4E4;
+    transition: width 0.6s ease;
+}
