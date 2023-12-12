@@ -7,90 +7,33 @@
                 <div class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
                     <h4 class="card-title"></h4>
                     <div class="outlet-btn-sec mb-2">
-                        <button class="btn btn-primary btn-add" (click)="modalOfferAdd(modalAdd)" rippleEffect>Add
+                        <button class="btn btn-primary btn-add" (click)="openAddPromotionModal(content)" rippleEffect>Add
                             Offers <i class="fa-regular fa-plus"></i></button>
 
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6"   *ngFor="let offer of promotionList" style="    padding: 20px;">
                         <div class="blog-slider">
                             <div class="blog-slider__wrp swiper-wrapper">
                                 <div class="blog-slider__item swiper-slide">
                                     <div class="blog-slider__img">
                                         <div class="blog-ctn">
                                             <p>Get</p>
-                                            <h1>50%</h1>
+                                            <h1>{{ offer.discountPercent }}%</h1>
                                             <p>Off</p>
                                         </div>
                                     </div>
                                     <div class="blog-slider__content">
-
+                                            <h4>{{ offer.discountTitle }}</h4>
                                         <div class="blog-slider__text">
-                                            <p>Apply this Offer and get Upto 50% off on this order , order above 300 No
+                                            <p>Apply this Offer and get Upto <span class="offer">{{ offer.discountPercent }}%</span> off on this order , order above <span class="offer">{{ offer.minAmount }}</span> No
                                                 Upper limit</p>
                                         </div>
                                         <div class="edit-parent d-flex justify-content-between">
-                                            <button class="blog-slider__button" (click)="modalOfferEdit(modalEdit)"
+                                            <button class="blog-slider__button"   (click)="openEditOfferModal(content, offer)"
                                                 rippleEffect>EDIT</button>
-                                            <button class="blog-slider__button1" (click)="modalOfferDelete(modalDelete)"
-                                                rippleEffect>Delete</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="blog-slider">
-                            <div class="blog-slider__wrp swiper-wrapper">
-                                <div class="blog-slider__item swiper-slide">
-                                    <div class="blog-slider__img">
-                                        <div class="blog-ctn">
-                                            <p>Get</p>
-                                            <h1>50%</h1>
-                                            <p>Off</p>
-                                        </div>
-                                    </div>
-                                    <div class="blog-slider__content">
-
-                                        <div class="blog-slider__text">
-                                            <p>Apply this Offer and get Upto 50% off on this order , order above 300 No
-                                                Upper limit</p>
-                                        </div>
-                                        <div class="edit-parent d-flex justify-content-between">
-                                            <button class="blog-slider__button" (click)="modalOfferEdit(modalEdit)"
-                                                rippleEffect>EDIT</button>
-                                            <button class="blog-slider__button1" (click)="modalOfferDelete(modalDelete)"
-                                                rippleEffect>Delete</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="blog-slider">
-                            <div class="blog-slider__wrp swiper-wrapper">
-                                <div class="blog-slider__item swiper-slide">
-                                    <div class="blog-slider__img">
-                                        <div class="blog-ctn">
-                                            <p>Get</p>
-                                            <h1>50%</h1>
-                                            <p>Off</p>
-                                        </div>
-                                    </div>
-                                    <div class="blog-slider__content">
-                                        <div class="blog-slider__text">
-                                            <p>Apply this Offer and get Upto 50% off on this order , order above 300 No
-                                                Upper limit</p>
-                                        </div>
-                                        <div class="edit-parent d-flex justify-content-between">
-                                            <button class="blog-slider__button" (click)="modalOfferEdit(modalEdit)"
-                                                rippleEffect>EDIT</button>
-                                            <button class="blog-slider__button1" (click)="modalOfferDelete(modalDelete)"
+                                            <button class="blog-slider__button1"  (click)="modalOfferDelete(modalDelete, offer)"
                                                 rippleEffect>Delete</button>
                                         </div>
                                     </div>
@@ -99,550 +42,216 @@
                         </div>
                     </div>
                 </div>
-                <!-- second-row -->
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="blog-slider">
-                            <div class="blog-slider__wrp swiper-wrapper">
-                                <div class="blog-slider__item swiper-slide">
-                                    <div class="blog-slider__img">
-                                        <div class="blog-ctn">
-                                            <p>Get</p>
-                                            <h1>50%</h1>
-                                            <p>Off</p>
-                                        </div>
-                                    </div>
-                                    <div class="blog-slider__content">
-
-                                        <div class="blog-slider__text">
-                                            <p>Apply this Offer and get Upto 50% off on this order , order above 300 No
-                                                Upper limit</p>
-                                        </div>
-                                        <div class="edit-parent d-flex justify-content-between">
-                                            <button class="blog-slider__button" (click)="modalOfferEdit(modalEdit)"
-                                                rippleEffect>EDIT</button>
-                                            <button class="blog-slider__button1" (click)="modalOfferDelete(modalDelete)"
-                                                rippleEffect>Delete</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="blog-slider">
-                            <div class="blog-slider__wrp swiper-wrapper">
-                                <div class="blog-slider__item swiper-slide">
-                                    <div class="blog-slider__img">
-                                        <div class="blog-ctn">
-                                            <p>Get</p>
-                                            <h1>50%</h1>
-                                            <p>Off</p>
-                                        </div>
-                                    </div>
-                                    <div class="blog-slider__content">
-
-                                        <div class="blog-slider__text">
-                                            <p>Apply this Offer and get Upto 50% off on this order , order above 300 No
-                                                Upper limit</p>
-                                        </div>
-                                        <div class="edit-parent d-flex justify-content-between">
-                                            <button class="blog-slider__button" (click)="modalOfferEdit(modalEdit)"
-                                                rippleEffect>EDIT</button>
-                                            <button class="blog-slider__button1" (click)="modalOfferDelete(modalDelete)"
-                                                rippleEffect>Delete</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="blog-slider">
-                            <div class="blog-slider__wrp swiper-wrapper">
-                                <div class="blog-slider__item swiper-slide">
-                                    <div class="blog-slider__img">
-                                        <div class="blog-ctn">
-                                            <p>Get</p>
-                                            <h1>50%</h1>
-                                            <p>Off</p>
-                                        </div>
-                                    </div>
-                                    <div class="blog-slider__content">
-                                        <div class="blog-slider__text">
-                                            <p>Apply this Offer and get Upto 50% off on this order , order above 300 No
-                                                Upper limit</p>
-                                        </div>
-                                        <div class="edit-parent d-flex justify-content-between">
-                                            <button class="blog-slider__button" (click)="modalOfferEdit(modalEdit)"
-                                                rippleEffect>EDIT</button>
-                                            <button class="blog-slider__button1" (click)="modalOfferDelete(modalDelete)"
-                                                rippleEffect>Delete</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- third-row -->
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="blog-slider">
-                            <div class="blog-slider__wrp swiper-wrapper">
-                                <div class="blog-slider__item swiper-slide">
-                                    <div class="blog-slider__img">
-                                        <div class="blog-ctn">
-                                            <p>Get</p>
-                                            <h1>50%</h1>
-                                            <p>Off</p>
-                                        </div>
-                                    </div>
-                                    <div class="blog-slider__content">
-
-                                        <div class="blog-slider__text">
-                                            <p>Apply this Offer and get Upto 50% off on this order , order above 300 No
-                                                Upper limit</p>
-                                        </div>
-                                        <div class="edit-parent d-flex justify-content-between">
-                                            <button class="blog-slider__button" (click)="modalOfferEdit(modalEdit)"
-                                                rippleEffect>EDIT</button>
-                                            <button class="blog-slider__button1" (click)="modalOfferDelete(modalDelete)"
-                                                rippleEffect>Delete</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="blog-slider">
-                            <div class="blog-slider__wrp swiper-wrapper">
-                                <div class="blog-slider__item swiper-slide">
-                                    <div class="blog-slider__img">
-                                        <div class="blog-ctn">
-                                            <p>Get</p>
-                                            <h1>50%</h1>
-                                            <p>Off</p>
-                                        </div>
-                                    </div>
-                                    <div class="blog-slider__content">
-
-                                        <div class="blog-slider__text">
-                                            <p>Apply this Offer and get Upto 50% off on this order , order above 300 No
-                                                Upper limit</p>
-                                        </div>
-                                        <div class="edit-parent d-flex justify-content-between">
-                                            <button class="blog-slider__button" (click)="modalOfferEdit(modalEdit)"
-                                                rippleEffect>EDIT</button>
-                                            <button class="blog-slider__button1" (click)="modalOfferDelete(modalDelete)"
-                                                rippleEffect>Delete</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="blog-slider">
-                            <div class="blog-slider__wrp swiper-wrapper">
-                                <div class="blog-slider__item swiper-slide">
-                                    <div class="blog-slider__img">
-                                        <div class="blog-ctn">
-                                            <p>Get</p>
-                                            <h1>50%</h1>
-                                            <p>Off</p>
-                                        </div>
-                                    </div>
-                                    <div class="blog-slider__content">
-                                        <div class="blog-slider__text">
-                                            <p>Apply this Offer and get Upto 50% off on this order , order above 300 No
-                                                Upper limit</p>
-                                        </div>
-                                        <div class="edit-parent d-flex justify-content-between">
-                                            <button class="blog-slider__button" (click)="modalOfferEdit(modalEdit)"
-                                                rippleEffect>EDIT</button>
-                                            <button class="blog-slider__button1" (click)="modalOfferDelete(modalDelete)"
-                                                rippleEffect>Delete</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
         </div>
     </div>
 </div>
 
 <!-- Modal add offer-->
-<ng-template #modalAdd let-modal>
+<ng-template #content let-modal>
     <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Add Offers</h5>
-        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+      <h5 class="modal-title" id="exampleModalCenterTitle">Add Offers</h5>
+      <button
+        type="button"
+        class="close"
+        (click)="modal.dismiss('Cross click')"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
     <div class="modal-body" tabindex="0" ngbAutofocus>
-        <form class="form form-vertical">
-            <div class="row">
-                <div class="col-12">
-                    <div class="form-group">
-                        <label for="first-name-vertical">Offer Name</label>
-                        <input type="text" id="first-name-vertical" class="form-control" name="fname"
-                            placeholder="Offer Name" />
-                    </div>
+      <form
+        [formGroup]="addDiscountForm"
+        class="form form-vertical"
+        (ngSubmit)="addDiscountFormSubmit()"
+      >
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="first-name-vertical">Discount Name</label>
+              <input
+                type="text"
+                id="discountTitle-vertical"
+                class="form-control"
+                name="discountTitle"
+                placeholder="Discount Name"
+                formControlName="discountTitle"
+                [ngClass]="{
+                  'is-invalid': submitted && addDiscount.discountTitle.errors
+                }"
+              />
+              <div
+                *ngIf="submitted && addDiscount.discountTitle.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="addDiscount.discountTitle.errors.required">
+                  Discount Name is required
                 </div>
-                <div class="col-12">
-                    <div class="form-group">
-                        <label for="email-id-vertical">Percent Off</label>
-                        <input type="number" id="email-id-vertical" class="form-control" name="percent"
-                            placeholder="Percent Off" />
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="form-group">
-                        <label for="email-id-vertical">Start Date</label>
-                        <ng2-flatpickr [ngClass]="'firstsecond'" [config]="basicDateOptions"
-                            name="basicDate"></ng2-flatpickr>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="form-group">
-                        <label for="email-id-vertical">End Date</label>
-                        <ng2-flatpickr [ngClass]="'firstsecond'" [config]="basicDateOptions"
-                            name="basicDate"></ng2-flatpickr>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <label for="basicTextarea">Offer Description</label>
-                    <fieldset class="form-group">
-                        <textarea class="form-control" id="basicTextarea" rows="3"
-                            placeholder="Offer Description"></textarea>
-                    </fieldset>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
-                        Cancel
-                    </button>
-                    <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
-                        Submit
-                    </button>
-                </div>
+              </div>
             </div>
-        </form>
-    </div>
-
-</ng-template>
-<!-- / Modal add offer -->
-
-<!-- Modal edit offer-->
-<ng-template #modalEdit let-modal>
-    <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Edit Offers</h5>
-        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body" tabindex="0" ngbAutofocus>
-        <form class="form form-vertical">
-            <div class="row">
-                <div class="col-12">
-                    <div class="form-group">
-                        <label for="first-name-vertical">Offer Name</label>
-                        <input type="text" id="first-name-vertical" class="form-control" name="fname"
-                            placeholder="Offer Name" />
-                    </div>
+          </div>
+          <!--    <div class="col-12">
+                                          <div class="form-group">
+                                              <label for="first-name-vertical">Promo Code</label>
+                                              <input type="text" id="promoCode-vertical" class="form-control" name="promoCode"
+                                                  placeholder="Promo Code" formControlName="promoCode" />
+                                          </div>
+                                      </div> -->
+          <div class="col-12">
+            <div class="form-group">
+              <label for="email-id-vertical">Percent Off(%)</label>
+  
+              <select
+                class="form-control"
+                formControlName="discountPercent"
+                id="basicSelect"
+                [ngClass]="{
+                  'is-invalid': submitted && addDiscount.discountPercent.errors
+                }"
+              >
+                <option>10</option>
+                <option>15</option>
+                <option>20</option>
+                <option>25</option>
+                <option>30</option>
+                <option>40</option>
+                <option>45</option>
+                <option>50</option>
+                <option>60</option>
+                <option>70</option>
+                <option>80</option>
+              </select>
+              <div
+                *ngIf="submitted && addDiscount.discountPercent.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="addDiscount.discountPercent.errors.required">
+                  Discount Percent is required
                 </div>
-                <div class="col-12">
-                    <div class="form-group">
-                        <label for="email-id-vertical">Percent Off</label>
-                        <input type="number" id="email-id-vertical" class="form-control" name="percent"
-                            placeholder="Percent Off" />
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="form-group">
-                        <label for="email-id-vertical">Start Date</label>
-                        <ng2-flatpickr [ngClass]="'firstsecond'" [config]="basicDateOptions"
-                            name="basicDate"></ng2-flatpickr>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="form-group">
-                        <label for="email-id-vertical">End Date</label>
-                        <ng2-flatpickr [ngClass]="'firstsecond'" [config]="basicDateOptions"
-                            name="basicDate"></ng2-flatpickr>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <label for="basicTextarea">Offer Description</label>
-                    <fieldset class="form-group">
-                        <textarea class="form-control" id="basicTextarea" rows="3"
-                            placeholder="Offer Description"></textarea>
-                    </fieldset>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
-                        Cancel
-                    </button>
-                    <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
-                        Submit
-                    </button>
-                </div>
+              </div>
             </div>
-        </form>
+          </div>
+          <div class="col-12 form-group" class="">
+            <label for="basicTextarea">Minimum order value</label>
+            <input
+              type="number"
+              id="discountPercent-vertical"
+              class="form-control"
+              name="minAmount"
+              placeholder="Min Amount"
+              formControlName="minAmount"
+              [ngClass]="{
+                'is-invalid': submitted && addDiscount.minAmount.errors
+              }"
+            />
+            <div
+              *ngIf="submitted && addDiscount.minAmount.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="addDiscount.minAmount.errors.required">
+                Minmum Amount is required
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-12 mt-1 mb-1 form-group">
+            <!-- <input
+              class="form-check-input"
+              type="checkbox"
+              id="flexCheckDefault"
+              (change)="flatValue($event)"
+            />
+            <label class="form-check-label">
+              <span class="gray-clr">Flat Discount</span>
+            </label> -->
+            <label class="cyberpunk-checkbox-label">
+              <input
+                type="checkbox"
+                (change)="flatValue($event)"
+                class="cyberpunk-checkbox"
+                formControlName="isFlatDiscount"
+              />
+              Flat Discount</label
+            >
+          </div>
+  
+          <div class="col-12 form-group" *ngIf="!isFlat">
+            <label for="basicTextarea">maxDiscount</label>
+            <input
+              type="number"
+              id="maxDiscount-vertical"
+              class="form-control"
+              name="maxDiscount"
+              placeholder="Max Discount"
+              formControlName="maxDiscount"
+              [ngClass]="{
+                'is-invalid': submitted && addDiscount.maxDiscount.errors
+              }"
+            />
+            <div
+              *ngIf="submitted && addDiscount.maxDiscount.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="addDiscount.maxDiscount.errors.required">
+                Maximum Discount Amount is required
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              (click)="modal.close('Accept click')"
+              rippleEffect
+            >
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-outline-primary" rippleEffect>
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
-
-</ng-template>
-<!-- / Modal edit offer -->
-
-<!-- Modal delete offer-->
-<ng-template #modalDelete let-modal>
+  </ng-template>
+  <!-- / Modal add offer -->
+  
+  <!-- Modal delete offer-->
+  <ng-template #modalDelete let-modal>
     <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Delete Offers</h5>
-        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+      <h5 class="modal-title" id="exampleModalCenterTitle">Delete Offers</h5>
+      <button
+        type="button"
+        class="close"
+        (click)="modal.dismiss('Cross click')"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
     <div class="modal-body" tabindex="0" ngbAutofocus>
-        <p>
-            Are you sure you want to Delete ?
-        </p>
+      <p>Are you sure you want to Delete ?</p>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
-            Cancel
-        </button>
-        <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
-            Delete
-        </button>
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        (click)="modal.close('Accept click')"
+        rippleEffect
+      >
+        Cancel
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        (click)="deletePromotion()"
+        rippleEffect
+      >
+        Delete
+      </button>
     </div>
-</ng-template>
-<!-- / Modal delete offer -->
-
-<!-- Modal add promo-->
-<ng-template #promoAdd let-modal>
-    <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Add Promo Code</h5>
-        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body" tabindex="0" ngbAutofocus>
-        <form class="form">
-            <div class="row">
-                <div class="col-md-6 col-12">
-                    <div class="form-group">
-                        <label for="first-name-column">Promo Code Name</label>
-                        <input type="text" id="first-name-column" class="form-control" placeholder="Promo Code Name"
-                            name="fname-column" />
-                    </div>
-                </div>
-                <div class="col-md-6 col-12">
-                    <div class="form-group">
-                        <label for="last-name-column">Promo Code Discount</label>
-                        <input type="text" id="last-name-column" class="form-control" placeholder="Promo Code Discount"
-                            name="lname-column" />
-                    </div>
-                </div>
-                <div class="col-md-6 col-12">
-                    <div class="form-group">
-                        <label for="city-column">Minimum Value</label>
-                        <input type="text" id="city-column" class="form-control" placeholder="Minimum Value"
-                            name="city-column" />
-                    </div>
-                </div>
-                <div class="col-md-6 col-12">
-                    <div class="form-group">
-                        <label for="basicSelect">Commission ON</label>
-                        <select class="form-control" id="basicSelect">
-                            <option>5%</option>
-                            <option>10%</option>
-                            <option>15%</option>
-                            <option>20%</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-6 col-12">
-                    <div class="form-group">
-                        <label for="company-column">Total No. of Vauchers</label>
-                        <input type="text" id="company-column" class="form-control" name="vauchers"
-                            placeholder="Total No. of Vauchers" />
-                    </div>
-                </div>
-                <div class="col-md-6 col-12">
-                    <div class="form-group">
-                        <label for="company-column">Promo Code Validity</label>
-                        <input type="text" id="company-column" class="form-control" name="validity"
-                            placeholder="Promo Code Validity" />
-                    </div>
-                </div>
-                <div class="col-md-6 col-12">
-                    <div class="form-group">
-                        <label for="company-column">No. of Redeems Allowed(Per user)</label>
-                        <input type="text" id="company-column" class="form-control" name="validity"
-                            placeholder="Promo Code Validity" />
-                    </div>
-                </div>
-                <div class="col-md-6 col-12">
-                    <div class="form-group">
-                        <label for="basicSelect">Select Restuarent</label>
-                        <select class="form-control" id="basicSelect">
-                            <option>All</option>
-                            <option>Apna Sweets</option>
-                            <option>Fablo</option>
-                            <option>Sharma Sweets</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <label for="basicTextarea">Promo Code Description</label>
-                    <fieldset class="form-group">
-                        <textarea class="form-control" id="basicTextarea" rows="3" placeholder="Description"></textarea>
-                    </fieldset>
-                </div>
-
-                <div class="col-12 mt-1 mb-1 text-right">
-                    <button type="button" class="btn btn-outline-primary mr-1" (click)="modal.close('Accept click')"
-                        rippleEffect>
-                        Cancel
-                    </button>
-                    <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
-                        Submit
-                    </button>
-                </div>
-            </div>
-        </form>
-    </div>
-
-</ng-template>
-<!-- / Modal add promo -->
-
-<!-- Modal Edit promo-->
-<ng-template #promoEdit let-modal>
-    <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Edit Promo Code</h5>
-        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body" tabindex="0" ngbAutofocus>
-        <form class="form">
-            <div class="row">
-                <div class="col-md-6 col-12">
-                    <div class="form-group">
-                        <label for="first-name-column">Promo Code Name</label>
-                        <input type="text" id="first-name-column" class="form-control" placeholder="Promo Code Name"
-                            name="fname-column" />
-                    </div>
-                </div>
-                <div class="col-md-6 col-12">
-                    <div class="form-group">
-                        <label for="last-name-column">Promo Code Discount</label>
-                        <input type="text" id="last-name-column" class="form-control" placeholder="Promo Code Discount"
-                            name="lname-column" />
-                    </div>
-                </div>
-                <div class="col-md-6 col-12">
-                    <div class="form-group">
-                        <label for="city-column">Minimum Value</label>
-                        <input type="text" id="city-column" class="form-control" placeholder="Minimum Value"
-                            name="city-column" />
-                    </div>
-                </div>
-                <div class="col-md-6 col-12">
-                    <div class="form-group">
-                        <label for="basicSelect">Commission ON</label>
-                        <select class="form-control" id="basicSelect">
-                            <option>5%</option>
-                            <option>10%</option>
-                            <option>15%</option>
-                            <option>20%</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-6 col-12">
-                    <div class="form-group">
-                        <label for="company-column">Total No. of Vauchers</label>
-                        <input type="text" id="company-column" class="form-control" name="vauchers"
-                            placeholder="Total No. of Vauchers" />
-                    </div>
-                </div>
-                <div class="col-md-6 col-12">
-                    <div class="form-group">
-                        <label for="company-column">Promo Code Validity</label>
-                        <input type="text" id="company-column" class="form-control" name="validity"
-                            placeholder="Promo Code Validity" />
-                    </div>
-                </div>
-                <div class="col-md-6 col-12">
-                    <div class="form-group">
-                        <label for="company-column">No. of Redeems Allowed(Per user)</label>
-                        <input type="text" id="company-column" class="form-control" name="validity"
-                            placeholder="Promo Code Validity" />
-                    </div>
-                </div>
-                <div class="col-md-6 col-12">
-                    <div class="form-group">
-                        <label for="basicSelect">Select Restuarent</label>
-                        <select class="form-control" id="basicSelect">
-                            <option>All</option>
-                            <option>Apna Sweets</option>
-                            <option>Fablo</option>
-                            <option>Sharma Sweets</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <label for="basicTextarea">Promo Code Description</label>
-                    <fieldset class="form-group">
-                        <textarea class="form-control" id="basicTextarea" rows="3" placeholder="Description"></textarea>
-                    </fieldset>
-                </div>
-
-                <div class="col-12 mt-1 mb-1 text-right">
-                    <button type="button" class="btn btn-outline-primary mr-1" (click)="modal.close('Accept click')"
-                        rippleEffect>
-                        Cancel
-                    </button>
-                    <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
-                        Submit
-                    </button>
-                </div>
-            </div>
-        </form>
-    </div>
-
-</ng-template>
-<!-- / Modal Edit promo -->
-
-<!-- Modal delete Promo-->
-<ng-template #promoDelete let-modal>
-    <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Delete Promo</h5>
-        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body" tabindex="0" ngbAutofocus>
-        <p>
-            Are you sure you want to Delete ?
-        </p>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" (click)="modal.close('Accept click')" rippleEffect>
-            Cancel
-        </button>
-        <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
-            Delete
-        </button>
-    </div>
-</ng-template>
-<!-- / Modal delete promo -->
-'
+  </ng-template>
+  <!-- / Modal delete offer -->
+  

@@ -488,4 +488,34 @@ getSellerInfo(body: any) {
         })
       );
   }
+
+  getAllOffer(){
+    return this.http
+    .get(this.menuUrl + "/v1/discount/", this.Header())
+    .pipe(
+      map((data: any) => {
+        return data;
+      })
+    );
+  }
+  // remove discpount from outlet
+removeDisount(body:any){
+  return this.http.post(this.menuUrl + 'outlet/discount/remove' , body , this.Header()).pipe(map((data:any)=>{
+    return data;
+  }));
+}
+// add new discount
+deletData(body:any){
+  return this.http.post(this.menuUrl + '/v1/delete' , body , this.Header()).pipe(map((res:any)=>{
+    return res;
+  }))
+}
+// add new discount
+addNewDiscount(body:any){
+  return this.http.post(this.menuUrl + '/v1/discount/' , body , this.Header()).pipe(map((data:any)=>{
+    return data;
+  }))
+}
+
+
 }
