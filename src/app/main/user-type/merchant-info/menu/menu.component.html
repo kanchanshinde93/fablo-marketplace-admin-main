@@ -3,6 +3,18 @@
         <!-- content-header component -->
         <app-content-header [contentHeader]="contentHeader"></app-content-header>
         <div id="outlet-menu-page">
+            <div class="d-flex justify-content-md-end">
+                <div class="d-flex align-items-center justify-content-end pb-1 pl-1 pl-md-0 pb-md-0">
+
+                    <div class="input-group mb-1 search-table">
+                        <input type="search" placeholder="Search" class="form-control ml-25"
+                            (keyup)="filterUpdate($event)" (search)="filterUpdate($event)" />
+                    </div>
+                    <button csvLink (click)="downloadCSV($event)"
+                        class="btn btn-outline-secondary float-right csv-export" rippleEffect><img
+                            src="assets/images/icons/csv.png" alt=""> </button>
+                </div>
+            </div>
             <div class="row">
                 <!-- Menu Card -->
                 <div class="col-lg-4 col-md-6 col-12">
@@ -18,7 +30,6 @@
                             <div class="employee-task d-flex justify-content-between align-items-center"
                                 *ngFor="let category of categoryList">
                                 <div class="media">
-
                                     <div class="media-body my-auto">
                                         <a class="mb-0" (click)="subCategory(category)">{{category.categoryName}}</a>
                                     </div>
@@ -31,7 +42,6 @@
                                             class="fa-solid fa-trash-can"></i></button>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -83,15 +93,9 @@
                                     <button type="button" (click)="modalProductView(productView,product)" rippleEffect>
                                         <div class="media">
                                             <div class="media-body my-auto d-flex">
-                                                <img
-                                                    *ngIf="product?.isVeg"
-                                                    src="assets/images/veg.png"
-                                                />
-                                                <img
-                                                    *ngIf="!product?.isVeg"
-                                                    src="assets/images/nonveg.png"
-                                                    width="20px"
-                                                />
+                                                <img *ngIf="product?.isVeg" src="assets/images/veg.png" />
+                                                <img *ngIf="!product?.isVeg" src="assets/images/nonveg.png"
+                                                    width="20px" />
                                                 <h6 class="mb-0">{{product.productName}}:₹{{product.displayPrice}}</h6>
                                             </div>
                                         </div>
@@ -283,7 +287,8 @@
 
 
                 <div class="col-12 text-right">
-                    <button type="submit" rippleEffect class="btn btn-primary">Submit  <i class="ml-1 fa fa-spinner fa-spin" *ngIf="loading"></i></button>
+                    <button type="submit" rippleEffect class="btn btn-primary">Submit <i
+                            class="ml-1 fa fa-spinner fa-spin" *ngIf="loading"></i></button>
                 </div>
             </div>
         </form>

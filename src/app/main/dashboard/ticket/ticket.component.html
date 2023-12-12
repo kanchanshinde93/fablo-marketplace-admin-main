@@ -21,14 +21,12 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
         <div class="card-body" *ngIf="!showticketfirsttime">
             <h1>Tickets </h1>
             <div class="row match-height">
-
                 <div class="col-12 col-md-6 col-lg-6">
                     <div class="card-body" *ngFor="let ticket of allTickets">
                         <div class="outlet-body">
@@ -39,7 +37,6 @@
                                 <div class="area-btn">
                                     <h5>{{ticket.status}}</h5>
                                 </div>
-
                             </div>
                             <div class="ticket-btn">
                                 <h4>Ticket ID : <span>{{ticket.ticketId}}</span></h4>
@@ -65,7 +62,6 @@
                                     </p>
                                 </div>
                             </div>
-
                             <div class="product2">
                                 <div class="ticket-parent">
                                     <h5>Issue</h5>
@@ -80,9 +76,7 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
     </div>
 </div>

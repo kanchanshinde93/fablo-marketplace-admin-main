@@ -28,3 +28,18 @@ button.btn.btn-add {
     color: white;
     box-shadow: 4px 8px 15px -3px rgba(201, 199, 199, 0.75);
 }
+
+
+.btn1{
+    color: #afb4e4 !important;
+    padding: 7px 53px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px rgba(255, 255, 255, 0.19);
+    border: 1px solid #afb4e4;
+}
