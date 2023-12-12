@@ -87,7 +87,7 @@ export class MerchantComponent implements OnInit {
 
   filterUpdate(event: any) {
     const val = event.target.value.toLowerCase();
-    // filter our data
+    // filter our datafilterUpdate
     this.rows = this.sellerList.filter(function (d) {
 
       return d.basicDetails.sellerName?.toLowerCase().indexOf(val) !== -1 ||d.basicDetails.tradeName?.toLowerCase().indexOf(val) !== -1 || d.basicDetails.phone?.toLowerCase().indexOf(val) !== -1 || d.sellerId?.toLowerCase().indexOf(val) !== -1 || !val;

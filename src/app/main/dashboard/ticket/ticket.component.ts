@@ -5,7 +5,7 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, Validators, FormControl, NgForm } from '@angular/forms';
 import { FlatpickrOptions } from 'ng2-flatpickr';
 import { AdminServiceService } from 'app/Services/admin-service.service';
-
+import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-ticket',
   templateUrl: './ticket.component.html',
@@ -40,7 +40,8 @@ export class TicketComponent implements OnInit {
   showticketfirsttime:boolean=true;
   allTickets: any;
   ticketDetails: any;
-  constructor(private modalService: NgbModal, private adminService:AdminServiceService) { }
+  noDataFound:any
+  constructor(private modalService: NgbModal, private adminService:AdminServiceService,private spinner: NgxSpinnerService) { }
 
   public contentHeader: object
 
@@ -71,9 +72,15 @@ export class TicketComponent implements OnInit {
   }
 
   allTicket(){
+    this.spinner.show();
     this.adminService.getAllTickets(this.Status).subscribe((data:any)=>{
-      this.ticketList = data.items;
-      this.allTickets = this.ticketList 
+      this.spinner.hide();
+      if (!data.status) {
+        this.noDataFound=data.message;
+      }
+      this.allTicket = data.items;
+      this.ticketList  = this.allTicket
+      
     });
   }
 

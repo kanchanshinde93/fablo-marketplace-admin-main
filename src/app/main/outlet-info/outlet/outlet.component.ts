@@ -6,6 +6,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { AdminServiceService } from 'app/Services/admin-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-outlet',
   templateUrl: './outlet.component.html',
@@ -26,10 +27,10 @@ export class OutletComponent implements OnInit {
   cols = [{ name: 'name' }, { name: 'phone' }, { name: 'address' }, { name: 'Actions' }];
   editOutletForm: FormGroup;
   Submitted: Boolean = false;
-  rows: any;
+ rows: any;
   data = [];
   filteredData = [];
-  formula: string = 'Agent';
+  formula: string = 'OutletList';
   outletList: any;
   newImage: any;
   outletId: any;
@@ -38,7 +39,7 @@ export class OutletComponent implements OnInit {
   changeById: any;
   outetverifiedId:any
 
-  constructor(private modalService: NgbModal, private router:Router ,private toastr:ToastrService , private fb: FormBuilder, private adminService: AdminServiceService) { }
+  constructor(private modalService: NgbModal, private router:Router ,private spinner: NgxSpinnerService,private toastr:ToastrService , private fb: FormBuilder, private adminService: AdminServiceService) { }
 
   public contentHeader: object
 
@@ -78,7 +79,9 @@ export class OutletComponent implements OnInit {
   }
 
   allOutlet() {
+    this.spinner.show();
     this.adminService.getAllOutlet().subscribe((data: any) => {
+      this.spinner.hide();
       this.outletList = data.items;
       this.rows = data.items;
       this.tempData = this.rows;
@@ -213,23 +216,31 @@ VerifiedoutletChange(){
 }
 
   filterUpdate(event: any) {
-    const val = event.target.value.toLowerCase();
-  
-    // filter our data
-    this.rows = this.outletList.filter(function (d: any) {
-      const phoneString = (d.phone || '').toString(); // Use empty string if phone is undefined
-      return (
-        d.outletName?.toLowerCase().indexOf(val) !== -1 ||
-        phoneString.indexOf(val) !== -1 ||
-        !val
-      );
+    const val = event.target.value.toLowerCase()
+    console.log(this.outletList)
+ 
+    this.rows = this.outletList.filter(function (d) {
+      const phoneString = (d.phone || '').toString();
+      return d.outletName?.toLowerCase().indexOf(val) !== -1 || d.sellerId?.toLowerCase().indexOf(val) !== -1 || !val;
     });
-    
-    // update the rows
     this.kitchenSinkRows = this.rows;
   }
+
   onSelect({ selected }: any) {
     this.exportCSVData = selected;
+  }
+
+  flattenData(tempData:any) {
+    return tempData.map((item:any) => {
+      return {
+        SellerId: item.sellerId,
+        OutletId: item.outletId,
+        OUTLETNAME: item.outletName,
+        STATUS: item.isClosed,
+        PHONE: item.phone,
+        ISVERIFIED: item.isVerified,
+      };
+    });
   }
 
   downloadCSV(event: any) {
@@ -242,16 +253,17 @@ VerifiedoutletChange(){
       title: '',
       useBom: true,
       noDownload: false,
-      headers: ['name', 'phone', 'address'],
+      headers: ['SELLER ID', 'OUTLET ID','OUTLETNAME', 'STATUS', 'CONTACT PHONE','ISVERIFIED'],
     }
+  
 
-    if (this.exportCSVData == undefined) {
-      const fileInfo = new ngxCsv(this.tempData, this.formula, options);
+ if (this.exportCSVData == undefined) {
+      const fileInfo = new ngxCsv(this.flattenData(this.tempData), this.formula, options);
 
     } else {
-      const fileInfo = new ngxCsv(this.exportCSVData, this.formula, options);
+      const fileInfo = new ngxCsv(this.flattenData(this.tempData), this.formula, options);
       this.exportCSVData = undefined;
-    }
+    } 
 
   }
   onActivate(event: any) {

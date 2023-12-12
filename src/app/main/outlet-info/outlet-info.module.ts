@@ -10,6 +10,8 @@ import { ContentHeaderModule } from 'app/layout/components/content-header/conten
 import { AddOutletComponent } from './add-outlet/add-outlet.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { OutletDetailsComponent } from './outlet-details/outlet-details.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 
 const routes: Routes = [
   {
@@ -40,6 +42,7 @@ const routes: Routes = [
     CsvModule,
     ContentHeaderModule,
     ReactiveFormsModule,
+    NgxSpinnerModule,
     FormsModule,
   ]
   ,

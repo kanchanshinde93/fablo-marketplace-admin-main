@@ -7,6 +7,7 @@ import { ContentHeaderModule } from 'app/layout/components/content-header/conten
 import { Ng2FlatpickrModule } from 'ng2-flatpickr';
 import { FileUploadModule } from 'ng2-file-upload';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 const routes: Routes = [
   {
@@ -28,6 +29,7 @@ const routes: Routes = [
     CommonModule,
     Ng2FlatpickrModule,
     FileUploadModule,
+    NgxSpinnerModule,
     ContentHeaderModule,
     ReactiveFormsModule,
     FormsModule,

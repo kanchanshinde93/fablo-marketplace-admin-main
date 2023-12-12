@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminServiceService } from 'app/Services/admin-service.service';
+import { NgxSpinnerService } from "ngx-spinner";
+
 
 @Component({
   selector: 'app-home',
@@ -22,7 +24,7 @@ export class HomeComponent implements OnInit {
   closed: any;
   
 
-  constructor(private adminService: AdminServiceService) { }
+  constructor(private adminService: AdminServiceService,private spinner: NgxSpinnerService) { }
   public contentHeader: object
 
   ngOnInit(): void {
@@ -44,7 +46,9 @@ export class HomeComponent implements OnInit {
   }
 
   allCount() {
+    this.spinner.show();
     this.adminService.count().subscribe((data: any) => {
+      this.spinner.hide();
       this.ordersList = data.items.order;
       this.outletList = data.items.outlet;
       

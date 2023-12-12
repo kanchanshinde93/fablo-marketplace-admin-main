@@ -6,6 +6,8 @@ import { AdminServiceService } from 'app/Services/admin-service.service';
 import moment from 'moment';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from "ngx-spinner";
+
 
 @Component({
   selector: 'app-order-list',
@@ -41,7 +43,8 @@ export class OrderListComponent implements OnInit {
   Order: any;
   orderId: any;
   OrderStatus: any;
-  constructor(private modalService: NgbModal,private toastr:ToastrService ,private adminService: AdminServiceService , private router:Router) { }
+  constructor(private modalService: NgbModal,private toastr:ToastrService ,private adminService: AdminServiceService 
+    ,private spinner: NgxSpinnerService, private router:Router) { }
   public contentHeader: object;
 
   ngOnInit(): void {
@@ -91,7 +94,9 @@ export class OrderListComponent implements OnInit {
 
   // get all order api call
   allOrders() {
+    this.spinner.show();
     this.adminService.getAllOrder(this.status, this.start, this.end).subscribe((data: any) => {
+      this.spinner.hide();
       this.ordersList = data.items;
       this.allOrder = this.ordersList;
       this.rows = data.items;

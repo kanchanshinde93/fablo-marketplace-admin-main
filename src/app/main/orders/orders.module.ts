@@ -9,6 +9,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { Ng2FlatpickrModule } from 'ng2-flatpickr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 const routes: Routes = [
   {
     path: '',
@@ -35,6 +37,7 @@ const routes: Routes = [
     NgxDatatableModule,
     Ng2FlatpickrModule,
     NgbTooltipModule,
+    NgxSpinnerModule,
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
