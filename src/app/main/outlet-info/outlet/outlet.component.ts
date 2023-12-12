@@ -38,6 +38,7 @@ export class OutletComponent implements OnInit {
   previousImage: any;
   changeById: any;
   outetverifiedId:any
+  isVerifiedStutes:any
 
   constructor(private modalService: NgbModal, private router:Router ,private spinner: NgxSpinnerService,private toastr:ToastrService , private fb: FormBuilder, private adminService: AdminServiceService) { }
 
@@ -115,7 +116,7 @@ export class OutletComponent implements OnInit {
       area: outletdata.area,
       shopAddress: outletdata.shopAddress
     });
-    console.log(outletdata);
+    // console.log(outletdata);
 
   }
   // get change image
@@ -185,8 +186,9 @@ outletStatusChange(){
 }
 
 VerifiedOutletStatus(data:any,outlet:any){
-  console.log(outlet.outletId);
-  this.outetverifiedId=outlet.outletId
+  // console.log(outlet.isVerified);
+  this.outetverifiedId=outlet.outletId;
+  this.isVerifiedStutes=outlet.isVerified;
   
   this.modalService.open(data,{
     centered:true,
@@ -196,13 +198,13 @@ VerifiedOutletStatus(data:any,outlet:any){
 }
 
 VerifiedoutletChange(){
-  let body={
+
+  if(!this.isVerifiedStutes){
+    const body={
       "outletId":this.outetverifiedId,
       "status":true
    }
-   console.log(body);
-   
-  this.adminService.verifiedoutlet(body).subscribe((res:any)=>{
+   this.adminService.verifiedoutlet(body).subscribe((res:any)=>{
     if(res.status){
       this.toastr.success(res.message,"Success!");
       this.allOutlet();
@@ -213,11 +215,30 @@ VerifiedoutletChange(){
       this.modalService.dismissAll();
     }
   })
+  }
+  else{
+    const body={
+      "outletId":this.outetverifiedId,
+      "status":false
+   }
+   this.adminService.verifiedoutlet(body).subscribe((res:any)=>{
+    if(res.status){
+      this.toastr.success(res.message,"Success!");
+      this.allOutlet();
+      this.modalService.dismissAll();
+    }else{
+      this.toastr.error(res.message,"error!");
+      this.allOutlet();
+      this.modalService.dismissAll();
+    }
+  })
+  }
+ 
 }
 
   filterUpdate(event: any) {
     const val = event.target.value.toLowerCase()
-    console.log(this.outletList)
+    // console.log(this.outletList)
  
     this.rows = this.outletList.filter(function (d) {
       const phoneString = (d.phone || '').toString();
