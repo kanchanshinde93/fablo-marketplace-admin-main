@@ -58,7 +58,7 @@ export class OrderListComponent implements OnInit {
     
     
     this.contentHeader = {
-      headerTitle: 'Order-list',
+      headerTitle: 'Orders',
       actionButton: true,
       breadcrumb: {
         type: '',
@@ -69,7 +69,7 @@ export class OrderListComponent implements OnInit {
             link: '/dashboad/home'
           },
           {
-            name: 'Order-list',
+            name: 'Orders',
             isLink: false
           }
         ]
