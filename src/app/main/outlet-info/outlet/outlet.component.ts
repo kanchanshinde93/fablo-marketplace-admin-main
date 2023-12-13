@@ -161,7 +161,7 @@ this.adminService.editOutlet(this.outletData,formData).subscribe((res:any)=>{
   }
 
 // open change outlet status Modal
-changeOutletStatus(data:any,outlet:any){
+/* changeOutletStatus(data:any,outlet:any){
   this.changeById = outlet.outletId;
   this.modalService.open(data,{
     centered:true,
@@ -169,6 +169,21 @@ changeOutletStatus(data:any,outlet:any){
     size:'md'
     
   });
+} */
+
+
+statusChange(event: any, data: any, outlet: any) {
+  this.changeById = outlet.outletId;
+  // console.log(outlet);
+  this.modalService.open(data, {
+    centered: true,
+    scrollable: true,
+    size: "md",
+  });
+  event.target.checked = !event.target.checked;
+  //console.log("event=>", event.currentTarget.className);
+
+ 
 }
 
 outletStatusChange(){

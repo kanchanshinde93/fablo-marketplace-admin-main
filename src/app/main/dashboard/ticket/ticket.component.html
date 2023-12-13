@@ -1,86 +1,95 @@
-<div class="ticket">
-    <div class="card card-congratulation-medal">
-        <div class="card-body" *ngIf="showticketfirsttime">
-            <h1>Tickets </h1>
-            <div class="row match-height">
-                <p style="padding-top: 45px;">{{noDataFound}}</p>
-                <div class="col-12 col-md-6 col-lg-6" *ngFor="let ticket of ticketList">
-                    <div class="card-body">
-                        <div class="outlet-body">
-                            <div class="parent1">
-                                <div class="area-parent">
-                                    <h5>{{ticket.issue}}</h5>
-                                </div>
-                                <div class="area-btn">
-                                    <h5>{{ticket.status}}</h5>
+
+<div class="content-wrapper container-fluid p-0">
+    <div class="content-body">
+
+        <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+        <div class="ticket">
+            <div class="card card-congratulation-medal">
+                <div class="card-body" *ngIf="showticketfirsttime">
+                    <!-- <h1>Tickets </h1> -->
+                    <div class="row match-height">
+                        <p>{{noDataFound}}</p>
+                        <div class="col-12 col-md-6 col-lg-6" *ngFor="let ticket of ticketList">
+                            <div class="card-body">
+                                <div class="outlet-body">
+                                    <div class="parent1">
+                                        <div class="area-parent">
+                                            <h5>{{ticket.issue}}</h5>
+                                        </div>
+                                        <div class="area-btn">
+                                            <h5>{{ticket.status}}</h5>
+                                        </div>
+                                    </div>
+                                    <div class="ticket-btn">
+                                        <h4>Ticket ID : <span>{{ticket.ticketId}}</span></h4>
+                                        <a class="" (click)="viewDetailsTicket(ticket.ticketId)">View Details</a>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="ticket-btn">
-                                <h4>Ticket ID : <span>{{ticket.ticketId}}</span></h4>
-                                <a class="" (click)="viewDetailsTicket(ticket.ticketId)">View Details</a>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="card-body" *ngIf="!showticketfirsttime">
+                    <h1>Tickets </h1>
+                    <div class="row match-height">
+                        <div class="col-12 col-md-6 col-lg-6">
+                            <div class="card-body" *ngFor="let ticket of allTickets">
+                                <div class="outlet-body">
+                                    <div class="parent1">
+                                        <div class="area-parent">
+                                            <h5>{{ticket.description}}</h5>
+                                        </div>
+                                        <div class="area-btn">
+                                            <h5>{{ticket.status}}</h5>
+                                        </div>
+                                    </div>
+                                    <div class="ticket-btn">
+                                        <h4>Ticket ID : <span>{{ticket.ticketId}}</span></h4>
+                                        <a class="" (click)="viewDetailsTicket(ticket.ticketId)">View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+        
+                        <div class="col-12 col-md-6 col-lg-6">
+                            <div class="card-body">
+                                <div class="outlet1-body">
+                                    <div class="product">
+                                        <div class="ticket-parent">
+                                            <h5>Product Name</h5>
+                                            <p class="ticket-details-text">
+                                                {{ticketDetails?.orderDetails?.productList[0]?.productName}}</p>
+                                        </div>
+                                        <div class="product-ctn">
+                                            <h5>Customer Name</h5>
+                                            <p class="ticket-details-text">{{ticketDetails?.orderDetails?.client?.clientName}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="product2">
+                                        <div class="ticket-parent">
+                                            <h5>Issue</h5>
+                                            <p class="ticket-details-text">{{ticketDetails?.issue}}</p>
+                                        </div>
+                                        <div class="product-ctn">
+                                            <h5>Description</h5>
+                                            <p class="ticket-details-text">{{ticketDetails?.description}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="card-body" *ngIf="!showticketfirsttime">
-            <h1>Tickets </h1>
-            <div class="row match-height">
-                <div class="col-12 col-md-6 col-lg-6">
-                    <div class="card-body" *ngFor="let ticket of allTickets">
-                        <div class="outlet-body">
-                            <div class="parent1">
-                                <div class="area-parent">
-                                    <h5>{{ticket.description}}</h5>
-                                </div>
-                                <div class="area-btn">
-                                    <h5>{{ticket.status}}</h5>
-                                </div>
-                            </div>
-                            <div class="ticket-btn">
-                                <h4>Ticket ID : <span>{{ticket.ticketId}}</span></h4>
-                                <a class="" (click)="viewDetailsTicket(ticket.ticketId)">View Details</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-12 col-md-6 col-lg-6">
-                    <div class="card-body">
-                        <div class="outlet1-body">
-                            <div class="product">
-                                <div class="ticket-parent">
-                                    <h5>Product Name</h5>
-                                    <p class="ticket-details-text">
-                                        {{ticketDetails?.orderDetails?.productList[0]?.productName}}</p>
-                                </div>
-                                <div class="product-ctn">
-                                    <h5>Customer Name</h5>
-                                    <p class="ticket-details-text">{{ticketDetails?.orderDetails?.client?.clientName}}
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="product2">
-                                <div class="ticket-parent">
-                                    <h5>Issue</h5>
-                                    <p class="ticket-details-text">{{ticketDetails?.issue}}</p>
-                                </div>
-                                <div class="product-ctn">
-                                    <h5>Description</h5>
-                                    <p class="ticket-details-text">{{ticketDetails?.description}}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-    </div>
-</div>
+        </div>
+
 
 
 

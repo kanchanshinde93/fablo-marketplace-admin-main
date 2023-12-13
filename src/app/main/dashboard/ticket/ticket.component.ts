@@ -59,7 +59,7 @@ export class TicketComponent implements OnInit {
             link: '/dashboard/home'
           },
           {
-            name: 'ticket',
+            name: 'Ticket',
             isLink: false
           }
         ]
