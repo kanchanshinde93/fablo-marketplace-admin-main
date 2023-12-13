@@ -23,7 +23,7 @@ import { AddSubcategoryComponent } from './merchant-info/add-subcategory/add-sub
 import { FileUploadModule } from 'ng2-file-upload';
 import { MerchanhtDetailsComponent } from './merchant-info/merchanht-details/merchanht-details.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
-
+import { CoreCommonModule } from '@core/common.module'  ;
 const routes: Routes = [
   {
     path: 'users',
@@ -100,6 +100,7 @@ const routes: Routes = [
     NgxSpinnerModule,
     CommonModule,
     NgxDatatableModule,
+CoreCommonModule, 
     CsvModule,
     FileUploadModule,
     ContentHeaderModule,

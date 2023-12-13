@@ -6,385 +6,367 @@
         <app-content-header [contentHeader]="contentHeader"></app-content-header>
 
         <!-- Outlet Details Start-->
-        <section id="outlet-details-page">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">Seller Details-{{sellerInfo?.basicDetails?.sellerName}}</h4>
-                    <div class="outlet-btn-sec">
-                        <button class="btn btn-primary btn-add" (click)="addOutlet(sellerData)"><span>Add New
-                                Outlet</span> </button>
-                        <!-- <button class="btn btn-primary btn-add" routerLink="/userType/offers"><span>Offers</span> </button>
-                        <button class="btn btn-primary btn-add" routerLink="/userType/orderHistory"><span>Order History</span> </button>
-                        <button class="btn btn-primary btn-add" routerLink="/userType/menu"><span>Menu</span> </button> -->
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="col-md-9">
-                        <div class="card card-profile">
-
-                            <div class="card-body">
-
-                                
-                                <div class="details-section">
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <h4 class="text-secondary font-weight-bolder">Authorized
-                                                Person Detail</h4>
-
-                                            <div class="row">
-                                               <!--  <div class="col-lg-5">
-                                                    <p><strong>User Id:</strong></p>
-                                                </div>
-                                                <div class="col-lg-7">
-                                                    <p>{{sellerData?.userId}}</p>
-                                                </div> -->
-                                                <div class="col-lg-5">
-                                                    <p><strong>Pan:</strong></p>
-                                                </div>
-                                                <div class="col-lg-7">
-                                                    <p>{{sellerInfo?.authorizedPersonDetails?.pan}}</p>
-                                                </div>
-                                                <div class="col-lg-5">
-                                                    <p><strong>Phone:</strong></p>
-                                                </div>
-                                                <div class="col-lg-7">
-                                                    <p>{{sellerInfo?.authorizedPersonDetails?.phone}}</p>
-                                                </div>
-                                                <div class="col-lg-5">
-                                                    <p><strong>Email:</strong></p>
-                                                </div>
-                                                <div class="col-lg-7">
-                                                    <p>{{sellerInfo?.authorizedPersonDetails?.email}}</p>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <h4 class="text-secondary font-weight-bolder">Basic Details
-                                            </h4>
-
-                                            <div class="row">
-                                                <div class="col-lg-5">
-                                                    <p><strong> Name:</strong></p>
-                                                </div>
-                                                <div class="col-lg-7">
-                                                    <p>{{sellerInfo?.basicDetails?.sellerName}}</p>
-                                                </div>
-                                                <div class="col-lg-5">
-                                                    <p><strong> Seller Id :</strong></p>
-                                                </div>
-                                                <div class="col-lg-7">
-                                                    <p>{{sellerInfo?.sellerId}}</p>
-                                                </div>
-                                                <div class="col-lg-5">
-                                                    <p><strong>Agent Id:</strong></p>
-                                                </div>
-                                                <div class="col-lg-7">
-                                                    <p>{{sellerInfo?.agentId}}</p>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <h4 class="text-secondary font-weight-bolder">License
-                                                Details</h4>
-
-                                            <div class="row">
-                                                <div class="col-lg-5">
-                                                    <p><strong>Name On Licence:</strong></p>
-                                                </div>
-                                                <div class="col-lg-7">
-                                                    <p>{{sellerInfo?.licenseDetails?.nameOnlicence}}</p>
-                                                </div>
-                                                <div class="col-lg-5">
-                                                    <p><strong>Licence Number:</strong></p>
-                                                </div>
-                                                <div class="col-lg-7">
-                                                    <p>{{sellerInfo?.licenseDetails?.licenceNumber}}</p>
-                                                </div>
-                                                <div class="col-lg-5">
-                                                    <p><strong>Issued On:</strong></p>
-                                                </div>
-                                                <div class="col-lg-7">
-                                                    <p>{{sellerInfo?.licenseDetails?.issuedOn}}</p>
-                                                </div>
-                                                <div class="col-lg-5">
-                                                    <p><strong>Tenure:</strong></p>
-                                                </div>
-                                                <div class="col-lg-7">
-                                                    <p>{{sellerInfo?.licenseDetails?.tenure}} Years</p>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        
-
+        <div class="row match-height">
+            <div class="col-6 col-md-6 col-lg-6">
+                <div class="card-body">
+                    <div class="outlet-body">
+                       <div class="account-parent d-flex justify-content-between">
+                          <div class="trade-parent">
+                            <div class="avatar img">
+                                <!-- <img class="round" src="../../../../assets/images/myimages/image (25).png"> -->
+                                {{sellerInfo?.basicDetails?.tradeName.charAt(0).toUpperCase()}}
+                              </div>
+                              
+                              <div class="avatar-parent">
+                                <span class="user-name font-weight-light">{{ sellerInfo?.basicDetails?.tradeName }}</span>
+                                <p>Vijay Nagar</p>
+                              </div>
+                          </div>
+                          <!-- <div class="outlet-btn-sec mb-2">
+                            <button class="btn btn-primary btn-add"rippleEffect>
+                              Add Banners <i class="fa-regular fa-plus"></i>
+                            </button>
+                          </div> -->
+                        <div class="trade1-parent">
+                            <div class="d-flex align-items-center">
+                                <div ngbDropdown container="body">
+                                    <a ngbDropdownToggle href="javascript:void(0);" class="hide-arrow"
+                                        id="dropdownBrowserState" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+    
+                                    </a>
+                                    <div ngbDropdownMenu class="dropdown-menu-right"
+                                        aria-labelledby="dropdownBrowserState">
+                                        <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center"
+                                           >View Outlet</a>
+                                       <!--  <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center"
+                                            (click)="changeOutletStatus(content,row)">Change Status</a> -->
+                                        <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center"
+                                            >Verification</a>
+                                       <!--  <a href="javascript:void(0)" ngbDropdownItem
+                                            class="d-flex align-items-center"><i data-feather="trash-2"
+                                                class="mr-50"></i>Delete</a> -->
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="card card-profile">
-
-                            <div class="card-body">
-
-                                
-                                <div class="details-section">
-                                    <div class="row">
-                                       
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- <div class="nav-vertical">
-                            <ul ngbNav #navVertical="ngbNav" class="nav nav-tabs nav-left flex-column">
-                                <li ngbNavItem>
-                                    <a ngbNavLink>About Outlet</a>
-                                    <ng-template ngbNavContent>
-                                        <div class="card card-profile">
-                                            <img src="assets/images/pages/users/merchant/outlet-image.png"
-                                                class="img-fluid card-img-top" alt="Profile Cover Photo" />
-                                            <div class="card-body">
-                                                <div class="profile-image-wrapper">
-                                                    <div class="profile-image">
-                                                        <div class="avatar">
-                                                            <img src="assets/images/pages/users/merchant/outlet-profile.jpg"
-                                                                alt="Profile Picture" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <h3>Kadhai Spices Restaurent</h3>
-                                                <h6 class="text-muted">15-B, Rajat Jayanti Complex, Scheme no 54, Vijay
-                                                    Nagar,
-                                                    Indore</h6>
-                                                <div class="badge badge-light-primary profile-badge">Vijay Nagar</div>
-                                                <hr class="mb-2" />
-                                                <div class="details-section">
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <h4 class="text-secondary font-weight-bolder">Basic Details
-                                                            </h4>
-
-                                                            <div class="row">
-                                                                <div class="col-lg-5">
-                                                                    <p><strong>Merchant Name:</strong></p>
-                                                                </div>
-                                                                <div class="col-lg-7">
-                                                                    <p>Arvind Kejriwal</p>
-                                                                </div>
-                                                                <div class="col-lg-5">
-                                                                    <p><strong>Trade Name:</strong></p>
-                                                                </div>
-                                                                <div class="col-lg-7">
-                                                                    <p>Lapinoz</p>
-                                                                </div>
-                                                                <div class="col-lg-5">
-                                                                    <p><strong>Merchant Type:</strong></p>
-                                                                </div>
-                                                                <div class="col-lg-7">
-                                                                    <p>Individual</p>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <h4 class="text-secondary font-weight-bolder">Outlet Timing
-                                                            </h4>
-
-                                                            <div class="row">
-                                                                <div class="col-lg-5">
-                                                                    <p><strong> Opening Time :</strong></p>
-                                                                </div>
-                                                                <div class="col-lg-7">
-                                                                    <p>09:10 AM</p>
-                                                                </div>
-                                                                <div class="col-lg-5">
-                                                                    <p><strong>Closing Time:</strong></p>
-                                                                </div>
-                                                                <div class="col-lg-7">
-                                                                    <p>11:00 PM</p>
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 mt-2">
-                                                            <h4 class="text-secondary font-weight-bolder">Contact
-                                                                Details</h4>
-
-                                                            <div class="row">
-                                                                <div class="col-lg-5">
-                                                                    <p><strong>Phone:</strong></p>
-                                                                </div>
-                                                                <div class="col-lg-7">
-                                                                    <p>7566149967</p>
-                                                                </div>
-                                                                <div class="col-lg-5">
-                                                                    <p><strong>Email:</strong></p>
-                                                                </div>
-                                                                <div class="col-lg-7">
-                                                                    <p>test@gmail.com</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </ng-template>
-                                </li>
-                                <li ngbNavItem>
-                                    <a ngbNavLink>Lincence Details</a>
-                                    <ng-template ngbNavContent>
-                                        <div class="card card-profile">
-
-                                            <div class="card-body">
-
-                                                <hr class="mb-2" />
-                                                <div class="details-section">
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <h4 class="text-secondary font-weight-bolder">License
-                                                                Details</h4>
-
-                                                            <div class="row">
-                                                                <div class="col-lg-5">
-                                                                    <p><strong>Name On Licence:</strong></p>
-                                                                </div>
-                                                                <div class="col-lg-7">
-                                                                    <p>Farji Licencse</p>
-                                                                </div>
-                                                                <div class="col-lg-5">
-                                                                    <p><strong>Licence Number:</strong></p>
-                                                                </div>
-                                                                <div class="col-lg-7">
-                                                                    <p>1121225455</p>
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <h4 class="text-secondary font-weight-bolder">Issued Date &
-                                                                Tenure </h4>
-
-                                                            <div class="row">
-                                                                <div class="col-lg-5">
-                                                                    <p><strong>Issued On:</strong></p>
-                                                                </div>
-                                                                <div class="col-lg-7">
-                                                                    <p>11/05/2023</p>
-                                                                </div>
-                                                                <div class="col-lg-5">
-                                                                    <p><strong>Tenure:</strong></p>
-                                                                </div>
-                                                                <div class="col-lg-7">
-                                                                    <p>5Years</p>
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </ng-template>
-                                </li>
-                                <li ngbNavItem>
-                                    <a ngbNavLink>Authorized Person Detail </a>
-                                    <ng-template ngbNavContent>
-                                        <div class="card card-profile">
-
-                                            <div class="card-body">
-
-                                                <hr class="mb-2" />
-                                                <div class="details-section">
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <h4 class="text-secondary font-weight-bolder">Authorized
-                                                                Person Detail</h4>
-
-                                                            <div class="row">
-                                                                <div class="col-lg-5">
-                                                                    <p><strong>User Id:</strong></p>
-                                                                </div>
-                                                                <div class="col-lg-7">
-                                                                    <p>@#235152</p>
-                                                                </div>
-                                                                <div class="col-lg-5">
-                                                                    <p><strong>Pan:</strong></p>
-                                                                </div>
-                                                                <div class="col-lg-7">
-                                                                    <p>BHWPKSS8596</p>
-                                                                </div>
-                                                                <div class="col-lg-5">
-                                                                    <p><strong>Phone:</strong></p>
-                                                                </div>
-                                                                <div class="col-lg-7">
-                                                                    <p>7566149967</p>
-                                                                </div>
-                                                                <div class="col-lg-5">
-                                                                    <p><strong>Email:</strong></p>
-                                                                </div>
-                                                                <div class="col-lg-7">
-                                                                    <p>test@gmail.com</p>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <h4 class="text-secondary font-weight-bolder">Basic Details
-                                                            </h4>
-
-                                                            <div class="row">
-                                                                <div class="col-lg-5">
-                                                                    <p><strong> Name:</strong></p>
-                                                                </div>
-                                                                <div class="col-lg-7">
-                                                                    <p>Arvind Kejriwal</p>
-                                                                </div>
-                                                                <div class="col-lg-5">
-                                                                    <p><strong> Seller Id :</strong></p>
-                                                                </div>
-                                                                <div class="col-lg-7">
-                                                                    <p>#dsds526</p>
-                                                                </div>
-                                                                <div class="col-lg-5">
-                                                                    <p><strong>Agent Id:</strong></p>
-                                                                </div>
-                                                                <div class="col-lg-7">
-                                                                    <p>#12352</p>
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </ng-template>
-                                </li>
-                            </ul>
-                            <div [ngbNavOutlet]="navVertical"></div>
-
-                        </div> -->
-                    </div>
-                    <div class="col-md-3">
-                        <div class="outlist-main">
-                            <ul class="outlet-list" *ngFor="let outlet of outletList">
-                                <li>
-                                    <a (click)="viewOutletDetails(outlet)">{{outlet.outletName}}</a>
-                                </li>
                                
-                            </ul>
+                            </div>
                         </div>
+                       </div> 
+                       <hr>
+                       <div class="details-parent">
+                          <div class="heading d-flex justify-content-between align-items-center">
+                            <div class="heading1">
+                                <h1>Basic Details</h1>
+                            </div>
+                            <div class="ml-1 edit-icon">
+                                <a href="javascript:void(0)">
+                                    <i class="fa-regular fa-pen-to-square"
+                                     ></i>
+                                </a>
+                            </div>
+                          </div>
+                          <div class=" card-transaction">
+                            <!-- <div class="card-header">
+                              <h4 class="card-title"></h4>
+                              <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i>
+                              
+                            </div> -->
+                            <div class="card-body">
+                              <div class="transaction-item">
+                                <div class="media">
+                                  <div class="avatar bg-light-primary rounded">
+                                    <div class="avatar-content">
+                                      <i data-feather="user" class="avatar-icon font-medium-3"></i>
+                                    </div>
+                                  </div>
+                                  <div class="media-body">
+                                    <h6 class="transaction-title">Seller Name:</h6>
+                                    <!-- <small>Starbucks</small> -->
+                                  </div>
+                                </div>
+                                <div class="details">{{ sellerInfo?.basicDetails?.sellerName }}</div>
+                              </div>
+                              <div class="transaction-item">
+                                <div class="media">
+                                  <div class="avatar bg-light-success rounded">
+                                    <div class="avatar-content">
+                                      <i data-feather="trending-up" class="avatar-icon font-medium-3"></i>
+                                    </div>
+                                  </div>
+                                  <div class="media-body">
+                                    <h6 class="transaction-title">TradeName:</h6>
+                                    
+                                  </div>
+                                </div>
+                                <div class="details">{{ sellerInfo?.basicDetails?.tradeName }}</div>
+                              </div>
+                              <div class="transaction-item">
+                                <div class="media">
+                                  <div class="avatar bg-light-danger rounded">
+                                    <div class="avatar-content">
+                                      <i data-feather="type" class="avatar-icon font-medium-3"></i>
+                                    </div>
+                                  </div>
+                                  <div class="media-body">
+                                    <h6 class="transaction-title">Seller Type:</h6>
+                                   
+                                  </div>
+                                </div>
+                                <div class="details">{{ sellerInfo?.basicDetails?.sellerType }}</div>
+                              </div>
+                              <div class="transaction-item">
+                                <div class="media">
+                                  <div class="avatar bg-light-warning rounded">
+                                    <div class="avatar-content">
+                                      <i data-feather="credit-card" class="avatar-icon font-medium-3"></i>
+                                    </div>
+                                  </div>
+                                  <div class="media-body">
+                                    <h6 class="transaction-title">GST No:</h6>
+                                   
+                                  </div>
+                                </div>
+                                <div class="details">{{ sellerInfo?.basicDetails?.gstNo }}</div>
+                              </div>
+                              <div class="transaction-item">
+                                <div class="media">
+                                  <div class="avatar bg-light-info rounded">
+                                    <div class="avatar-content">
+                                      <i data-feather="credit-card" class="avatar-icon font-medium-3"></i>
+                                    </div>
+                                  </div>
+                                  <div class="media-body">
+                                    <h6 class="transaction-title">Seller Id :</h6>
+                                   
+                                  </div>
+                                </div>
+                                <div class="details">{{ sellerInfo?.sellerId  }}</div>
+                              </div>
+                              <div class="transaction-item">
+                                <div class="media">
+                                  <div class="avatar bg-light-info rounded">
+                                    <div class="avatar-content">
+                                      <i data-feather="phone" class="avatar-icon font-medium-3"></i>
+                                    </div>
+                                  </div>
+                                  <div class="media-body">
+                                    <h6 class="transaction-title">Agent Id:</h6>
+                                    
+                                  </div>
+                                </div>
+                                <div class="details">{{ sellerInfo?.agentId}}</div>
+                              </div>
+                              <div class="transaction-item">
+                                <div class="media">
+                                  <div class="avatar bg-light-info rounded">
+                                    <div class="avatar-content">
+                                      <i data-feather="check" class="avatar-icon font-medium-3"></i>
+                                    </div>
+                                  </div>
+                                  <div class="media-body">
+                                    <h6 class="transaction-title">Verification Status:</h6>
+                                    
+                                  </div>
+                                </div>
+                                <div class="details">{{sellerInfo?.verificationStatus}}</div>
+                              </div>
+                              <div class="transaction-item">
+                                <div class="media">
+                                  <div class="avatar bg-light-info rounded">
+                                    <div class="avatar-content">
+                                      <i data-feather="info" class="avatar-icon font-medium-3"></i>
+                                    </div>
+                                  </div>
+                                  <div class="media-body">
+                                    <h6 class="transaction-title">Number Of Shop:</h6>
+                                    
+                                  </div>
+                                </div>
+                                <div class="details">{{sellerInfo?.numberOfShop}}</div>
+                              </div>
+                            </div>
+                          </div>
+                       </div>
                     </div>
                 </div>
             </div>
+            <div class="col-6 col-md-6 col-lg-6">
+              <div class="card-body">
+                  <div class="outlet-body">
+                    <!-- <div class="heading2">
+                      <h1>License Details</h1>
+                    </div>  -->
+                    <div class="heading d-flex justify-content-between align-items-center">
+                        <div class="heading1">
+                            <h1>License Details</h1>
+                        </div>
+                        <div class="ml-1 edit-icon">
+                            <a href="javascript:void(0)">
+                                <i class="fa-regular fa-pen-to-square"
+                                 ></i>
+                            </a>
+                        </div>
+                      </div>
+                    <div class=" card-transaction">
+                      <!-- <div class="card-header"> -->
+                        <!-- <h4 class="card-title"></h4> -->
+                        <!-- <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i> -->
+                        
+                      <!-- </div> -->
+                      <div class="card-body">
+                        <div class="transaction-item">
+                          <div class="media">
+                            <div class="avatar bg-light-primary rounded">
+                              <div class="avatar-content">
+                                <i data-feather="check-square" class="avatar-icon font-medium-3"></i>
+                              </div>
+                            </div>
+                            <div class="media-body">
+                              <h6 class="transaction-title"> Licence Name: </h6>
+                            
+                            </div>
+                          </div>
+                          <div class="details">{{ sellerInfo?.licenseDetails?.nameOnlicence }}</div>
+                        </div>
+                        <div class="transaction-item">
+                          <div class="media">
+                            <div class="avatar bg-light-success rounded">
+                              <div class="avatar-content">
+                                <i data-feather="tablet" class="avatar-icon font-medium-3"></i>
+                              </div>
+                            </div>
+                            <div class="media-body">
+                              <h6 class="transaction-title">Licence Number:</h6>
+                            
+                            </div>
+                          </div>
+                          <div class="details">{{ sellerInfo?.licenseDetails?.licenceNumber }}</div>
+                        </div>
+                        <div class="transaction-item">
+                          <div class="media">
+                            <div class="avatar bg-light-danger rounded">
+                              <div class="avatar-content">
+                                <i data-feather="check" class="avatar-icon font-medium-3"></i>
+                              </div>
+                            </div>
+                            <div class="media-body">
+                              <h6 class="transaction-title">Issued On:</h6>
+                              
+                            </div>
+                          </div>
+                          <div class="details">{{ sellerInfo?.licenseDetails?.issuedOn }}</div>
+                        </div>
+                        <div class="transaction-item">
+                          <div class="media">
+                            <div class="avatar bg-light-warning rounded">
+                              <div class="avatar-content">
+                                <i data-feather="calendar" class="avatar-icon font-medium-3"></i>
+                              </div>
+                            </div>
+                            <div class="media-body">
+                              <h6 class="transaction-title">Tenure:</h6>
+                             
+                            </div>
+                          </div>
+                          <div class="details">{{ sellerInfo?.licenseDetails?.tenure }}</div>
+                        </div>
+                     
+                      </div>
+                    </div>
+                  </div>
 
-        </section>
+              </div>
+             <div class="row  match-height">
+              <div class="col-12 col-md-12 col-lg-12">
+                <div class="card-body">
+                    <div class="outlet-body">
+                      <!-- <div class="heading1">
+                        <h1>Authorised Person Details</h1>
+                      </div> -->
+                      <div class="heading d-flex justify-content-between align-items-center">
+                        <div class="heading1">
+                            <h1>Authorised Person Details</h1>
+                        </div>
+                        <div class="ml-1 edit-icon">
+                            <a href="javascript:void(0)">
+                                <i class="fa-regular fa-pen-to-square"
+                                 ></i>
+                            </a>
+                        </div>
+                      </div>
+                      <div class=" card-transaction">
+                        <!-- <div class="card-header">
+                          <h4 class="card-title"></h4>
+                          <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i>
+                          
+                        </div> -->
+                        <div class="card-body">
+                          <div class="transaction-item">
+                            <div class="media">
+                              <div class="avatar bg-light-primary rounded">
+                                <div class="avatar-content">
+                                  <i data-feather="user" class="avatar-icon font-medium-3"></i>
+                                </div>
+                              </div>
+                              
+                              <div class="media-body">
+                                <h6 class="transaction-title">Name:</h6>
+                                
+                              </div>
+                            </div>
+                            <div class="details">{{ sellerInfo?.authorizedPersonDetails?.name }}</div>
+                          </div>
+                          <div class="transaction-item">
+                            <div class="media">
+                              <div class="avatar bg-light-success rounded">
+                                <div class="avatar-content">
+                                  <i data-feather="credit-card" class="avatar-icon font-medium-3"></i>
+                                </div>
+                              </div>
+                              <div class="media-body">
+                                <h6 class="transaction-title">Pan No:</h6>
+                              </div>
+                            </div>
+                            <div class="details">{{ sellerInfo?.authorizedPersonDetails?.pan }}</div>
+                          </div>
+                          <div class="transaction-item">
+                            <div class="media">
+                              <div class="avatar bg-light-danger rounded">
+                                <div class="avatar-content">
+                                  <i data-feather="phone" class="avatar-icon font-medium-3"></i>
+                                </div>
+                              </div>
+                              <div class="media-body">
+                                <h6 class="transaction-title">Phone No:</h6>
+                               
+                              </div>
+                            </div>
+                            <div class="details">{{ sellerInfo?.authorizedPersonDetails?.phone }}</div>
+                          </div>
+                          <div class="transaction-item">
+                            <div class="media">
+                              <div class="avatar bg-light-warning rounded">
+                                <div class="avatar-content">
+                                  <i data-feather="mail" class="avatar-icon font-medium-3"></i>
+                                </div>
+                              </div>
+                              <div class="media-body">
+                                <h6 class="transaction-title">Email:</h6>
+                               
+                              </div>
+                            </div>
+                            <div class="details">{{ sellerInfo?.authorizedPersonDetails?.email }}</div>
+                          </div>
+                         
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+             </div>
+          </div>
+        </div>
         <!-- Outlet Details End-->
     </div>
 </div>
