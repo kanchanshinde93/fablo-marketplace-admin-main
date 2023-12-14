@@ -378,59 +378,104 @@
 
 <!-- Modal basic offer-->
 <ng-template #editBasicmodel let-modal>
-  <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalCenterTitle">Edit License Details</h5>
-      <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-      </button>
-  </div>
-  <div class="modal-body" tabindex="0" ngbAutofocus>
-      <form class="form form-vertical">
-          <div class="row">
-              <div class="col-12">
-                  <div class="form-group">
-                      <label for="first-name-vertical">Offer Name</label>
-                      <input type="text" id="first-name-vertical" class="form-control" name="fname"
-                          placeholder="Offer Name" />
-                  </div>
+  <div class="col-lg-4 col-md-6 col-12">
+        <div class="card card-transaction">
+          <div class="card-header">
+            <h4 class="card-title">Transactions</h4>
+            <!-- <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i> -->
+            <div ngbDropdown>
+              <a
+                ngbDropdownToggle
+                href="javascript:void(0);"
+                class="hide-arrow"
+                id="dropdownTransactions"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <i data-feather="more-vertical" [size]="18" class="text-body cursor-pointer"></i>
+              </a>
+              <div ngbDropdownMenu class="dropdown-menu-right" aria-labelledby="dropdownTransactions">
+                <a href="javascript:void(0)" ngbDropdownItem>Last 28 Days</a>
+                <a href="javascript:void(0)" ngbDropdownItem>Last Month</a>
+                <a href="javascript:void(0)" ngbDropdownItem>Last Year</a>
               </div>
-              <div class="col-12">
-                  <div class="form-group">
-                      <label for="email-id-vertical">Percent Off</label>
-                      <input type="number" id="email-id-vertical" class="form-control" name="percent"
-                          placeholder="percent Off" />
-                  </div>
-              </div>
-              <div class="col-12">
-                  <div class="form-group">
-                      <label for="email-id-vertical">Start Date</label>
-                      <ng2-flatpickr [ngClass]="'firstsecond'" [config]="basicDateOptions" name="basicDate"></ng2-flatpickr>
-                  </div>
-              </div>
-              <div class="col-12">
-                  <div class="form-group">
-                      <label for="email-id-vertical">End Date</label>
-                      <ng2-flatpickr [ngClass]="'firstsecond'" [config]="basicDateOptions" name="basicDate"></ng2-flatpickr>
-                  </div>
-              </div>
-              <div class="col-12">
-                  <label for="basicTextarea">Offer Description</label>
-                  <fieldset class="form-group">
-                      <textarea class="form-control" id="basicTextarea" rows="3"
-                          placeholder="Offer Description"></textarea>
-                  </fieldset>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
-                      Cancel
-                  </button>
-                  <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
-                      Submit
-                  </button>
-              </div>
+            </div>
           </div>
-      </form>
-  </div>
+          <div class="card-body">
+            <div class="transaction-item">
+              <div class="media">
+                <div class="avatar bg-light-primary rounded">
+                  <div class="avatar-content">
+                    <i data-feather="pocket" class="avatar-icon font-medium-3"></i>
+                  </div>
+                </div>
+                <div class="media-body">
+                  <h6 class="transaction-title">Wallet</h6>
+                  <small>Starbucks</small>
+                </div>
+              </div>
+              <div class="font-weight-bolder text-danger">- $74</div>
+            </div>
+            <div class="transaction-item">
+              <div class="media">
+                <div class="avatar bg-light-success rounded">
+                  <div class="avatar-content">
+                    <i data-feather="check" class="avatar-icon font-medium-3"></i>
+                  </div>
+                </div>
+                <div class="media-body">
+                  <h6 class="transaction-title">Bank Transfer</h6>
+                  <small>Add Money</small>
+                </div>
+              </div>
+              <div class="font-weight-bolder text-success">+ $480</div>
+            </div>
+            <div class="transaction-item">
+              <div class="media">
+                <div class="avatar bg-light-danger rounded">
+                  <div class="avatar-content">
+                    <i data-feather="dollar-sign" class="avatar-icon font-medium-3"></i>
+                  </div>
+                </div>
+                <div class="media-body">
+                  <h6 class="transaction-title">Paypal</h6>
+                  <small>Add Money</small>
+                </div>
+              </div>
+              <div class="font-weight-bolder text-success">+ $590</div>
+            </div>
+            <div class="transaction-item">
+              <div class="media">
+                <div class="avatar bg-light-warning rounded">
+                  <div class="avatar-content">
+                    <i data-feather="credit-card" class="avatar-icon font-medium-3"></i>
+                  </div>
+                </div>
+                <div class="media-body">
+                  <h6 class="transaction-title">Mastercard</h6>
+                  <small>Ordered Food</small>
+                </div>
+              </div>
+              <div class="font-weight-bolder text-danger">- $23</div>
+            </div>
+            <div class="transaction-item">
+              <div class="media">
+                <div class="avatar bg-light-info rounded">
+                  <div class="avatar-content">
+                    <i data-feather="trending-up" class="avatar-icon font-medium-3"></i>
+                  </div>
+                </div>
+                <div class="media-body">
+                  <h6 class="transaction-title">Transfer</h6>
+                  <small>Refund</small>
+                </div>
+              </div>
+              <div class="font-weight-bolder text-success">+ $98</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
 </ng-template>
 <!-- / Modal add offer -->
@@ -571,6 +616,30 @@
          
       </ul>
   </div> -->
+  <div class=" view-outlet">
+    <div class="card card-transaction">
+      <div class="card-header">
+        <!-- <h4 class="card-title">Transactions</h4> -->
+        <!-- <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i> -->
+      </div>
+      <div class="card-body">
+        <div class="transaction-item" *ngFor="let outlet of outletList">
+          <div class="media "(click)="viewOutletDetails(outlet)">
+            <div class="avatar bg-light-primary rounded">
+              <div class="avatar-content">
+                <i data-feather="check" class="avatar-icon font-medium-3"></i>
+              </div>
+            </div>
+            <div class="media-body" >
+              <h6 class="ctn font-small-2">{{outlet.outletName}}</h6>
+              <small>{{outlet?.area}}</small>
+            </div>
+          </div>
+          <div class="font-weight-bolder font-small-2 text-dark">{{outlet?.phone}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 
 </ng-template>

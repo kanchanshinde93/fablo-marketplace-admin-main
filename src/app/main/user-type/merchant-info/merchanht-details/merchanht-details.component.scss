@@ -86,3 +86,17 @@ span.user-name.font-weight-light {
     /* padding-top: 31px; */
     padding: 0;
 }
+.col-lg-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.view-outlet{
+    max-width: 100%;
+}
+.transaction-item.ng-star-inserted {
+    border-bottom: 1px dashed #ebe9f1;
+    padding: 3%;
+}
+.media {
+    cursor: pointer;
+}

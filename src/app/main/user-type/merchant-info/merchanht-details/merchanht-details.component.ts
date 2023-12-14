@@ -73,8 +73,11 @@ export class MerchanhtDetailsComponent implements OnInit {
   }
   
   sellerOutlet() {
+    this.spinner.show();
     this.adminService.getSellerOutlet(this.sellerData.sellerId, this.mode).subscribe((data: any) => {
+      this.spinner.hide();
       this.outletList = data.items;
+
     });
   }
 
@@ -83,6 +86,7 @@ export class MerchanhtDetailsComponent implements OnInit {
     outletData.sellerId = this.sellerData.sellerId;
     this.router.navigate(["/outletInfo/outletDetails"], { state: { outletData } });
     this.outletDetails = outletData;
+    this.modalService.dismissAll();
   }
   editBasic(modalEdit:any){
     this.modalService.open(modalEdit, {
