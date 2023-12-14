@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Navigation, Router } from '@angular/router';
 import { AdminServiceService } from 'app/Services/admin-service.service';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-merchanht-details',
@@ -14,7 +15,7 @@ export class MerchanhtDetailsComponent implements OnInit {
   outletList: any;
   outletDetails: any;
   sellerInfo:any
-  constructor(private router: Router, private adminService: AdminServiceService,private modalService: NgbModal) {
+  constructor(private router: Router, private adminService: AdminServiceService,private spinner: NgxSpinnerService,private modalService: NgbModal) {
     let nav: Navigation = this.router.getCurrentNavigation();
     if (nav.extras && nav.extras.state && nav.extras.state.sellerData) {
       this.sellerData = nav.extras.state.sellerData;
@@ -64,7 +65,9 @@ export class MerchanhtDetailsComponent implements OnInit {
     const formData ={
       "sellerId":this.sellerData.sellerId,
     }
+    this.spinner.show();
     this.adminService.getSellerInfo(formData).subscribe((data: any) => {
+      this.spinner.hide();
       this.sellerInfo = data.items;
     });
   }
@@ -97,4 +100,12 @@ export class MerchanhtDetailsComponent implements OnInit {
       centered: true
     });
   }
+
+  ViewOutlet(data:any){
+    this.modalService.open(data, {
+      centered: true
+    });
+    this.sellerOutlet();
+  }
+
 }
