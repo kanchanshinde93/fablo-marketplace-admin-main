@@ -1,4 +1,8 @@
 // custom css
+body {
+	font-family: 'Poppins', sans-serif !important;
+}
+
 a {
   color: #3e88eb;
 }
@@ -1713,4 +1717,11 @@ ul.outlet-list li a {
     padding: 0;
     margin: 100px auto 0 auto;
   }
+}
+// outlet fontsize
+.datatable-row-center.datatable-row-group.ng-star-inserted {
+  font-size: 15px;
+}
+span.menu-title.text-truncate.ng-star-inserted {
+  font-family: "Poppins", sans-serif !important;
 }
