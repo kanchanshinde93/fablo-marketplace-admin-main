@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Navigation, Router } from '@angular/router';
 import { AdminServiceService } from 'app/Services/admin-service.service';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-merchanht-details',
@@ -13,7 +14,7 @@ export class MerchanhtDetailsComponent implements OnInit {
   outletList: any;
   outletDetails: any;
   sellerInfo:any
-  constructor(private router: Router, private adminService: AdminServiceService) {
+  constructor(private router: Router, private adminService: AdminServiceService,private modalService: NgbModal) {
     let nav: Navigation = this.router.getCurrentNavigation();
     if (nav.extras && nav.extras.state && nav.extras.state.sellerData) {
       this.sellerData = nav.extras.state.sellerData;
@@ -79,5 +80,21 @@ export class MerchanhtDetailsComponent implements OnInit {
     outletData.sellerId = this.sellerData.sellerId;
     this.router.navigate(["/outletInfo/outletDetails"], { state: { outletData } });
     this.outletDetails = outletData;
+  }
+  editBasic(modalEdit:any){
+    this.modalService.open(modalEdit, {
+      centered: true
+    });
+  }
+  editLicensedetails(modalEdit:any){
+    this.modalService.open(modalEdit, {
+      centered: true
+    });
+  }
+
+  editAuthoriseddetails(modalEdit:any){
+    this.modalService.open(modalEdit, {
+      centered: true
+    });
   }
 }

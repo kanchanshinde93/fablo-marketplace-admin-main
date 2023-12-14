@@ -4,8 +4,8 @@
 
     <app-content-header [contentHeader]="contentHeader"></app-content-header>
     <div class="outlet-btn-sec d-flex justify-content-end">
-      <button class="btn btn-outline-primary" rippleEffect>Add
-          Offers <i class="fa-regular fa-plus"></i></button>
+      <button class="btn btn-outline-primary" rippleEffect >Add
+          outlet <i class="fa-regular fa-plus"></i></button>
     </div>
 
 
@@ -61,7 +61,7 @@
                 </div>
                 <div class="ml-1 edit-icon">
                   <a href="javascript:void(0)">
-                    <i class="fa-regular fa-pen-to-square"></i>
+                    <i class="fa-regular fa-pen-to-square" (click)="editBasic(editBasicmodel)"></i>
                   </a>
                 </div>
               </div>
@@ -202,7 +202,7 @@
               </div>
               <div class="ml-1 edit-icon">
                 <a href="javascript:void(0)">
-                  <i class="fa-regular fa-pen-to-square"></i>
+                  <i class="fa-regular fa-pen-to-square" (click)="editLicensedetails(editLicensemodel)"></i>
                 </a>
               </div>
             </div>
@@ -288,7 +288,7 @@
                   </div>
                   <div class="ml-1 edit-icon">
                     <a href="javascript:void(0)">
-                      <i class="fa-regular fa-pen-to-square"></i>
+                      <i class="fa-regular fa-pen-to-square" (click)="editAuthoriseddetails(editAuthorisedmodel)"></i>
                     </a>
                   </div>
                 </div>
@@ -368,3 +368,180 @@
   </div>
 </div>
 
+<!-- Modal basic offer-->
+<ng-template #editBasicmodel let-modal>
+  <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalCenterTitle">Edit Offers</h5>
+      <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body" tabindex="0" ngbAutofocus>
+      <form class="form form-vertical">
+          <div class="row">
+              <div class="col-12">
+                  <div class="form-group">
+                      <label for="first-name-vertical">Offer Name</label>
+                      <input type="text" id="first-name-vertical" class="form-control" name="fname"
+                          placeholder="Offer Name" />
+                  </div>
+              </div>
+              <div class="col-12">
+                  <div class="form-group">
+                      <label for="email-id-vertical">Percent Off</label>
+                      <input type="number" id="email-id-vertical" class="form-control" name="percent"
+                          placeholder="percent Off" />
+                  </div>
+              </div>
+              <div class="col-12">
+                  <div class="form-group">
+                      <label for="email-id-vertical">Start Date</label>
+                      <ng2-flatpickr [ngClass]="'firstsecond'" [config]="basicDateOptions" name="basicDate"></ng2-flatpickr>
+                  </div>
+              </div>
+              <div class="col-12">
+                  <div class="form-group">
+                      <label for="email-id-vertical">End Date</label>
+                      <ng2-flatpickr [ngClass]="'firstsecond'" [config]="basicDateOptions" name="basicDate"></ng2-flatpickr>
+                  </div>
+              </div>
+              <div class="col-12">
+                  <label for="basicTextarea">Offer Description</label>
+                  <fieldset class="form-group">
+                      <textarea class="form-control" id="basicTextarea" rows="3"
+                          placeholder="Offer Description"></textarea>
+                  </fieldset>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
+                      Cancel
+                  </button>
+                  <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
+                      Submit
+                  </button>
+              </div>
+          </div>
+      </form>
+  </div>
+
+</ng-template>
+<!-- / Modal add offer -->
+
+
+<!-- Modal add offer-->
+<ng-template #editLicensemodel let-modal>
+  <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalCenterTitle">Edit Offers</h5>
+      <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body" tabindex="0" ngbAutofocus>
+      <form class="form form-vertical">
+          <div class="row">
+              <div class="col-12">
+                  <div class="form-group">
+                      <label for="first-name-vertical">Offer Name</label>
+                      <input type="text" id="first-name-vertical" class="form-control" name="fname"
+                          placeholder="Offer Name" />
+                  </div>
+              </div>
+              <div class="col-12">
+                  <div class="form-group">
+                      <label for="email-id-vertical">Percent Off</label>
+                      <input type="number" id="email-id-vertical" class="form-control" name="percent"
+                          placeholder="percent Off" />
+                  </div>
+              </div>
+              <div class="col-12">
+                  <div class="form-group">
+                      <label for="email-id-vertical">Start Date</label>
+                      <ng2-flatpickr [ngClass]="'firstsecond'" [config]="basicDateOptions" name="basicDate"></ng2-flatpickr>
+                  </div>
+              </div>
+              <div class="col-12">
+                  <div class="form-group">
+                      <label for="email-id-vertical">End Date</label>
+                      <ng2-flatpickr [ngClass]="'firstsecond'" [config]="basicDateOptions" name="basicDate"></ng2-flatpickr>
+                  </div>
+              </div>
+              <div class="col-12">
+                  <label for="basicTextarea">Offer Description</label>
+                  <fieldset class="form-group">
+                      <textarea class="form-control" id="basicTextarea" rows="3"
+                          placeholder="Offer Description"></textarea>
+                  </fieldset>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
+                      Cancel
+                  </button>
+                  <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
+                      Submit
+                  </button>
+              </div>
+          </div>
+      </form>
+  </div>
+
+</ng-template>
+<!-- / Modal add offer -->
+
+<!-- Modal authorizedPersonDetails offer-->
+<ng-template #editAuthorisedmodel let-modal>
+  <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalCenterTitle">Edit Offers</h5>
+      <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body" tabindex="0" ngbAutofocus>
+      <form class="form form-vertical">
+          <div class="row">
+              <div class="col-12">
+                  <div class="form-group">
+                      <label for="first-name-vertical">Offer Name</label>
+                      <input type="text" id="first-name-vertical" class="form-control" name="fname"
+                          placeholder="Offer Name" />
+                  </div>
+              </div>
+              <div class="col-12">
+                  <div class="form-group">
+                      <label for="email-id-vertical">Percent Off</label>
+                      <input type="number" id="email-id-vertical" class="form-control" name="percent"
+                          placeholder="percent Off" />
+                  </div>
+              </div>
+              <div class="col-12">
+                  <div class="form-group">
+                      <label for="email-id-vertical">Start Date</label>
+                      <ng2-flatpickr [ngClass]="'firstsecond'" [config]="basicDateOptions" name="basicDate"></ng2-flatpickr>
+                  </div>
+              </div>
+              <div class="col-12">
+                  <div class="form-group">
+                      <label for="email-id-vertical">End Date</label>
+                      <ng2-flatpickr [ngClass]="'firstsecond'" [config]="basicDateOptions" name="basicDate"></ng2-flatpickr>
+                  </div>
+              </div>
+              <div class="col-12">
+                  <label for="basicTextarea">Offer Description</label>
+                  <fieldset class="form-group">
+                      <textarea class="form-control" id="basicTextarea" rows="3"
+                          placeholder="Offer Description"></textarea>
+                  </fieldset>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
+                      Cancel
+                  </button>
+                  <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
+                      Submit
+                  </button>
+              </div>
+          </div>
+      </form>
+  </div>
+
+</ng-template>
+<!-- / Modal add offer -->
