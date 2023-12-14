@@ -15,6 +15,7 @@ export class MerchanhtDetailsComponent implements OnInit {
   outletList: any;
   outletDetails: any;
   sellerInfo:any
+  noDataFound:any
   constructor(private router: Router, private adminService: AdminServiceService,private spinner: NgxSpinnerService,private modalService: NgbModal) {
     let nav: Navigation = this.router.getCurrentNavigation();
     if (nav.extras && nav.extras.state && nav.extras.state.sellerData) {
@@ -76,6 +77,9 @@ export class MerchanhtDetailsComponent implements OnInit {
     this.spinner.show();
     this.adminService.getSellerOutlet(this.sellerData.sellerId, this.mode).subscribe((data: any) => {
       this.spinner.hide();
+      if (!data.status) {
+        this.noDataFound=data.message;
+      }
       this.outletList = data.items;
 
     });
