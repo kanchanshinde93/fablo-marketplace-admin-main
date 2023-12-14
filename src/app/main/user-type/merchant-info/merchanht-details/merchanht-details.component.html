@@ -492,47 +492,43 @@
   <div class="modal-body" tabindex="0" ngbAutofocus>
       <form class="form form-vertical">
           <div class="row">
-              <div class="col-12">
-                  <div class="form-group">
-                      <label for="first-name-vertical">Offer Name</label>
-                      <input type="text" id="first-name-vertical" class="form-control" name="fname"
-                          placeholder="Offer Name" />
-                  </div>
+            <div class="col-12">
+              <div class="form-group">
+                  <label for="first-name-vertical">Name</label>
+                  <input type="text" id="first-name-vertical" class="form-control" name="fname"
+                      placeholder="Offer Name" />
               </div>
-              <div class="col-12">
-                  <div class="form-group">
-                      <label for="email-id-vertical">Percent Off</label>
-                      <input type="number" id="email-id-vertical" class="form-control" name="percent"
-                          placeholder="percent Off" />
-                  </div>
+          </div>
+          <div class="col-12">
+              <div class="form-group">
+                  <label for="email-id-vertical">Pan No.</label>
+                  <input type="number" id="email-id-vertical" class="form-control" name="percent"
+                      placeholder="percent Off" />
               </div>
-              <div class="col-12">
-                  <div class="form-group">
-                      <label for="email-id-vertical">Start Date</label>
-                      <ng2-flatpickr [ngClass]="'firstsecond'" [config]="basicDateOptions" name="basicDate"></ng2-flatpickr>
-                  </div>
-              </div>
-              <div class="col-12">
-                  <div class="form-group">
-                      <label for="email-id-vertical">End Date</label>
-                      <ng2-flatpickr [ngClass]="'firstsecond'" [config]="basicDateOptions" name="basicDate"></ng2-flatpickr>
-                  </div>
-              </div>
-              <div class="col-12">
-                  <label for="basicTextarea">Offer Description</label>
-                  <fieldset class="form-group">
-                      <textarea class="form-control" id="basicTextarea" rows="3"
-                          placeholder="Offer Description"></textarea>
-                  </fieldset>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
-                      Cancel
-                  </button>
-                  <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
-                      Submit
-                  </button>
-              </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+                <label for="email-id-vertical">Phone No.</label>
+                <input type="number" id="email-id-vertical" class="form-control" name="percent"
+                    placeholder="percent Off" />
+            </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+              <label for="email-id-vertical">Email</label>
+              <input type="number" id="email-id-vertical" class="form-control" name="percent"
+                  placeholder="percent Off" />
+          </div>
+      </div>
+          
+          <div class="modal-footer">
+              <button type="button" class="btn btn-outline-primary" (click)="modal.close('Accept click')" rippleEffect>
+                  Cancel
+              </button>
+              <button type="button" class="btn btn-outline-primary" (click)="modal.close('Accept click')" rippleEffect>
+                  Submit
+              </button>
+          </div>
           </div>
       </form>
   </div>
@@ -543,7 +539,7 @@
 <!-- Modal authorizedPersonDetails offer-->
 <ng-template #editAuthorisedmodel let-modal>
   <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalCenterTitle">Edit License Details</h5>
+      <h5 class="modal-title" id="exampleModalCenterTitle">Edit Authorised Person Details</h5>
       <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
           <span aria-hidden="true">&times;</span>
       </button>
@@ -553,42 +549,38 @@
           <div class="row">
               <div class="col-12">
                   <div class="form-group">
-                      <label for="first-name-vertical">Offer Name</label>
+                      <label for="first-name-vertical">Name</label>
                       <input type="text" id="first-name-vertical" class="form-control" name="fname"
                           placeholder="Offer Name" />
                   </div>
               </div>
               <div class="col-12">
                   <div class="form-group">
-                      <label for="email-id-vertical">Percent Off</label>
+                      <label for="email-id-vertical">Pan No.</label>
                       <input type="number" id="email-id-vertical" class="form-control" name="percent"
                           placeholder="percent Off" />
                   </div>
               </div>
               <div class="col-12">
-                  <div class="form-group">
-                      <label for="email-id-vertical">Start Date</label>
-                      <ng2-flatpickr [ngClass]="'firstsecond'" [config]="basicDateOptions" name="basicDate"></ng2-flatpickr>
-                  </div>
+                <div class="form-group">
+                    <label for="email-id-vertical">Phone No.</label>
+                    <input type="number" id="email-id-vertical" class="form-control" name="percent"
+                        placeholder="percent Off" />
+                </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group">
+                  <label for="email-id-vertical">Email</label>
+                  <input type="number" id="email-id-vertical" class="form-control" name="percent"
+                      placeholder="percent Off" />
               </div>
-              <div class="col-12">
-                  <div class="form-group">
-                      <label for="email-id-vertical">End Date</label>
-                      <ng2-flatpickr [ngClass]="'firstsecond'" [config]="basicDateOptions" name="basicDate"></ng2-flatpickr>
-                  </div>
-              </div>
-              <div class="col-12">
-                  <label for="basicTextarea">Offer Description</label>
-                  <fieldset class="form-group">
-                      <textarea class="form-control" id="basicTextarea" rows="3"
-                          placeholder="Offer Description"></textarea>
-                  </fieldset>
-              </div>
+          </div>
+              
               <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
+                  <button type="button" class="btn btn-outline-primary" (click)="modal.close('Accept click')" rippleEffect>
                       Cancel
                   </button>
-                  <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
+                  <button type="button" class="btn btn-outline-primary" (click)="modal.close('Accept click')" rippleEffect>
                       Submit
                   </button>
               </div>
