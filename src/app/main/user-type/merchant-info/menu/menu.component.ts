@@ -124,9 +124,9 @@ export class MenuComponent implements OnInit {
     // add product form
     this.addProductForm = this.fb.group({
       productName: new FormControl('', [Validators.required]),
-      productImage: new FormControl('', [Validators.required]),
+      productImage: new FormControl(''),
       productPrice: new FormControl('', [Validators.required]),
-      productDesc: new FormControl('', [Validators.required]),
+      productDesc: new FormControl(''),
       isVeg: new FormControl('')
     });
 
