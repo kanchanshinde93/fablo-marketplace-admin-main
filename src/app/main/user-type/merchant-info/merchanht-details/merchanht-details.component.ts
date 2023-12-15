@@ -111,9 +111,13 @@ export class MerchanhtDetailsComponent implements OnInit {
 
   ViewOutlet(data:any){
     this.modalService.open(data, {
-      centered: true
+      centered: true,
+      scrollable: true
     });
     this.sellerOutlet();
   }
-
+  // modal Open Srolling Long Content Inside Modal
+  // modalOpenSLCIM(modalSLCIM) {
+  //   this.modalService.open(modalSLCIM, { scrollable: true });
+  // }
 }
