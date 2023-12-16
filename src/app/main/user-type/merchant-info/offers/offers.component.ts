@@ -21,6 +21,7 @@ export class OffersComponent implements OnInit {
     let nav: Navigation = this.router.getCurrentNavigation();
     if (nav.extras && nav.extras.state && nav.extras.state.outlet) {
       this.outletData = nav.extras.state.outlet;
+       console.log(this.outletData.outletName)
     } else {
       this.router.navigate(["/outletInfo/outlet"]);
     }
@@ -42,20 +43,21 @@ export class OffersComponent implements OnInit {
             link: '/dashboard/home'
           },
           {
-            name: 'Users',
-            isLink: true,
-            link: '/userType/users'
-          },
-          {
-            name: 'Merchant',
+            name: 'seller',
             isLink: true,
             link: '/userType/merchant'
           },
           {
-            name: 'Outlet',
+            name: 'outlet',
             isLink: true,
             link: '/outletInfo/outlet'
           },
+          {
+            name: 'outletDetails',
+            isLink: true,
+            link: '/outletInfo/outletDetails'
+          },
+         
           {
             name: 'Offers',
             isLink: false

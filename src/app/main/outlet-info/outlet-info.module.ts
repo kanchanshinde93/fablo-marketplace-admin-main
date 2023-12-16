@@ -13,8 +13,8 @@ import { OutletDetailsComponent } from './outlet-details/outlet-details.componen
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { CoreCommonModule } from '@core/common.module';
-import { AgmCoreModule } from '@agm/core';
-
+/* import { AgmCoreModule } from '@agm/core'; */
+/*  */
 
 const routes: Routes = [
   {
@@ -51,11 +51,11 @@ const routes: Routes = [
     FormsModule,
     GoogleMapsModule,  
     CoreCommonModule,
-    AgmCoreModule.forRoot({
+   /*  AgmCoreModule.forRoot({
       // please get your own API key here:
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
       apiKey: 'AIzaSyAvcDy5ZYc2ujCS6TTtI3RYX5QmuoV8Ffw&region=IN'
-    })
+    }) */
   ]
   ,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -60,19 +60,19 @@ export class OrderHistoryComponent implements OnInit {
             link: '/dashboard/home'
           },
           {
-            name: 'Users',
-            isLink: true,
-            link: '/userType/users'
-          },
-          {
-            name: 'Merchant',
+            name: 'seller',
             isLink: true,
             link: '/userType/merchant'
           },
           {
-            name: 'Outlet',
+            name: 'outlet',
             isLink: true,
             link: '/outletInfo/outlet'
+          },
+          {
+            name: 'outletDetails',
+            isLink: true,
+            link: '/outletInfo/outletDetails'
           },
           {
             name: 'Order History',
