@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule ,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OutletComponent } from './outlet/outlet.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -11,6 +11,9 @@ import { AddOutletComponent } from './add-outlet/add-outlet.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { OutletDetailsComponent } from './outlet-details/outlet-details.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { CoreCommonModule } from '@core/common.module';
+import { AgmCoreModule } from '@agm/core';
 
 
 const routes: Routes = [
@@ -24,7 +27,8 @@ const routes: Routes = [
   },
   {
     path: 'outletDetails',
-    component: OutletDetailsComponent
+    component: OutletDetailsComponent,
+    
   },
 ] 
  
@@ -32,6 +36,7 @@ const routes: Routes = [
   declarations: [
     OutletComponent,
     AddOutletComponent,
+    OutletDetailsComponent
   ],
   imports: [ 
     CommonModule,
@@ -44,8 +49,16 @@ const routes: Routes = [
     ReactiveFormsModule,
     NgxSpinnerModule,
     FormsModule,
+    GoogleMapsModule,  
+    CoreCommonModule,
+    AgmCoreModule.forRoot({
+      // please get your own API key here:
+      // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
+      apiKey: 'AIzaSyAvcDy5ZYc2ujCS6TTtI3RYX5QmuoV8Ffw&region=IN'
+    })
   ]
   ,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
  
 })
 export class OutletInfoModule { }

@@ -4,6 +4,8 @@ import { Router, Navigation } from '@angular/router';
 import { AdminServiceService } from 'app/Services/admin-service.service';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from "ngx-spinner";
+import { MapInfoWindow, MapMarker } from '@angular/google-maps';
 
 @Component({
   selector: 'app-outlet-details',
@@ -16,11 +18,16 @@ export class OutletDetailsComponent implements OnInit {
   public basicSelectedOption: number = 10;
   public ColumnMode = ColumnMode;
   public expanded = {};
+ 
   public chkBoxSelected = [];
   public SelectionType = SelectionType;
   private exportCSVData: [] | any;
   rows: any;
   data = [];
+
+  lat = 20.5937; // Latitude for India's center
+  lng = 78.9629; // Longitude for India's center
+  zoom = 5; // Zoom level, adjust as needed
   filteredData = [];
   outletData: any;
   shopTime: any;
@@ -37,7 +44,8 @@ export class OutletDetailsComponent implements OnInit {
   outofStock: any;
   outofStockList: any;
   isAvailable: any;
-  constructor(private router: Router, private toastr:ToastrService ,private modalService: NgbModal, private adminService: AdminServiceService) {
+  locationPoint: any;
+  constructor(private router: Router, private toastr:ToastrService ,private modalService: NgbModal, private adminService: AdminServiceService,private spinner: NgxSpinnerService) {
     let nav: Navigation = this.router.getCurrentNavigation();
     if (nav.extras && nav.extras.state && nav.extras.state.outletData) {
       this.outletData = nav.extras.state.outletData;
@@ -81,9 +89,12 @@ export class OutletDetailsComponent implements OnInit {
   }
 
   outletByID() {
+    this.spinner.show();
     this.adminService.getoutletById(this.outletData.outletId).subscribe((data: any) => {
+      this.spinner.hide();
       this.viewDetails = data.items;
-      // console.log("this.viewDetails",this.viewDetails);
+      this.locationPoint=this.viewDetails.location;
+      console.log("this.viewDetails",this.locationPoint);
 
       this.shopTime = this.viewDetails.openingHours;
       this.openingHoursValue = this.shopTime["0"][0];
@@ -95,13 +106,14 @@ export class OutletDetailsComponent implements OnInit {
   }
 
   sellerBySellerId() {
-
+    this.spinner.show();
     const formData = {
       "sellerId": this.outletData.sellerId
     }
     this.adminService.getSellerDetails(formData).subscribe((data: any) => {
+      this.spinner.hide();
       this.sellerDetails = data.items;
-      // console.log("this.sellerDetails",this.sellerDetails);
+       console.log("this.sellerDetails",this.sellerDetails);
     });
   }
 

@@ -11,7 +11,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
-import { OutletDetailsComponent } from '../outlet-info/outlet-details/outlet-details.component';
+
 import { OffersComponent } from './merchant-info/offers/offers.component';
 import { OrderHistoryComponent } from './merchant-info/order-history/order-history.component';
 import { MenuComponent } from './merchant-info/menu/menu.component';
@@ -86,7 +86,7 @@ const routes: Routes = [
     CustomerComponent,
     DeliveryPartnerComponent,
     AgentComponent,
-    OutletDetailsComponent,
+    
     OffersComponent,
     OrderHistoryComponent,
     MenuComponent,
