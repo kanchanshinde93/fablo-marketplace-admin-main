@@ -263,99 +263,206 @@
                             </ul>
                             <div [ngbNavOutlet]="navVertical"></div> -->
                             <div class="card card-profile">
-                                <img src="{{viewDetails?.outletImage[0]}}" class="img-fluid card-img-top"
-                                    alt="Profile Cover Photo" />
+                                <!-- <img src="{{viewDetails?.outletImage[0]}}" class="img-fluid card-img-top"
+                                    alt="Profile Cover Photo" /> -->
                                 <div class="card-body">
-                                    <div class="profile-image-wrapper">
-                                        <div class="profile-image">
-                                            <div class="avatar">
-                                                <img src="{{viewDetails?.outletImage[0]}}" alt="Profile Picture" />
+                                    <div class="column-parent d-flex" style="gap: 20px;">
+                                        <div class="image">
+                                            <img src="{{viewDetails?.outletImage[0]}}" alt="Profile Picture" />
+                                        </div>
+                                        <div class="outlet-name-details">
+                                            <h3>{{viewDetails?.outletName}}</h3>
+                                            <h6 class="text-muted">{{viewDetails?.shopAddress}}</h6>
+                                            <div class="badge badge-light-primary profile-badge">{{viewDetails?.area}}
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="outlet-name-details">
-                                        <h3>{{viewDetails?.outletName}}</h3>
-                                        <h6 class="text-muted">{{viewDetails?.shopAddress}}</h6>
-                                        <div class="badge badge-light-primary profile-badge">{{viewDetails?.area}}</div>
-                                    </div>
                                     <hr class="mb-2" />
-                                    <div class="details-section">
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <h4 class="text-secondary font-weight-bolder">Basic Details</h4>
-
-                                                <div class="row">
-                                                    <div class="col-lg-5">
-                                                        <p><strong>Merchant Name:</strong></p>
+                                    <div class="details-parent d-flex justify-content-between">
+                                        <div class="details-parent col-md-4">
+                                            <div class="card-body11">
+                                                <div class="heading d-flex justify-content-between align-items-center">
+                                                    <div class="heading1">
+                                                        <h1>Basic Details</h1>
                                                     </div>
-                                                    <div class="col-lg-7">
-                                                        <p>{{sellerDetails?.basicDetails?.sellerName}}</p>
-                                                    </div>
-                                                    <div class="col-lg-5">
-                                                        <p><strong>Trade Name:</strong></p>
-                                                    </div>
-                                                    <div class="col-lg-7">
-                                                        <p>{{sellerDetails?.basicDetails?.tradeName}}</p>
-                                                    </div>
-                                                    <div class="col-lg-5">
-                                                        <p><strong>Merchant Type:</strong></p>
-                                                    </div>
-                                                    <div class="col-lg-7">
-                                                        <p>{{sellerDetails?.basicDetails?.sellerType}}</p>
+                                                    <hr class="mb-1">
+                                                    <div class="ml-1 edit-icon">
+                                                        <a href="javascript:void(0)">
+                                                            <!-- <i class="fa-regular fa-pen-to-square" (click)="editBasic(editBasicmodel)"></i> -->
+                                                        </a>
                                                     </div>
                                                 </div>
+                                                <div class=" card-transaction">
+                                                    <!-- <div class="card-header">
+                                                        <h4 class="card-title"></h4>
+                                                        <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i>                                                   
+                                                </div> -->
+                                                    <div class="card-body1">
+                                                        <div class="transaction-item">
+                                                            <div class="media">
+                                                                <!-- <div class="avatar bg-light-primary rounded">
+                                                                <div class="avatar-content">
+                                                                    <i data-feather="user"
+                                                                        class="avatar-icon font-medium-3"></i>
+                                                                </div>
+                                                            </div> -->
+                                                                <div class="media-body">
+                                                                    <h6 class="transaction-title">Seller Name:</h6>
+                                                                    <!-- <small>Starbucks</small> -->
+                                                                </div>
+                                                            </div>
+                                                            <div class="details">{{sellerDetails?.basicDetails?.sellerName}}</div>
+                                                        </div>
+                                                        <div class="transaction-item">
+                                                            <div class="media">
+                                                                <!-- <div class="avatar bg-light-success rounded">
+                                                                <div class="avatar-content">
+                                                                    <i data-feather="trending-up"
+                                                                        class="avatar-icon font-medium-3"></i>
+                                                                </div>
+                                                            </div> -->
+                                                                <div class="media-body">
+                                                                    <h6 class="transaction-title">Trade Name:</h6>
 
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <h4 class="text-secondary font-weight-bolder">Outlet Timing</h4>
+                                                                </div>
+                                                            </div>
+                                                            <div class="details">{{sellerDetails?.basicDetails?.tradeName}}</div>
+                                                        </div>
+                                                        <div class="transaction-item">
+                                                            <div class="media">
+                                                                <!-- <div class="avatar bg-light-danger rounded">
+                                                                <div class="avatar-content">
+                                                                    <i data-feather="type"
+                                                                        class="avatar-icon font-medium-3"></i>
+                                                                </div>
+                                                            </div> -->
+                                                                <div class="media-body">
+                                                                    <h6 class="transaction-title">Seller Type:</h6>
 
-                                                <div class="row">
-                                                    <div class="col-lg-5">
-                                                        <p><strong> Opening Time :</strong></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="details">{{sellerDetails?.basicDetails?.sellerType}}</div>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-lg-7">
-                                                        <p>{{openingTime}}</p>
-                                                    </div>
-                                                    <div class="col-lg-5">
-                                                        <p><strong>Closing Time:</strong></p>
-                                                    </div>
-                                                    <div class="col-lg-7">
-                                                        <p>{{closingTime}}</p>
-                                                    </div>
-
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6 mt-2">
-                                                <h4 class="text-secondary font-weight-bolder">Contact Details</h4>
 
-                                                <div class="row">
-                                                    <div class="col-lg-5">
-                                                        <p><strong>Phone:</strong></p>
+                                        </div>
+
+                                        <div class="details-parent col-md-4">
+                                          <div class="card-body11">
+                                            <div class="heading d-flex justify-content-between align-items-center">
+                                                <div class="heading1">
+                                                    <h1>Outlet Timing</h1>
+                                                </div>
+                                                <hr class="mb-1">
+                                                <div class="ml-1 edit-icon">
+                                                    <a href="javascript:void(0)">
+                                                        <!-- <i class="fa-regular fa-pen-to-square" (click)="editBasic(editBasicmodel)"></i> -->
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class=" card-transaction">
+                                                <!-- <div class="card-header">
+                                                    <h4 class="card-title"></h4>
+                                                    <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i>                                                       
+                                                </div> -->
+                                                <div class="card-body1">
+                                                    <div class="transaction-item">
+                                                        <div class="media">
+                                                            <!-- <div class="avatar bg-light-primary rounded">
+                                                                <div class="avatar-content">
+                                                                    <i data-feather="user"
+                                                                        class="avatar-icon font-medium-3"></i>
+                                                                </div>
+                                                            </div> -->
+                                                            <div class="media-body">
+                                                                <h6 class="transaction-title">Opening Time:</h6>
+                                                                <!-- <small>Starbucks</small> -->
+                                                            </div>
+                                                        </div>
+                                                        <div class="details">{{openingTime}}</div>
                                                     </div>
-                                                    <div class="col-lg-7">
-                                                        <p>{{sellerDetails?.authorizedPersonDetails?.phone}}</p>
-                                                    </div>
-                                                    <div class="col-lg-5">
-                                                        <p><strong>Email:</strong></p>
-                                                    </div>
-                                                    <div class="col-lg-7">
-                                                        <p>{{sellerDetails?.authorizedPersonDetails?.email}}</p>
+                                                    <div class="transaction-item">
+                                                        <div class="media">
+                                                            <!-- <div class="avatar bg-light-success rounded">
+                                                                <div class="avatar-content">
+                                                                    <i data-feather="trending-up"
+                                                                        class="avatar-icon font-medium-3"></i>
+                                                                </div>
+                                                            </div> -->
+                                                            <div class="media-body">
+                                                                <h6 class="transaction-title">Closing Time:</h6>
+                                                            </div>
+                                                        </div>
+                                                        <div class="details">{{closingTime}}</div>
                                                     </div>
                                                 </div>
                                             </div>
-                                           
+                                          </div>
+                                        </div>
+
+                                        <div class="details-parent col-md-4">
+                                            <div class="card-body11">
+                                                <div class="heading d-flex justify-content-between align-items-center">
+                                                    <div class="heading1">
+                                                        <h1>Contact Details</h1>
+                                                    </div>
+                                                    
+                                                    <div class="ml-1 edit-icon">
+                                                        <a href="javascript:void(0)">
+                                                            <!-- <i class="fa-regular fa-pen-to-square" (click)="editBasic(editBasicmodel)"></i> -->
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <div class=" card-transaction">
+                                                    <!-- <div class="card-header">
+                                                        <h4 class="card-title"></h4>
+                                                        <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i>  
+                                                    </div> -->
+                                                    <div class="card-body1">
+                                                        <div class="transaction-item">
+                                                            <div class="media">
+                                                                <!-- <div class="avatar bg-light-primary rounded">
+                                                                    <div class="avatar-content">
+                                                                        <i data-feather="user"
+                                                                            class="avatar-icon font-medium-3"></i>
+                                                                    </div>
+                                                                </div> -->
+                                                                <div class="media-body">
+                                                                    <h6 class="transaction-title">Phone:</h6>
+                                                                    <!-- <small>Starbucks</small> -->
+                                                                </div>
+                                                            </div>
+                                                            <div class="details">{{sellerDetails?.authorizedPersonDetails?.phone}}</div>
+                                                        </div>
+                                                        <div class="transaction-item">
+                                                            <div class="media">
+                                                                <!-- <div class="avatar bg-light-success rounded">
+                                                                    <div class="avatar-content">
+                                                                        <i data-feather="trending-up"
+                                                                            class="avatar-icon font-medium-3"></i>
+                                                                    </div>
+                                                                </div> -->
+                                                                <div class="media-body">
+                                                                    <h6 class="transaction-title">Email:</h6>
+                                                                </div>
+                                                            </div>
+                                                            <div class="details">{{sellerDetails?.authorizedPersonDetails?.email}}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="col-md-3">
-                        
-                    </div> -->
+                    <!-- <div class="col-md-3"></div> -->
                 </div>
             </div>
-
         </section>
         <!-- Outlet Details End-->
     </div>
@@ -455,4 +562,3 @@
    
 </google-map> 
  -->
-
