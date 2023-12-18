@@ -15,7 +15,7 @@ export class MerchanhtDetailsComponent implements OnInit {
   outletList: any;
   outletDetails: any;
   sellerInfo:any
-  noDataFound:any
+  noDataFound:any;
   constructor(private router: Router, private adminService: AdminServiceService,private spinner: NgxSpinnerService,private modalService: NgbModal) {
     let nav: Navigation = this.router.getCurrentNavigation();
     if (nav.extras && nav.extras.state && nav.extras.state.sellerData) {
@@ -111,13 +111,9 @@ export class MerchanhtDetailsComponent implements OnInit {
 
   ViewOutlet(data:any){
     this.modalService.open(data, {
-      centered: true,
-      scrollable: true
+      centered: true
     });
     this.sellerOutlet();
   }
-  // modal Open Srolling Long Content Inside Modal
-  // modalOpenSLCIM(modalSLCIM) {
-  //   this.modalService.open(modalSLCIM, { scrollable: true });
-  // }
+
 }
