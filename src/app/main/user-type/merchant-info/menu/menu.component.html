@@ -88,16 +88,16 @@
                             <div class="card-body">
                                 <div class="employee-task d-flex justify-content-between align-items-center"
                                     *ngFor="let product of productList">
-                                    <button type="button" (click)="modalProductView(productView,product)" rippleEffect>
+                                    <div type="button" (click)="modalProductView(productView,product)">
                                         <div class="media">
-                                            <div class="media-body my-auto d-flex">
+                                            <div class="veg-icon my-auto d-flex align-items-center">
                                                 <img *ngIf="product?.isVeg" src="assets/images/veg.png" />
                                                 <img *ngIf="!product?.isVeg" src="assets/images/nonveg.png"
                                                     width="20px" />
-                                                <h6 class="mb-0">{{product.productName}}:₹{{product.displayPrice}}</h6>
+                                                    <a class="mb-0">{{product.productName}}:₹{{product.displayPrice}}</a>
                                             </div>
                                         </div>
-                                    </button>
+                                    </div>
                                     <div class="d-flex align-items-center">
                                         <button class="text-primary mr-75"><i class="fa-regular fa-pen-to-square"
                                                 (click)="openEditProductModal(editProduct,product)"></i></button>
