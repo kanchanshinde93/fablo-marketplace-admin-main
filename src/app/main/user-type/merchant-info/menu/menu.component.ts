@@ -193,21 +193,26 @@ export class MenuComponent implements OnInit {
             isLink: true,
             link: '/dashboard/home'
           },
+          // {
+          //   name: 'Users',
+          //   isLink: true,
+          //   link: '/userType/users'
+          // },
+          // {
+          //   name: 'Merchant',
+          //   isLink: true,
+          //   link: '/userType/merchant'
+          // },
           {
-            name: 'seller',
-            isLink: true,
-            link: '/userType/merchant'
-          },
-          {
-            name: 'outlet',
+            name: 'Outlet',
             isLink: true,
             link: '/outletInfo/outlet'
           },
-          {
-            name: 'outletDetails',
-            isLink: true,
-            link: '/outletInfo/outletDetails'
-          },
+          // {
+          //   name: 'Outlet Details',
+          //   isLink: true,
+          //   link: '/outletInfo/outletDetails'
+          // },
           {
             name: 'Menu',
             isLink: false
