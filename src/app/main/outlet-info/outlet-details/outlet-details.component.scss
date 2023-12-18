@@ -1,7 +1,7 @@
 .image img {
     height: 200px;
     width: 200px;
-    border-radius: 50%;
+    border-radius: 5%;
 }
 .card.card1-profile .card-body1 {
     padding: 15px 12px;
@@ -15,4 +15,16 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     padding: 20px;
     height: 100%;
+}
+.outlet-name-details {
+    margin-top: 10px;
+}
+.badge.badge-light-primary {
+    background-color: rgb(62 136 235);
+    color: #ffffff !important;
+    padding: 10px;
+    font-size: 12px;
+}
+.column-parent {
+    margin-bottom: 25px;
 }
