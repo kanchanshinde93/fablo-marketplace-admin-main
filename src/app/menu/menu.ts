@@ -49,12 +49,12 @@ export const menu: CoreMenu[] = [
     icon: 'volume-2',
     url: '/marketing/advertiesment'
   },
-  {
-    id: 'promotion',
-    title: 'Promotion',
-    translate: 'MENU.PROMOTION',
-    type: 'item',
-    icon: 'percent',
-    url: '/marketing/promotion'
-  },
+  // {
+  //   id: 'promotion',
+  //   title: 'Promotion',
+  //   translate: 'MENU.PROMOTION',
+  //   type: 'item',
+  //   icon: 'percent',
+  //   url: '/marketing/promotion'
+  // },
 ]
