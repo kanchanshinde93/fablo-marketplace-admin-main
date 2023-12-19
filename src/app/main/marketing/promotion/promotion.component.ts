@@ -88,6 +88,7 @@ export class PromotionComponent implements OnInit {
         this.modalService.dismissAll();
       });
   }
+ 
 
     // modal edit offers
     openEditOfferModal(data: any, discount: any) {

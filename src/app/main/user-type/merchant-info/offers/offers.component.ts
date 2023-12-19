@@ -93,4 +93,11 @@ export class OffersComponent implements OnInit {
       centered: true
     });
   }
+  // add offer
+  addmodaloffer(modalEdit) {
+    this.modalService.open(modalEdit, {
+      centered: true
+    });
+  }
+
 }
