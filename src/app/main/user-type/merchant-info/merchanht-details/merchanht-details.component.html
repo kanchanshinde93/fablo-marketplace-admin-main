@@ -4,21 +4,20 @@
 
     <app-content-header [contentHeader]="contentHeader"></app-content-header>
 
-    
+
 
 
     <div class="outlet-btn-sec d-flex justify-content-end">
-      <button class="btn btn-outline-primary" (click)="addOutlet(sellerData)"  rippleEffect >Add
-          outlet <i class="fa-regular fa-plus"></i></button>
+      <button class="btn btn-outline-primary" (click)="addOutlet(sellerData)" rippleEffect>Add
+        outlet <i class="fa-regular fa-plus"></i></button>
     </div>
 
 
     <!-- Outlet Details Start-->
     <div class="row match-height">
-      <ngx-spinner bdColor="rgb(51 51 51 / 15%)" size="medium" color="#3e88eb" type="ball-fussion"
-    [fullScreen]="false">
-    <p style="color: white"> Loading... </p>
-    </ngx-spinner>
+      <ngx-spinner bdColor="rgb(51 51 51 / 15%)" size="medium" color="#3e88eb" type="ball-fussion" [fullScreen]="false">
+        <p style="color: white"> Loading... </p>
+      </ngx-spinner>
       <div class="col-6 col-md-6 col-lg-6">
         <div class="card-body">
           <div class="outlet-body">
@@ -48,7 +47,8 @@
 
                     </a>
                     <div ngbDropdownMenu class="dropdown-menu-right" aria-labelledby="dropdownBrowserState">
-                      <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center" (click)="ViewOutlet(ViewoutletModel)">View Outlet</a>
+                      <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center"
+                        (click)="ViewOutlet(ViewoutletModel)">View Outlet</a>
                       <!--  <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center"
                                             (click)="changeOutletStatus(content,row)">Change Status</a> -->
                       <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center">Verification</a>
@@ -381,63 +381,65 @@
   <div class="modal-header">
     <h5 class="modal-title" id="exampleModalCenterTitle">Edit Basic Details</h5>
     <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
+      <span aria-hidden="true">&times;</span>
     </button>
-</div>
-<div class="modal-body" tabindex="0" ngbAutofocus>
-  <form class="form form-vertical">
-   <div class="row">
-     <div class="col-12">
-       <div class="form-group">
-         <label for="first-name-vertical">Seller Name:</label>
-         <input type="text" id="first-name-vertical" class="form-control" name="fname" placeholder="Seller Name" />
-       </div>
-     </div>
-     <div class="col-12">
-       <div class="form-group">
-         <label for="email-id-vertical">Trade Name:</label>
-         <input type="number" id="email-id-vertical" class="form-control" name="percent" placeholder="Trade Name" />
-       </div>
-     </div>
-     <div class="col-12">
-       <div class="form-group">
-         <label for="email-id-vertical">Seller Type:</label>
-         <input type="number" id="email-id-vertical" class="form-control" name="percent" placeholder="Seller Type" />
-       </div>
-     </div>
-     <div class="col-12">
-       <div class="form-group">
-         <label for="email-id-vertical">GST No:</label>
-         <input type="number" id="email-id-vertical" class="form-control" name="percent" placeholder="GST No" />
-       </div>
-     </div>
-     <div class="col-12">
-       <div class="form-group">
-         <label for="email-id-vertical">Seller ID":</label>
-         <input type="number" id="email-id-vertical" class="form-control" name="percent" placeholder="Seller ID" />
-       </div>
-     </div>
-     <div class="col-12">
-       <div class="form-group">
-         <label for="email-id-vertical">Agent ID:</label>
-         <input type="number" id="email-id-vertical" class="form-control" name="percent" placeholder="Agent ID" />
-       </div>
-     </div>
-     <div class="col-12">
-       <div class="form-group">
-         <label for="email-id-vertical">Verification Status:</label>
-         <input type="number" id="email-id-vertical" class="form-control" name="percent" placeholder="Verification Status" />
-       </div>
-     </div>
-     <div class="col-12">
-       <div class="form-group">
-         <label for="email-id-vertical">Number Of Shop</label>
-         <input type="number" id="email-id-vertical" class="form-control" name="percent" placeholder="Number Of Shop" />
-       </div>
-     </div>
-   </div>
-  </form>
-</div>   
+  </div>
+  <div class="modal-body" tabindex="0" ngbAutofocus>
+    <form class="form form-vertical">
+      <div class="row">
+        <div class="col-12">
+          <div class="form-group">
+            <label for="first-name-vertical">Seller Name:</label>
+            <input type="text" id="first-name-vertical" class="form-control" name="fname" placeholder="Seller Name" />
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label for="email-id-vertical">Trade Name:</label>
+            <input type="number" id="email-id-vertical" class="form-control" name="percent" placeholder="Trade Name" />
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label for="email-id-vertical">Seller Type:</label>
+            <input type="number" id="email-id-vertical" class="form-control" name="percent" placeholder="Seller Type" />
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label for="email-id-vertical">GST No:</label>
+            <input type="number" id="email-id-vertical" class="form-control" name="percent" placeholder="GST No" />
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label for="email-id-vertical">Seller ID":</label>
+            <input type="number" id="email-id-vertical" class="form-control" name="percent" placeholder="Seller ID" />
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label for="email-id-vertical">Agent ID:</label>
+            <input type="number" id="email-id-vertical" class="form-control" name="percent" placeholder="Agent ID" />
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label for="email-id-vertical">Verification Status:</label>
+            <input type="number" id="email-id-vertical" class="form-control" name="percent"
+              placeholder="Verification Status" />
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label for="email-id-vertical">Number Of Shop</label>
+            <input type="number" id="email-id-vertical" class="form-control" name="percent"
+              placeholder="Number Of Shop" />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 
 </ng-template>
 <!-- / Modal add offer -->
@@ -446,54 +448,55 @@
 <!-- Modal add offer-->
 <ng-template #editLicensemodel let-modal>
   <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalCenterTitle">Edit License Details</h5>
-      <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-      </button>
+    <h5 class="modal-title" id="exampleModalCenterTitle">Edit License Details</h5>
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
   <div class="modal-body" tabindex="0" ngbAutofocus>
     <form class="form form-vertical">
-     <div class="row">
-       <div class="col-12">
-         <div class="form-group">
-           <label for="email-id-vertical">License Name:</label>
-           <input type="number" id="email-id-vertical" class="form-control" name="percent" placeholder="Trade Name" />
-         </div>
-       </div>
-       <div class="col-12">
-         <div class="form-group">
-           <label for="email-id-vertical">License Number:</label>
-           <input type="number" id="email-id-vertical" class="form-control" name="percent" placeholder="License Number" />
-         </div>
-       </div>
-       <div class="col-12">
-         <div class="form-group">
-           <label for="email-id-vertical">Issued On:</label>
-           <input type="number" id="email-id-vertical" class="form-control" name="percent" placeholder="Issued On" />
-         </div>
-       </div>
-       <div class="col-12">
-         <div class="form-group">
-           <label for="email-id-vertical">Tenure:</label>
-           <input type="number" id="email-id-vertical" class="form-control" name="percent" placeholder="Tenure" />
-         </div>
-       </div> 
-     </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="form-group">
+            <label for="email-id-vertical">License Name:</label>
+            <input type="number" id="email-id-vertical" class="form-control" name="percent" placeholder="Trade Name" />
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label for="email-id-vertical">License Number:</label>
+            <input type="number" id="email-id-vertical" class="form-control" name="percent"
+              placeholder="License Number" />
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label for="email-id-vertical">Issued On:</label>
+            <input type="number" id="email-id-vertical" class="form-control" name="percent" placeholder="Issued On" />
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label for="email-id-vertical">Tenure:</label>
+            <input type="number" id="email-id-vertical" class="form-control" name="percent" placeholder="Tenure" />
+          </div>
+        </div>
+      </div>
     </form>
- </div>   
+  </div>
 </ng-template>
 <!-- / Modal add offer -->
 
 <!-- Modal authorizedPersonDetails offer-->
 <ng-template #editAuthorisedmodel let-modal>
   <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalCenterTitle">Edit License Details</h5>
-      <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-      </button>
+    <h5 class="modal-title" id="exampleModalCenterTitle">Edit License Details</h5>
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
   <div class="modal-body" tabindex="0" ngbAutofocus>
-     <form class="form form-vertical">
+    <form class="form form-vertical">
       <div class="row">
         <div class="col-12">
           <div class="form-group">
@@ -520,9 +523,9 @@
           </div>
         </div>
       </div>
-     </form>
-  </div>   
-    
+    </form>
+  </div>
+
 
 
 </ng-template>
@@ -531,13 +534,13 @@
 <!-- Modal ViewoutletModel offer-->
 <ng-template #ViewoutletModel let-modal>
   <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalCenterTitle">Outlet Deatils</h5>
-      <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-      </button>
+    <h5 class="modal-title" id="exampleModalCenterTitle">Outlet Deatils</h5>
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
   <div class="modal-body" tabindex="0" ngbAutofocus>
-  <!--   <div class="outlist-main">
+    <!--   <div class="outlist-main">
       <ul class="outlet-list" *ngFor="let outlet of outletList">
           <li>
               <a (click)="viewOutletDetails(outlet)">{{outlet.outletName}}</a>
@@ -545,32 +548,32 @@
          
       </ul>
   </div> -->
-  <div class=" view-outlet">
-    <div class="card card-transaction">
-      <div class="card-header">
+    <div class=" view-outlet">
+      <div class="card card-transaction">
+        <!-- <div class="card-header"> -->
         <!-- <h4 class="card-title">Transactions</h4> -->
         <!-- <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i> -->
-      </div>
-      <div class="card-body">
-        <p>Total Outlets:{{ outletList.length }}</p> 
-        {{noDataFound}}
-        <div class="transaction-item" *ngFor="let outlet of outletList">
-          <div class="media "(click)="viewOutletDetails(outlet)">
-            <div class="avatar bg-light-primary rounded">
-              <div class="avatar-content">
-                <i data-feather="check" class="avatar-icon font-medium-3"></i>
+        <!-- </div> -->
+        <div class="card-body">
+          <p>Total Outlets:{{ outletList.length }}</p>
+          {{noDataFound}}
+          <div class="transaction-item" *ngFor="let outlet of outletList">
+            <div class="media " (click)="viewOutletDetails(outlet)">
+              <div class="avatar bg-light-primary rounded">
+                <div class="avatar-content">
+                  <i data-feather="check" class="avatar-icon font-medium-3"></i>
+                </div>
+              </div>
+              <div class="media-body">
+                <h6 class="ctn font-small-2">{{outlet.outletName}}</h6>
+                <small>{{outlet?.area}}</small>
               </div>
             </div>
-            <div class="media-body" >
-              <h6 class="ctn font-small-2">{{outlet.outletName}}</h6>
-              <small>{{outlet?.area}}</small>
-            </div>
+            <div class="font-weight-bolder font-small-2 text-dark">{{outlet?.phone}}</div>
           </div>
-          <div class="font-weight-bolder font-small-2 text-dark">{{outlet?.phone}}</div>
         </div>
       </div>
     </div>
-  </div>
   </div>
 
 </ng-template>

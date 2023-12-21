@@ -7,11 +7,13 @@ import { AdminServiceService } from 'app/Services/admin-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
+import { FileUploader } from 'ng2-file-upload';
 @Component({
   selector: 'app-outlet',
   templateUrl: './outlet.component.html',
   styleUrls: ['./outlet.component.scss']
 })
+
 export class OutletComponent implements OnInit {
   private tempData = [];
   public kitchenSinkRows: any;
@@ -39,11 +41,34 @@ export class OutletComponent implements OnInit {
   changeById: any;
   outetverifiedId:any
   isVerifiedStutes:any
+  imageURL: any;
+  addProductForm: any;
 
   constructor(private modalService: NgbModal, private router:Router ,private spinner: NgxSpinnerService,private toastr:ToastrService , private fb: FormBuilder, private adminService: AdminServiceService) { }
 
   public contentHeader: object
+  selectedImage: File | null = null;
 
+  outletImagenew(event: any) {
+    const fileList: FileList = event.target.files;
+    if (fileList.length > 0) {
+      this.selectedImage = fileList[0];
+    }
+  }
+
+  SelectImage(event: any) {
+    this.selectedImage = event.target.files[0]
+
+    var reader = new FileReader();
+    reader.onload = (event: any) => {
+      this.imageURL.push(event.target.result);
+      this.addProductForm.patchValue({
+        fileSource: this.imageURL,
+      });
+
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  }
   ngOnInit(): void {
 
     // edit outlet form

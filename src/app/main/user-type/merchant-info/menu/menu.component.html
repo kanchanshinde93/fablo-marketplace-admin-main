@@ -3,14 +3,13 @@
         <!-- content-header component -->
         <app-content-header [contentHeader]="contentHeader"></app-content-header>
         <div id="outlet-menu-page">
-            <h4 class="card-title">{{this.outletData?.outletName}}</h4> 
+            <h4 class="card-title">{{this.outletData?.outletName}}</h4>
             <div class="d-flex justify-content-md-end">
                 <div class="d-flex align-items-center justify-content-end pb-1 pl-1 pl-md-0 pb-md-0">
-
                     <button class="btn btn-outline-primary font-weight-light" rippleEffect>Search Product</button>
                     <button csvLink (click)="downloadCSV($event)"
                         class="btn btn-outline-secondary float-right csv-export" rippleEffect><img
-                            src="assets/images/icons/csv.png" alt=""> </button>
+                            src="assets/images/icons/csv.png" alt=""></button>
                 </div>
             </div>
             <div class="row">
@@ -23,7 +22,6 @@
                                 (click)="openAddCategoryModal(addProductCategory)"><i
                                     class="fa-regular fa-plus"></i></button>
                         </div>
-
                         <div class="card-body">
                             <div class="employee-task d-flex justify-content-between align-items-center"
                                 *ngFor="let category of categoryList">
@@ -94,7 +92,7 @@
                                                 <img *ngIf="product?.isVeg" src="assets/images/veg.png" />
                                                 <img *ngIf="!product?.isVeg" src="assets/images/nonveg.png"
                                                     width="20px" />
-                                                    <a class="mb-0">{{product.productName}}:₹{{product.displayPrice}}</a>
+                                                <a class="mb-0">{{product.productName}}:₹{{product.displayPrice}}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -232,6 +230,7 @@
                             </div>
                         </div>
                     </fieldset>
+
                 </div>
 
 

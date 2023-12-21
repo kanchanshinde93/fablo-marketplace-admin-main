@@ -498,6 +498,7 @@ getSellerInfo(body: any) {
       })
     );
   }
+  
   // remove discpount from outlet
 removeDisount(body:any){
   return this.http.post(this.menuUrl + 'outlet/discount/remove' , body , this.Header()).pipe(map((data:any)=>{

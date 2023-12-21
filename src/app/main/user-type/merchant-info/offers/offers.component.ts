@@ -57,7 +57,6 @@ export class OffersComponent implements OnInit {
             isLink: true,
             link: '/outletInfo/outletDetails'
           },
-         
           {
             name: 'Offers',
             isLink: false
@@ -68,8 +67,10 @@ export class OffersComponent implements OnInit {
   }
 
   outletOffer(){
+    console.log(this.outletData.outletId)
     this.adminService.getOutletOffer(this.outletData?.outletId).subscribe((data:any)=>{
-      this.offerList = data.items;
+    this.offerList = data.items;
+    console.log(this.offerList);
     });
   }
 
