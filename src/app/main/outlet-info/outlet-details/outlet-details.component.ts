@@ -89,7 +89,7 @@ export class OutletDetailsComponent implements OnInit {
   }
 
   outletByID() {
-    this.spinner.show();
+     this.spinner.show();
     this.adminService.getoutletById(this.outletData.outletId).subscribe((data: any) => {
       this.spinner.hide();
       this.viewDetails = data.items;
@@ -106,12 +106,12 @@ export class OutletDetailsComponent implements OnInit {
   }
 
   sellerBySellerId() {
-    this.spinner.show();
+     this.spinner.show();
     const formData = {
       "sellerId": this.outletData.sellerId
     }
     this.adminService.getSellerDetails(formData).subscribe((data: any) => {
-      this.spinner.hide();
+       this.spinner.hide();
       this.sellerDetails = data.items;
        console.log("this.sellerDetails",this.sellerDetails);
     });

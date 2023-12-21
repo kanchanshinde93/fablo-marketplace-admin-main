@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators, FormControl, NgForm } from '@angula
 import { FlatpickrOptions } from 'ng2-flatpickr';
 import { Router,Navigation } from '@angular/router';
 import { AdminServiceService } from 'app/Services/admin-service.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-offers',
@@ -17,7 +18,7 @@ export class OffersComponent implements OnInit {
     altInput: true
   }
   offerList: any;
-  constructor(private modalService: NgbModal, private router:Router, private adminService:AdminServiceService) {
+  constructor(private modalService: NgbModal, private router:Router, private adminService:AdminServiceService,private spinner: NgxSpinnerService) {
     let nav: Navigation = this.router.getCurrentNavigation();
     if (nav.extras && nav.extras.state && nav.extras.state.outlet) {
       this.outletData = nav.extras.state.outlet;
@@ -67,10 +68,10 @@ export class OffersComponent implements OnInit {
   }
 
   outletOffer(){
-    console.log(this.outletData.outletId)
+    this.spinner.show();
     this.adminService.getOutletOffer(this.outletData?.outletId).subscribe((data:any)=>{
-    this.offerList = data.items;
-    console.log(this.offerList);
+      this.spinner.hide();
+      this.offerList = data.items;
     });
   }
 
