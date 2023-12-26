@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Navigation, Router } from '@angular/router';
 import { AdminServiceService } from 'app/Services/admin-service.service';
-import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalConfig, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerService } from "ngx-spinner";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-merchanht-details',
@@ -16,7 +17,9 @@ export class MerchanhtDetailsComponent implements OnInit {
   outletDetails: any;
   sellerInfo:any
   noDataFound:any;
-  constructor(private router: Router, private adminService: AdminServiceService,private spinner: NgxSpinnerService,private modalService: NgbModal) {
+  modalRef: NgbModalRef;
+  sellerDeteleID: any;
+  constructor(private router: Router, private adminService: AdminServiceService,private toastr: ToastrService,private spinner: NgxSpinnerService,private modalService: NgbModal) {
     let nav: Navigation = this.router.getCurrentNavigation();
     if (nav.extras && nav.extras.state && nav.extras.state.sellerData) {
       this.sellerData = nav.extras.state.sellerData;
@@ -115,10 +118,28 @@ export class MerchanhtDetailsComponent implements OnInit {
     });
     this.sellerOutlet();
   }
-  deleteSeller(data:any){
-    this.modalService.open(data, {
+  deleteSeller(model:any,data:any){
+    this.sellerDeteleID=data.sellerId
+    this.modalRef =this.modalService.open(model, {
       centered: true
     });
   }
 
+  deleteSellerbtn(){
+    
+    let body={
+      sellerId: this.sellerDeteleID
+    }
+    this.adminService.deleteSeller(body).subscribe((res: any) => {
+      if(res.status){
+        this.toastr.success(res.message,"Success!");
+        this.modalRef.close();
+         this.router.navigate(["/userType/merchant"]);
+      
+      }else{
+        this.toastr.error(res.message,"error!");
+        this.modalRef.close();
+      }
+  });
+  }
 }
