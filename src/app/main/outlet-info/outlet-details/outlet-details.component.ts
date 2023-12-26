@@ -188,4 +188,12 @@ export class OutletDetailsComponent implements OnInit {
     this.kitchenSinkRows = this.rows;
 
   }
+  delete(data:any){
+    this.modalRef = this.modalService.open(data,{
+      centered:true,
+      scrollable:true,
+      size:'md'
+    });
+    
+  }
 }
