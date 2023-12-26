@@ -282,7 +282,7 @@ VerifiedoutletChange(){
  
     this.rows = this.outletList.filter(function (d) {
       const phoneString = (d.phone || '').toString();
-      return d.outletName?.toLowerCase().indexOf(val) !== -1 || d.sellerId?.toLowerCase().indexOf(val) !== -1 || !val;
+      return d.outletName?.toLowerCase().indexOf(val) !== -1 || d.sellerId?.toLowerCase().indexOf(val) !== -1 ||d.outletId?.toLowerCase().indexOf(val) !== -1 ||!val;
     });
     this.kitchenSinkRows = this.rows;
   }

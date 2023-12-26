@@ -202,7 +202,7 @@ export class OutletDetailsComponent implements OnInit {
 
   deleteOutletbtn(){
     let body={
-      sellerId: this.OutletDeteleID
+      outletId: this.OutletDeteleID
     }
     this.adminService.deleteOutlet(body).subscribe((res: any) => {
       if(res.status){
