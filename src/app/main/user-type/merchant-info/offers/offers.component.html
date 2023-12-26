@@ -9,10 +9,10 @@
             </ngx-spinner>
             <div class="offers-section">
                 <div class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
-                    <h4 class="card-title">{{this.outletData?.outletName}}</h4> 
+                    <h4 class="card-title">{{this.outletData?.outletName}}</h4>
                     <!-- <h4 class="card-title"></h4> -->
                     <div class="outlet-btn-sec mb-2">
-                      <!--   <button class="btn btn-outline-primary"  (click)="addmodaloffer(addoffer)"> Add
+                        <!--   <button class="btn btn-outline-primary"  (click)="addmodaloffer(addoffer)"> Add
                             Offers  <i class="fa-regular fa-plus"></i></button> -->
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                         <div class="blog-slider">
                             <div class="blog-slider__wrp swiper-wrapper">
                                 <div class="blog-slider__item swiper-slide">
-                                    <div class="blog-slider__img">        
+                                    <div class="blog-slider__img">
                                         <div class="blog-ctn">
                                             <p>Get</p>
                                             <h1>{{offerList?.discountPercent}}%</h1>
@@ -31,8 +31,10 @@
                                     <div class="blog-slider__content">
                                         <h4>{{offerList?.discountTitle}}</h4>
                                         <div class="blog-slider__text">
-                                            <p>Apply this Offer and get Upto <span class="offer">{{offerList?.discountPercent}}%</span> off on this
-                                                order , order above <span class="offer">{{offerList?.minAmount}}</span> No
+                                            <p>Apply this Offer and get Upto <span
+                                                    class="offer">{{offerList?.discountPercent}}%</span> off on this
+                                                order , order above <span class="offer">{{offerList?.minAmount}}</span>
+                                                No
                                                 Upper limit</p>
                                         </div>
                                         <!-- <div class="edit-parent d-flex justify-content-between">
@@ -69,8 +71,7 @@
                         <label for="first-name-vertical">Discount Name</label>
                         <input type="text" id="discountTitle-vertical" class="form-control" name="discountTitle"
                             placeholder="Discount Name" formControlName="discountTitle" [ngClass]="{
-                  'is-invalid': submitted && addDiscount.discountTitle.errors
-                }" />
+                  'is-invalid': submitted && addDiscount.discountTitle.errors}" />
                         <div *ngIf="submitted && addDiscount.discountTitle.errors" class="invalid-feedback">
                             <div *ngIf="addDiscount.discountTitle.errors.required">
                                 Discount Name is required
@@ -79,12 +80,12 @@
                     </div>
                 </div>
                 <!--    <div class="col-12">
-                                          <div class="form-group">
-                                              <label for="first-name-vertical">Promo Code</label>
-                                              <input type="text" id="promoCode-vertical" class="form-control" name="promoCode"
-                                                  placeholder="Promo Code" formControlName="promoCode" />
-                                          </div>
-                                      </div> -->
+                           <div class="form-group">
+                                 <label for="first-name-vertical">Promo Code</label>
+                                 <input type="text" id="promoCode-vertical" class="form-control" name="promoCode"
+                                 placeholder="Promo Code" formControlName="promoCode" />
+                                    
+                        </div> -->
                 <div class="col-12">
                     <div class="form-group">
                         <label for="email-id-vertical">Percent Off(%)</label>

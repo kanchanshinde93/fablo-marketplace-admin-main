@@ -115,5 +115,10 @@ export class MerchanhtDetailsComponent implements OnInit {
     });
     this.sellerOutlet();
   }
+  deleteSeller(data:any){
+    this.modalService.open(data, {
+      centered: true
+    });
+  }
 
 }

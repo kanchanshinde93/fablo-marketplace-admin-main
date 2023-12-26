@@ -6,11 +6,16 @@
 
 
 
-
-    <div class="outlet-btn-sec d-flex justify-content-end">
-      <button class="btn btn-outline-primary" (click)="addOutlet(sellerData)" rippleEffect>Add
-        outlet <i class="fa-regular fa-plus"></i></button>
+    <div class="p d-flex justify-content-end">
+      <div class="outlet-btn-sec d-flex justify-content-end">
+        <button class="btn btn-outline-primary" (click)="deleteSeller(deleteVariant)" rippleEffect>Delete Seller</button>
+      </div>
+      <div class="outlet-btn-sec d-flex justify-content-end">
+        <button class="btn btn-outline-primary" (click)="addOutlet(sellerData)" rippleEffect>Add
+          outlet <i class="fa-regular fa-plus"></i></button>
+      </div>
     </div>
+
 
 
     <!-- Outlet Details Start-->
@@ -34,17 +39,20 @@
                 </div>
               </div>
               <!-- <div class="outlet-btn-sec mb-2">
-                            <button class="btn btn-primary btn-add"rippleEffect>
-                              Add Banners <i class="fa-regular fa-plus"></i>
-                            </button>
-                          </div> -->
+                    <button class="btn btn-primary btn-add"rippleEffect>
+                        Add Banners <i class="fa-regular fa-plus"></i>
+                    </button>
+              </div> -->
               <div class="trade1-parent">
                 <div class="d-flex align-items-center">
                   <div ngbDropdown container="body">
+                    <!-- <a ngbDropdownToggle href="javascript:void(0);" class="hide-arrow" id="dropdownBrowserState"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a> -->
                     <a ngbDropdownToggle href="javascript:void(0);" class="hide-arrow" id="dropdownBrowserState"
                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fa-solid fa-ellipsis-vertical"></i>
-
                     </a>
                     <div ngbDropdownMenu class="dropdown-menu-right" aria-labelledby="dropdownBrowserState">
                       <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center"
@@ -578,3 +586,25 @@
 
 </ng-template>
 <!-- / Modal add offer -->
+
+<ng-template #deleteVariant let-modal>
+  <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalCenterTitle">Delete Seller</h5>
+      <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body" tabindex="0" ngbAutofocus>
+      <p>
+          Are you sure you want to Delete ?
+      </p>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-outline-primary" (click)="modal.close('Accept click')" rippleEffect>
+          Cancel
+      </button>
+      <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
+          Delete
+      </button>
+  </div>
+</ng-template>
