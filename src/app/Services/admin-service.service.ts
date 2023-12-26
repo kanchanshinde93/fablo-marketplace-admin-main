@@ -518,5 +518,20 @@ addNewDiscount(body:any){
   }))
 }
 
+deleteSeller(body:any){
+  return this.http.post(this.userUrl + '/v1/seller/delete' , body , this.Header()).pipe(map((data:any)=>{
+    return data;
+  }))
+}
+
+
+  deleteOutlet(body:any){
+    return this.http.post(this.userUrl + '/v1/outlet/delete' , body , this.Header()).pipe(map((data:any)=>{
+      return data;
+    }))
+  
+  
+}
+
 
 }
