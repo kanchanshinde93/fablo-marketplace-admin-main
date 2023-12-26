@@ -526,7 +526,7 @@ deleteSeller(body:any){
 
 
   deleteOutlet(body:any){
-    return this.http.post(this.userUrl + '/v1/outlet/delete' , body , this.Header()).pipe(map((data:any)=>{
+    return this.http.post(this.menuUrl + '/v1/outlet/delete' , body , this.Header()).pipe(map((data:any)=>{
       return data;
     }))
   

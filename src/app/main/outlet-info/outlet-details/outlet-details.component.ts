@@ -45,6 +45,7 @@ export class OutletDetailsComponent implements OnInit {
   outofStockList: any;
   isAvailable: any;
   locationPoint: any;
+  OutletDeteleID: any;
   constructor(private router: Router, private toastr:ToastrService ,private modalService: NgbModal, private adminService: AdminServiceService,private spinner: NgxSpinnerService) {
     let nav: Navigation = this.router.getCurrentNavigation();
     if (nav.extras && nav.extras.state && nav.extras.state.outletData) {
@@ -188,12 +189,31 @@ export class OutletDetailsComponent implements OnInit {
     this.kitchenSinkRows = this.rows;
 
   }
-  delete(data:any){
-    this.modalRef = this.modalService.open(data,{
+  deleteOutlet(model:any,data:any){
+    console.log(data.outletId);
+    this.OutletDeteleID=data.outletId
+    this.modalRef = this.modalService.open(model,{
       centered:true,
       scrollable:true,
       size:'md'
     });
     
+  }
+
+  deleteOutletbtn(){
+    let body={
+      sellerId: this.OutletDeteleID
+    }
+    this.adminService.deleteOutlet(body).subscribe((res: any) => {
+      if(res.status){
+        this.toastr.success(res.message,"Success!");
+        this.modalRef.close();
+         this.router.navigate(["/outletInfo/outlet"]);
+      
+      }else{
+        this.toastr.error(res.message,"error!");
+        this.modalRef.close();
+     }
+  });
   }
 }
