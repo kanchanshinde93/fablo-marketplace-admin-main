@@ -26,7 +26,7 @@
                         <div class="d-flex justify-content-between align-items-center m-1">
                             <label class="d-flex align-items-center">
                                 <select class="form-control mx-25" [(ngModel)]="basicSelectedOption">
-                                    <option value="10">101</option>
+                                    <option value="10">10</option>
                                     <option value="25">25</option>
                                     <option value="50">50</option>
                                     <option value="100">100</option>
@@ -49,10 +49,10 @@
                 </div>
 
                 <!-- ngx-datatables responsive -->
-                <ngx-datatable #table class="bootstrap core-bootstrap" [columnMode]="ColumnMode.force"
+                <ngx-datatable #table class="bootstrap core-bootstrap" [columnMode]="ColumnMode.force" [columnMode]="'force'"
                     [headerHeight]="40" [rowHeight]="58" [footerHeight]="50" rowHeight="auto" [limit]="10" [rows]="rows"
-                    [scrollbarH]="true" [limit]="basicSelectedOption">
-                    <ngx-datatable-column name="Seller Id" prop="sellerId" [width]="150"></ngx-datatable-column>
+                 [scrollbarH]="true" [limit]="basicSelectedOption">
+                    <ngx-datatable-column name="Seller Id"  prop="sellerId" [width]="150"></ngx-datatable-column>
                     <ngx-datatable-column name="Oulet Id" prop="outletId" [width]="150"></ngx-datatable-column>
                     <ngx-datatable-column name="Outlet Name" prop="outletName" [width]="150"></ngx-datatable-column>
                     <ngx-datatable-column name="Status" prop="isClosed" [width]="150">

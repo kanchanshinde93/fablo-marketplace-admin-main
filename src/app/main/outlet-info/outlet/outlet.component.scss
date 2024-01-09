@@ -11,3 +11,10 @@
 .datatable-header-cell-wrapper span {
     color: white;
 }
+
+.datatable-cell {
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
