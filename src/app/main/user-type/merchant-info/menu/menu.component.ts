@@ -45,10 +45,12 @@ export class MenuComponent implements OnInit {
   addCustomizationForm: FormGroup;
   editCustomizationForm: FormGroup;
   addVariantForm: FormGroup;
+  addproductVariantForm:FormGroup;
   editVariantForm: FormGroup;
   editAddonForm: FormGroup;
   addAddonForm: FormGroup;
   editAddonProductForm: FormGroup;
+
   Submitted: Boolean = false;
   rows: any;
   rows1: any;
@@ -157,6 +159,12 @@ export class MenuComponent implements OnInit {
       variantPrice: new FormControl('', [Validators.required])
     });
 
+     // add productvariant form
+     this.addproductVariantForm = this.fb.group({
+      productName: new FormControl('', [Validators.required]),
+      productPrice: new FormControl('', [Validators.required])
+    });
+
     // edit variant form
     this.editVariantForm = this.fb.group({
       variantName: new FormControl('', [Validators.required]),
@@ -249,6 +257,10 @@ export class MenuComponent implements OnInit {
     return this.addVariantForm.controls;
   }
 
+  get aproductvariant() {
+    return this.addproductVariantForm.controls;
+  }
+  
   get evariant() {
     return this.editVariantForm.controls;
   }
@@ -566,6 +578,7 @@ export class MenuComponent implements OnInit {
 
   //  opne view variation Modal
   modalViewVariation(data: any, custom: any) {
+    console.log(this.custom);
     this.custom = custom
     this.modalService.open(data, {
       size: "lg",
@@ -652,14 +665,14 @@ export class MenuComponent implements OnInit {
   }
 
   // open add variation Modal
-  modalAddVariation(data: any) {
-    this.modalRef = this.modalService.open(data, {
+  modalAddVariation(data: any,id:any) {
+   this.modalRef = this.modalService.open(data, {
       centered: true,
     });
   }
 
   addVariantFormSubmit() {
-    this.Submitted = true;
+   this.Submitted = true;
     if (this.addVariantForm.invalid) {
       return;
     }
@@ -840,8 +853,38 @@ export class MenuComponent implements OnInit {
     }
   }
 
+ // open view addon product submit
+  addproductVariantFormSubmit(){
+    this.Submitted = true;
+    if (this.addproductVariantForm.invalid) {
+      return;
+    }
+    else {
+      const formData = {
+        addOnCategoryId: this.addonCategory.addOnCategoryId,
+        productName: this.addproductVariantForm.value.productName,
+        productPrice: this.addproductVariantForm.value.productPrice
+      }
+  
+  
+      this.adminService.addAddonProduct(formData).subscribe((res: any) => {
+        if (res.status) {
+          this.toastr.success(res.message, "Success!");
+          this.productAddons();
+          this.modalRef.close();
+          this.addproductVariantForm.reset();
+          this.Submitted = false;
+        } else {
+          this.toastr.error(res.message, "error!");
+          this.Submitted = false;
+        }
+      }); 
+    }
+  }
+
   // open view addon product Modal
   opneViewAddonProductModal(data: any, addonCategory: any) {
+    // console.log(addonCategory.addOnCategoryId)
     this.modalRef = this.modalService.open(data, {
       size: "lg",
       windowClass: 'modal right'

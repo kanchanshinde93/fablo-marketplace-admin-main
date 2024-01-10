@@ -394,7 +394,16 @@ getSellerInfo(body: any) {
         })
       );
   }
-
+// add addon product
+addAddonProduct(body: any) {
+  return this.http
+    .post(this.menuUrl + "/v1/menu/addOn/product", body, this.Header())
+    .pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
+}
   // edit addon product
   editAddonProduct(body: any) {
     return this.http
