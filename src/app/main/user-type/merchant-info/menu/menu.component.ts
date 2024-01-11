@@ -92,6 +92,7 @@ export class MenuComponent implements OnInit {
   editCatgory: any;
   selectedImage: any;
   imageURL = [];
+  editproductimageURL=[];
   prodBySub: any;
   productEdit: any;
   vegCheck: any;
@@ -303,6 +304,8 @@ export class MenuComponent implements OnInit {
 
   // opne add product Modal
   openAddProductModal(data: any) {
+    this.Submitted=false;
+    this.imageURL=[];
     this.modalRef = this.modalService.open(data, {
       centered: true,
       scrollable: true,
@@ -312,25 +315,40 @@ export class MenuComponent implements OnInit {
 
   // open edit product Modal
   openEditProductModal(data: any, productEdit: any) {
+    this.editproductimageURL=[];
     this.modalRef = this.modalService.open(data, {
       centered: true,
       scrollable: true,
       size: 'lg'
     });
+    console.log(productEdit);
+    
     this.productEdit = productEdit;
     this.previousImage = productEdit.productImage 
-   
+    console.log(this.previousImage);
     this.editProductForm.patchValue({
       productName: productEdit.productName,
       productDesc: productEdit.productDesc,
       productPrice: productEdit.productPrice,
-      isVeg: productEdit.isVeg
+      isVeg: productEdit.isVeg,
+      productImage: productEdit.productImage 
     });
   }
   
 
   changeImage(event:any){
-    this.newImage = event.target.files[0];
+  this.editproductimageURL=[];
+    this.previousImage='';
+ this.newImage = event.target.files[0];
+    var reader = new FileReader();
+    reader.onload = (event: any) => {
+      this.editproductimageURL.push(event.target.result);
+      this.editProductForm.patchValue({
+        fileSource: this.editproductimageURL,
+      });
+
+    }
+    reader.readAsDataURL(event.target.files[0]);
   }
 
   editProductFormSubmit(){
@@ -422,6 +440,7 @@ export class MenuComponent implements OnInit {
   }
 
   SelectImage(event: any) {
+    this.imageURL=[];
     this.selectedImage = event.target.files[0]
 
     var reader = new FileReader();
