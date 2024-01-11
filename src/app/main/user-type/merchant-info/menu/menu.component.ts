@@ -7,6 +7,7 @@ import { Router, Navigation } from '@angular/router';
 import { AdminServiceService } from 'app/Services/admin-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { FileUploader } from 'ng2-file-upload';
+import { Observable, Subject } from 'rxjs';
 
 const URL = 'https://your-url.com';
 @Component({
@@ -15,6 +16,7 @@ const URL = 'https://your-url.com';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+  private dataSubject = new Subject<any>();
   public uploader: FileUploader = new FileUploader({
     url: URL,
     isHTML5: true
@@ -137,7 +139,7 @@ export class MenuComponent implements OnInit {
       productName: new FormControl('', [Validators.required]),
       productImage: new FormControl(''),
       productPrice: new FormControl('', [Validators.required]),
-      productDesc: new FormControl('', [Validators.required]),
+      productDesc: new FormControl('', ),
       isVeg: new FormControl('')
     });
 
@@ -279,7 +281,7 @@ export class MenuComponent implements OnInit {
 
   // open add product category / subcategory Modal
   openAddCategoryModal(data: any) {
-    this.modalRef = this.modalService.open(data, {
+     this.modalRef = this.modalService.open(data, {
       centered: true,
       scrollable: true,
       size: 'md'
@@ -326,7 +328,6 @@ export class MenuComponent implements OnInit {
     });
   }
   
-  
 
   changeImage(event:any){
     this.newImage = event.target.files[0];
@@ -363,6 +364,7 @@ export class MenuComponent implements OnInit {
       })
     }
   }
+
   addCategoryFormSubmit() {
     this.Submitted = true;
     this.loading = true;
@@ -433,8 +435,6 @@ export class MenuComponent implements OnInit {
     reader.readAsDataURL(event.target.files[0]);
   }
 
-
-
   allCategory() {
     this.adminService.getAllCategory(this.outletData?.outletId).subscribe((data: any) => {
       this.categoryList = data.items;
@@ -443,6 +443,7 @@ export class MenuComponent implements OnInit {
 
   subCategory(category: any) {
     this.categoryData = category;
+    console.log(this.categoryData)
     if (this.categoryData.hasSubCategory) {
       this.subCategoryById();
       this.showProd = false;
@@ -884,7 +885,7 @@ export class MenuComponent implements OnInit {
 
   // open view addon product Modal
   opneViewAddonProductModal(data: any, addonCategory: any) {
-    // console.log(addonCategory.addOnCategoryId)
+    console.log(addonCategory)
     this.modalRef = this.modalService.open(data, {
       size: "lg",
       windowClass: 'modal right'
@@ -1071,6 +1072,7 @@ export class MenuComponent implements OnInit {
     this.table.offset = 0;
 
   }
+
   onSelect({ selected }: any) {
     this.exportCSVData = selected;
   }
@@ -1103,7 +1105,7 @@ export class MenuComponent implements OnInit {
     }
 
   }
-  onActivate(event: any) {
 
+  onActivate(event: any) {
   }
 }
