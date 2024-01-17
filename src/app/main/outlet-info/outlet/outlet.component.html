@@ -262,18 +262,18 @@
                         <div *ngIf="Submitted && b.outletName.errors" class="invalid-feedback">
                             <div *ngIf="b.outletName.errors.required">Outlet Name is required</div>
 
-                        </div>
+                        </div> 
                     </div>
                 </div>  
                 <div class="col-md-6 col-12">
                     <fieldset class="form-group">
                       <label for="file-upload-single">Product Image</label>
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" formControlName="outletImagenew" id="outletImagenew"
-                          [ngClass]="{ 'is-invalid': Submitted && b.outletImagenew.errors }"
-                          (change)="outletImagenew($event)" />
+                        <input type="file" class="custom-file-input" formControlName="outletImage" id="outletImage"
+                          [ngClass]="{ 'is-invalid': Submitted && b.outletImage.errors }"
+                          (change)="outletImagechnage($event)" />
                         <div *ngIf="Submitted && b.outletImage.errors" class="invalid-feedback">
-                          <div *ngIf="b.outletImagenew.errors.required">Outlet Image is required</div>
+                          <div *ngIf="b.outletImage.errors.required">Outlet Image is required</div>
                         </div>
                         <label class="custom-file-label">Choose Image</label>
                       </div>
@@ -305,9 +305,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-12" *ngIf="selectedImage">
+                <div class="col-md-6 col-12" >
                     <fieldset class="form-group">
                         <label for="file-upload-single">Image Preview</label>
+                        <div class="preview-image categary-image" *ngIf="previousImage !== ''" >
+                            <img src="{{previousImage}}" alt="">
+                        </div>
                         <div class="preview-image categary-image" *ngFor="let url of imageURL">
                             <img src="{{url}}" alt="">
                             <span *ngFor="let item of uploader.queue"><strong>{{ item?.file?.name }}</strong></span>

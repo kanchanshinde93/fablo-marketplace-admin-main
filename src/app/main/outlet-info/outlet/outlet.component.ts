@@ -8,6 +8,9 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
 import { FileUploader } from 'ng2-file-upload';
+
+const URL = 'https://your-url.com';
+
 @Component({
   selector: 'app-outlet',
   templateUrl: './outlet.component.html',
@@ -15,6 +18,11 @@ import { FileUploader } from 'ng2-file-upload';
 })
 
 export class OutletComponent implements OnInit {
+  public uploader: FileUploader = new FileUploader({
+    url: URL,
+    isHTML5: true
+  });
+
   private tempData = [];
   public kitchenSinkRows: any;
   public basicSelectedOption: number = 10;
@@ -41,30 +49,29 @@ export class OutletComponent implements OnInit {
   changeById: any;
   outetverifiedId:any
   isVerifiedStutes:any
-  imageURL: any;
+  imageURL: any=[];
   addProductForm: any;
 
   constructor(private modalService: NgbModal, private router:Router ,private spinner: NgxSpinnerService,private toastr:ToastrService , private fb: FormBuilder, private adminService: AdminServiceService) { }
 
   public contentHeader: object
-  selectedImage: File | null = null;
+   selectedImage: File | null = null;
 
-  outletImagenew(event: any) {
-    const fileList: FileList = event.target.files;
-    if (fileList.length > 0) {
-      this.selectedImage = fileList[0];
-    }
-  }
 
-  SelectImage(event: any) {
+
+  outletImagechnage(event: any) {
+    this.imageURL=[];
+    this.previousImage='';
     this.selectedImage = event.target.files[0]
+    console.log( this.selectedImage );
 
     var reader = new FileReader();
     reader.onload = (event: any) => {
       this.imageURL.push(event.target.result);
-      this.addProductForm.patchValue({
-        fileSource: this.imageURL,
-      });
+    /*   this.addProductForm.patchValue({
+        fileSource: this.imageURL
+      ,
+      }) */;
 
     };
     reader.readAsDataURL(event.target.files[0]);
@@ -127,6 +134,7 @@ export class OutletComponent implements OnInit {
 
   // open edit outlet modal
   openEditOutletModal(data: any, outletdata: any) {
+    this.imageURL=[];
     this.modalService.open(data, {
       centered: true,
       scrollable: true,
@@ -162,10 +170,10 @@ export class OutletComponent implements OnInit {
       formData.append('area', this.editOutletForm.value.area);
       formData.append('shopAddress', this.editOutletForm.value.shopAddress);
 
-      if (this.newImage == undefined) {
+      if (this.selectedImage == undefined) {
         formData.append('outletImage', this.previousImage);
       }else{
-        formData.append('outletImage', this.newImage);
+        formData.append('outletImage', this.selectedImage);
       }
 
 this.adminService.editOutlet(this.outletData,formData).subscribe((res:any)=>{
