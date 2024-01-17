@@ -1,4 +1,4 @@
-import { Component, Inject, OnDestroy, OnInit, ElementRef, Renderer2,} from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, ElementRef, Renderer2, ViewChild,TemplateRef} from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 
@@ -18,6 +18,9 @@ import { locale as menuEnglish } from 'app/menu/i18n/en';
 import { locale as menuFrench } from 'app/menu/i18n/fr';
 import { locale as menuGerman } from 'app/menu/i18n/de';
 import { locale as menuPortuguese } from 'app/menu/i18n/pt';
+import PubNub from "pubnub";
+import { ToastrService } from 'ngx-toastr';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',
@@ -25,8 +28,13 @@ import { locale as menuPortuguese } from 'app/menu/i18n/pt';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
+  @ViewChild("content", { static: true }) content: TemplateRef<any>;
   coreConfig: any;
   menu: any;
+  private pubnub;
+  uId: any;
+  NewNotification: any;
+
   defaultLanguage: 'en'; // This language will be used as a fallback when a translation isn't found in the current language
   appLanguage: 'en'; // Set application default language i.e fr
 
@@ -47,7 +55,7 @@ export class AppComponent implements OnInit, OnDestroy {
    * @param {CoreTranslationService} _coreTranslationService
    * @param {TranslateService} _translateService
    */
-  constructor(
+ /*  constructor(
     @Inject(DOCUMENT) private document: any,
     private _title: Title,
     private _renderer: Renderer2,
@@ -58,7 +66,18 @@ export class AppComponent implements OnInit, OnDestroy {
     private _coreMenuService: CoreMenuService,
     private _coreTranslationService: CoreTranslationService,
     private _translateService: TranslateService
-  ) {
+  ) { */
+    constructor(@Inject(DOCUMENT) private document: any, private _title: Title, private _renderer: Renderer2, private _elementRef: ElementRef, public _coreConfigService: CoreConfigService, private _coreSidebarService: CoreSidebarService, private _coreLoadingScreenService: CoreLoadingScreenService, private _coreMenuService: CoreMenuService, private _coreTranslationService: CoreTranslationService, private _translateService: TranslateService, private toastr: ToastrService, private modalService: NgbModal) {
+      // pubnub notification
+      this.pubnub = new PubNub({
+        publishKey: "pub-c-40e1c3cd-397d-449b-9a06-2e0505653027",
+        subscribeKey: "sub-c-e240b078-b657-4d79-84e1-0504adfe3cf8",
+        userId: "clientId",
+      });
+      this.uId = localStorage.getItem("userId");
+      this.pubnub.subscribe({
+        channels: [`order-admin`],
+      });
     // Get the application main menu
     this.menu = menu;
 
@@ -88,6 +107,19 @@ export class AppComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit(): void {
+  this.pubnub.addListener({
+      message: (m: any) => {
+          console.log(m);
+        this.toastr.info("info", "You have recive new order");
+        this.NewNotification = m.message ?? "";
+        this.modalService.open(this.content, {
+          size: "sm",
+          centered: true,
+          scrollable: true,
+          keyboard: false,
+        });
+      },
+    });
     // Init wave effect (Ripple effect)
     Waves.init();
 
@@ -238,6 +270,7 @@ export class AppComponent implements OnInit, OnDestroy {
     // Set the application page title
     this._title.setTitle(this.coreConfig.app.appTitle);
   }
+  
 
   /**
    * On destroy

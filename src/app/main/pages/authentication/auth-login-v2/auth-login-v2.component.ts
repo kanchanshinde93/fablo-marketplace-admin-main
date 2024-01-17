@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { CoreConfigService } from '@core/services/config.service';
 import { AdminServiceService } from 'app/Services/admin-service.service';
 import { ToastrService } from 'ngx-toastr';
+import { log } from 'console';
 
 
 @Component({
@@ -91,6 +92,10 @@ export class AuthLoginV2Component implements OnInit {
           this.loading = false;
           this.toastr.success(data.message,"Success!");
           this._router.navigate(['dashboard/home']);
+          console.log(data.items.formattedData.userId);
+          
+          localStorage.setItem("userId", data.items.formattedData.userId);
+          
         }else{
           this.toastr.error(data.message,"error!")
           this.loading = false;
