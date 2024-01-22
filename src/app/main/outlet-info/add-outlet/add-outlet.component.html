@@ -30,7 +30,7 @@
                                 <label for="file-upload-single">Outlet Image</label>
                                 <div class="custom-file">
                                     <label class="custom-file-label">Choose Image</label>
-                                    <input type="file" class="custom-file-input" type="file" ng2FileSelect [uploader]="uploader" (change)="SelectImage($event)"
+                                    <input type="file" class="custom-file-input" type="file"   (change)="SelectImage($event)"
                                         id="file-upload-single" formControlName="outletImage" [ngClass]="{ 'is-invalid': Submitted && f.outletImage.errors }"/>
                                         
                                 </div>

@@ -163,7 +163,7 @@ getSellerInfo(body: any) {
   // add outlet
   addOutlet(body: any) {
     return this.http
-      .post(this.apiUrl + "/v1/outlet/", body, this.Header())
+      .post(this.apiUrl + "/v1/outlet", body, this.Header())
       .pipe(
         map((data: any) => {
           return data;
@@ -541,6 +541,11 @@ deleteSeller(body:any){
   
   
 }
+//add cloudinary uplaod img
 
-
+uploadImage(body:any){
+  return this.http.post(this.menuUrl + '/v1/image' , body , this.Header()).pipe(map((data:any)=>{
+    return data;
+  }))
+}
 }

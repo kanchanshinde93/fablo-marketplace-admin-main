@@ -23,7 +23,7 @@ export class AddOutletComponent implements OnInit {
   public openingHourdata = { hour: 13, minute: 30 };
   public closingHourdata = { hour: 13, minute: 30 };
   public meridianTP = true;
-
+  imageNamecloud:any
   sellerData: any;
   addOutletForm: FormGroup;
   Submitted: Boolean = false;
@@ -93,18 +93,29 @@ export class AddOutletComponent implements OnInit {
   }
 
   SelectImage(event: any) {
+    this.imageURL=[];
+    this.addOutletForm.value.outletImage='';
     this.selectedImage = event.target.files[0]
-
     var reader = new FileReader();
     reader.onload = (event: any) => {
       this.imageURL.push(event.target.result);
-      this.addOutletForm.patchValue({
-        fileSource: this.imageURL,
-      });
-
-    };
-    reader.readAsDataURL(event.target.files[0]);
+    }
+    reader.readAsDataURL(event.target.files[0]); 
+    const formData = new FormData();
+    formData.append('image', this.selectedImage);
+    formData.append('folder', 'outlet');
+     this.adminService.uploadImage(formData).subscribe((res:any)=>{
+      if(res.status){
+        this.toastr.success(res.message,"Success!");
+       this.imageNamecloud =res.items
+        }
+       else{
+        this.toastr.error(res.message,"error!");
+       }
+     }) 
+    
   }
+ 
 
   // check selected cuisine
   cuisineCheck(cuisine: any) {
@@ -113,6 +124,7 @@ export class AddOutletComponent implements OnInit {
       return true;
     }
     else {
+     
       false;
     }
   }
@@ -131,7 +143,26 @@ export class AddOutletComponent implements OnInit {
       const openingHours: any = [`${this.addOutletForm.value.openingHour} - ${this.addOutletForm.value.openingHour}`]
       this.addOutletForm.value.cuisine = this.cuisineData;
 
-      const formData = new FormData();
+
+      const body={
+        "sellerId": this.sellerData.sellerId,
+        "outletName": this.addOutletForm.value.outletName,
+        "outletImage":   this.imageNamecloud,
+        "type": this.addOutletForm.value.type,
+        "preparationTime":  this.addOutletForm.value.preparationTime,
+        "area": this.addOutletForm.value.area,
+        "cuisine":this.addOutletForm.value.cuisine,
+        "isPureVeg": JSON.parse(this.addOutletForm.value.isVeg),
+        "phone": this.addOutletForm.value.phone,
+        "isFood": this.addOutletForm.value.isFood,
+        "shopAddress": this.addOutletForm.value.shopAddress,
+        "longitude":  this.addOutletForm.value.longitude,
+        "latitude": this.addOutletForm.value.latitude,
+        "openingHours": openingHours,
+     }
+
+     console.log(body)
+  /*     const formData = new FormData();
       formData.append('sellerId', this.sellerData.sellerId);
       formData.append('outletName', this.addOutletForm.value.outletName);
       formData.append('outletImage', this.selectedImage);
@@ -145,11 +176,12 @@ export class AddOutletComponent implements OnInit {
       formData.append('isVeg', JSON.parse(this.addOutletForm.value.isVeg));
       formData.append('openingHours', openingHours);
       formData.append("isFood", this.addOutletForm.value.isFood);
-      formData.append("phone", this.addOutletForm.value.phone);
+      formData.append("phone", this.addOutletForm.value.phone); */
 
-      this.adminService.addOutlet(formData).subscribe((res:any)=>{
+     this.adminService.addOutlet(body).subscribe((res:any)=>{
        if(res.status){
           this.toastr.success(res.message,"Success!");
+          this.addOutletForm.reset();
           this.modalService.dismissAll();
           this.router.navigate(["/outletInfo/outlet"]);
         }
@@ -157,7 +189,7 @@ export class AddOutletComponent implements OnInit {
           this.toastr.error(res.message,"error!");
         }
       })
-    }
+    } 
 
   }
   modalCuisineAdd(data: any) {
