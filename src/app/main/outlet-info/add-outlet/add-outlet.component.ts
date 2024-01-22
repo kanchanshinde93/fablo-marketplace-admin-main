@@ -44,6 +44,7 @@ export class AddOutletComponent implements OnInit {
   public contentHeader: object
 
   ngOnInit(): void {
+console.log("Data", this.sellerData.authorizedPersonDetails.name);
 
     // add new outlet form
      this.addOutletForm = this.fb.group({
@@ -104,7 +105,7 @@ export class AddOutletComponent implements OnInit {
     const formData = new FormData();
     formData.append('image', this.selectedImage);
     formData.append('folder', 'outlet');
-     this.adminService.uploadImage(formData).subscribe((res:any)=>{
+    this.adminService.uploadImage(formData).subscribe((res:any)=>{
       if(res.status){
         this.toastr.success(res.message,"Success!");
        this.imageNamecloud =res.items
@@ -140,7 +141,7 @@ export class AddOutletComponent implements OnInit {
 
       this.addOutletForm.value.openingHour = this.formatTime(this.addOutletForm.value.openingHour);
       this.addOutletForm.value.closingHour = this.formatTime(this.addOutletForm.value.closingHour)
-      const openingHours: any = [`${this.addOutletForm.value.openingHour} - ${this.addOutletForm.value.openingHour}`]
+      const openingHours: any = [`${this.addOutletForm.value.openingHour} - ${this.addOutletForm.value.closingHour}`]
       this.addOutletForm.value.cuisine = this.cuisineData;
 
 
