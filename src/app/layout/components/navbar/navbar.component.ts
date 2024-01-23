@@ -25,7 +25,7 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit, OnDestroy {
   public horizontalMenu: boolean;
   public hiddenMenu: boolean;
-
+  userInfo:any
   public coreConfig: any;
   public currentSkin: string;
   public prevSkin: string;
@@ -41,6 +41,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   @HostBinding('class.navbar-static-style-on-scroll')
   public windowScrolled = false;
+  userInfo1: string;
 
   // Add .navbar-static-style-on-scroll on scroll using HostListener & HostBinding
   @HostListener('window:scroll', [])
@@ -177,6 +178,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit(): void {
+    this.userInfo=   localStorage.getItem("usertype");
+    this.userInfo1=  localStorage.getItem("userName");
+
+   console.log(this.userInfo)
     // get the currentUser details from localStorage
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 

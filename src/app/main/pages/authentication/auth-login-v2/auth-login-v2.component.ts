@@ -94,7 +94,8 @@ export class AuthLoginV2Component implements OnInit {
           this._router.navigate(['dashboard/home']);
           console.log(data.items.formattedData.userId);
           
-          localStorage.setItem("userId", data.items.formattedData.userId);
+          localStorage.setItem("usertype", data.items.formattedData.userType);
+          localStorage.setItem("userName", data.items.formattedData.username);
           
         }else{
           this.toastr.error(data.message,"error!")
