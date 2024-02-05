@@ -4,10 +4,10 @@
         <app-content-header [contentHeader]="contentHeader"></app-content-header>
         <div id="outlet-menu-page">
             
-            <div class="d-flex justify-content-md-end">
-                <div class="d-flex align-items-center justify-content-end pb-1 pl-1 pl-md-0 pb-md-0">
+            <div class="d-flex">
+                <div class="d-flex align-items-center pb-1 pl-1 pl-md-0 pb-md-0">
                     <h4 class="card-title">{{this.outletData?.outletName}}</h4>         
-                    <button class="btn btn-outline-primary font-weight-light" rippleEffect>Search Product</button>
+                    <!-- <button class="btn btn-outline-primary font-weight-light" rippleEffect>Search Product</button> -->
                     <!-- <button csvLink (click)="downloadCSV($event)"
                         class="btn btn-outline-secondary float-right csv-export" rippleEffect><img
                             src="assets/images/icons/csv.png" alt=""></button> -->
@@ -448,10 +448,19 @@
                     </div>
 
                     <div class="col-md-12">
-                        <div class="product-view-box">
+                        <div class="product-view-box1">
+                            <!-- ye comment krna h -->
                             <button class="btn btn-outline-primary mr-1"
                                 (click)="modalCustomizationList(customizationList,product)"
                                 rippleEffect>Customization</button>
+                                <!-- ye comment krna h -->
+
+                                <!-- ye mera hai -->
+                                <!-- <button class="btn btn-outline-primary mr-1"
+                                (click)="openViewCustomizationModal(customizationList,product)"
+                                rippleEffect>Customization</button> -->
+                                <!-- ye mera hai -->
+                                <!-- <button class="anjali-btn" (click)="anjalimodal(customizationList,product)">Anjali</button> -->
                             <button class="btn btn-outline-primary" (click)="modalAddons(addOn,product)"
                                 rippleEffect>Addons</button>
                         </div>
@@ -468,6 +477,7 @@
 <ng-template #customizationList let-modal>
     <div class="modal-header">
         <h5 class="modal-title" id="myModalLabel6">Customization</h5>
+
         <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -477,7 +487,7 @@
         <section class="customer-page" id="ngx-datatable-Responsive">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Customization List</h4>
+                    <h4 class="card-title">Product Name</h4>    
                     <div>
                         <button class="btn btn-primary btn-add" (click)="modalAddCustomization(addCustomization)"
                             rippleEffect><span>Add Customization +</span></button>
@@ -486,6 +496,7 @@
                             rippleEffect><span>View Details</span></button> -->
                     </div>
                 </div>
+                <!-- ye comment krna hai -->
                 <div class="row">
                     <div class="col-md-6 col-12">
                         <div class="d-flex justify-content-between align-items-center m-1">
@@ -512,45 +523,47 @@
                     </div>
                 </div>
 
-                <!-- ngx-datatables responsive -->
-                <ngx-datatable #table class="bootstrap core-bootstrap" [columnMode]="ColumnMode.force"
-                    [headerHeight]="40" [rowHeight]="58" [footerHeight]="50" rowHeight="auto" [limit]="10" [rows]="rows"
-                    [scrollbarH]="true">
-                    <ngx-datatable-column name="Name" prop="variationName" [width]="150"></ngx-datatable-column>
-                    <ngx-datatable-column name="Min Selection" prop="minSelection" [width]="50"></ngx-datatable-column>
-                    <ngx-datatable-column name="Max Selection" prop="maxSelection" [width]="50"></ngx-datatable-column>
-                    <ngx-datatable-column name="Action" [width]="50" [sortable]="false">
-                        <ng-template let-row="row" ngx-datatable-cell-template>
-                            <div class="d-flex align-items-center">
-                                <div ngbDropdown container="body">
-                                    <a ngbDropdownToggle href="javascript:void(0);" class="hide-arrow"
-                                        id="dropdownBrowserState" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                <!-- ye comment krna h -->
 
-                                    </a>
-                                    <div ngbDropdownMenu class="dropdown-menu-right"
-                                        aria-labelledby="dropdownBrowserState">
-                                        <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center"
-                                            (click)="modalViewVariation(viewVariation,rows)"><i data-feather="file-text"
-                                                class="mr-50"></i>Details</a>
-                                        <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center"
-                                            (click)="changeOutletStatus(content,row)">Change Status</a>
-                                        <a href="javascript:void(0)" ngbDropdownItem
-                                            class="d-flex align-items-center"><i data-feather="trash-2"
-                                                class="mr-50"></i>Delete</a>
+                <!-- ngx-datatables responsive -->
+                    <ngx-datatable #table class="bootstrap core-bootstrap" [columnMode]="ColumnMode.force"
+                        [headerHeight]="40" [rowHeight]="58" [footerHeight]="50" rowHeight="auto" [limit]="10" [rows]="rows"
+                        [scrollbarH]="true">
+                        <ngx-datatable-column name="Name" prop="variationName" [width]="150"></ngx-datatable-column>
+                        <ngx-datatable-column name="Min Selection" prop="minSelection" [width]="50"></ngx-datatable-column>
+                        <ngx-datatable-column name="Max Selection" prop="maxSelection" [width]="50"></ngx-datatable-column>
+                        <ngx-datatable-column name="Action" [width]="50" [sortable]="false">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                <div class="d-flex align-items-center">
+                                    <div ngbDropdown container="body">
+                                        <a ngbDropdownToggle href="javascript:void(0);" class="hide-arrow"
+                                            id="dropdownBrowserState" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+
+                                        </a>
+                                        <div ngbDropdownMenu class="dropdown-menu-right"
+                                            aria-labelledby="dropdownBrowserState">
+                                            <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center"
+                                                (click)="modalViewVariation(viewVariation,rows)"><i data-feather="file-text"
+                                                    class="mr-50"></i>Details</a>
+                                            <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center"
+                                                (click)="changeOutletStatus(content,row)">Change Status</a>
+                                            <a href="javascript:void(0)" ngbDropdownItem
+                                                class="d-flex align-items-center"><i data-feather="trash-2"
+                                                    class="mr-50"></i>Delete</a>
+                                        </div>
+                                    </div>
+                                    <div class="ml-1 edit-icon">
+                                        <a href="javascript:void(0)">
+                                            <i class="fa-regular fa-pen-to-square"
+                                                (click)="modalEditCustomization(editCustomization,row)"></i>
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="ml-1 edit-icon">
-                                    <a href="javascript:void(0)">
-                                        <i class="fa-regular fa-pen-to-square"
-                                            (click)="modalEditCustomization(editCustomization,row)"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </ng-template>
-                    </ngx-datatable-column>
-                </ngx-datatable>
+                            </ng-template>
+                        </ngx-datatable-column>
+                    </ngx-datatable>
                 <!--/ ngx-datatables responsive -->
             </div>
         </section>
@@ -1341,3 +1354,74 @@
 
     </div>
 </ng-template>
+
+
+<!-- ye uncomment krna h -->
+<!-- customization modal -->
+<!-- <ng-template #customizationList let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel6">Customization</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+
+        <div class="accordion" id="accordionExample">
+        <div *ngIf="!hasCustomization">
+            <button class="btn btn-primary mb-1" (click)="openAddCustomizationModal(addCustomization)">Add New</button>
+        </div>
+
+            <ng-container *ngIf="hasCustomization">
+            <div class="accordion-item" *ngFor="let variation of coustimized">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        {{variation?.variationName}}
+                    </button>
+
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+
+                        <button class="btn btn-outline-primary btn-variant"
+                            (click)="openAddVariantModal(addVariant,variation)" rippleEffect>Add New</button>
+
+                        <div class="d-flex pt-1 justify-content-around row">
+
+                            <div class="col-5" *ngFor="let variant of variation?.variantList">
+                                <div class="mb-1 card variant-box">
+                                    <div class="card-body">
+                                        <div
+                                            class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mb-2">
+                                            <button class="btn btn-variant-edit"
+                                                (click)="openEditVariantModal(editVariant,variant)" rippleEffect><i
+                                                    class="fa-regular fa-pen-to-square"></i></button>
+                                            <button class="btn btn-variant-delete"
+                                                (click)="openDeleteVariantModal(deleteVariant,variant)" rippleEffect><i
+                                                    class="fa-solid fa-trash"></i></button>
+                                        </div>
+                                        <div
+                                            class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mb-1">
+                                            <div><strong>Variant Name:</strong></div>
+                                            <div>{{variant?.variantName}}</div>
+                                        </div>
+                                        <div
+                                            class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
+                                            <div><strong>Variant Price</strong></div>
+                                            <div>₹ {{variant?.displayPrice}}</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        </div>
+    </div>
+</ng-template> -->

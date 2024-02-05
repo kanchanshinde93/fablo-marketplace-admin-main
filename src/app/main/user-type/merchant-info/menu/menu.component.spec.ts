@@ -11,6 +11,7 @@ describe('MenuComponent', () => {
       declarations: [ MenuComponent ]
     })
     .compileComponents();
+    
 
     fixture = TestBed.createComponent(MenuComponent);
     component = fixture.componentInstance;
@@ -20,4 +21,6 @@ describe('MenuComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  
 });

@@ -1127,4 +1127,12 @@ export class MenuComponent implements OnInit {
 
   onActivate(event: any) {
   }
+
+  // ye bhi uncomment krna h
+  // openViewCustomizationModal(data){
+  //   this.modalService.open(data, {
+  //     centered: true,
+  //     size: 'lg'
+  //   });
+  // }
 }
