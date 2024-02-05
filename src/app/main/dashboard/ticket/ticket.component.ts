@@ -78,8 +78,8 @@ export class TicketComponent implements OnInit {
       if (!data.status) {
         this.noDataFound=data.message;
       }
-      this.allTicket = data.items;
-      this.ticketList  = this.allTicket
+      this.allTickets = data.items;
+      this.ticketList  = this.allTickets
       
     });
   }
@@ -87,6 +87,7 @@ export class TicketComponent implements OnInit {
   viewDetails(ticketData:any){
     this.ticketData = ticketData
     this.isShow = true;
+    this.showticketfirsttime=false;
    }
    
   closeDetails(){
@@ -137,8 +138,8 @@ export class TicketComponent implements OnInit {
     // console.log('Activate Event', event.type);
   }
   viewDetailsTicket(ticketid:any){
-    console.log( this.showticketfirsttime)
-    console.log(ticketid);
+ /*    console.log( this.showticketfirsttime)
+    console.log(ticketid); */
     
     this.showticketfirsttime=false;
     // this.allTicket()
