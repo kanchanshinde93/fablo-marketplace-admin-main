@@ -94,46 +94,8 @@ export class TicketComponent implements OnInit {
     this.isShow= false;
    }
 
-  filterUpdate(event: any) {
-     const val = event.target.value.toLowerCase();
-    // filter our data
-    this.rows = this.allTickets.filter(function (d) {
 
-      return d.ticketId?.toLowerCase().indexOf(val) !== -1 || d.issue?.toLowerCase().indexOf(val) !== -1 || !val;
-    });
-
-
-
-    // update the rows
-    this.ticketList = this.rows;
-
-  }
-  onSelect({ selected }: any) {
-    this.exportCSVData = selected;
-  }
-
-  downloadCSV(event: any) {
-    var options = {
-      fieldSeparator: ',',
-      quoteStrings: '"',
-      decimalseparator: '.',
-      showLabels: true,
-      showTitle: true,
-      title: '',
-      useBom: true,
-      noDownload: false,
-      headers: ['name', 'phone', 'address'],
-    }
-
-    if (this.exportCSVData == undefined) {
-      const fileInfo = new ngxCsv(this.tempData, this.formula, options);
-
-    } else {
-      const fileInfo = new ngxCsv(this.exportCSVData, this.formula, options);
-      this.exportCSVData = undefined;
-    }
-
-  }
+ 
   onActivate(event: any) {
     // console.log('Activate Event', event.type);
   }

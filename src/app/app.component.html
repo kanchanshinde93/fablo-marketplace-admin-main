@@ -26,4 +26,32 @@
   <core-theme-customizer></core-theme-customizer>
 </core-sidebar>
 
+<!-- notification modal -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title" id="myModalLabel160">New Order Recived</h5>
+    <!-- <button
+      type="button"
+      class="close"
+      (click)="modal.dismiss('Cross click')"
+      aria-label="Close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button> -->
+  </div>
+  <div class="modal-body" tabindex="0">
+    {{ NewNotification }}
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="modal.dismiss('Cross click')"
+      routerLink="/orders/orderDetails"
+    >
+      Ok
+    </button>
+  </div>
+</ng-template>
+
 <!-- / theme customizer -->
