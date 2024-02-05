@@ -110,7 +110,7 @@ export class AppComponent implements OnInit, OnDestroy {
   this.pubnub.addListener({
       message: (m: any) => {
           console.log(m);
-        this.toastr.info("info", "You have recive new order");
+        this.toastr.info("info", "You Have Recive New order");
         this.NewNotification = m.message ?? "";
         this.modalService.open(this.content, {
           size: "sm",
