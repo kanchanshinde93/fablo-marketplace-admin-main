@@ -450,16 +450,16 @@
                     <div class="col-md-12">
                         <div class="product-view-box1">
                             <!-- ye comment krna h -->
-                            <button class="btn btn-outline-primary mr-1"
+                          <!--   <button class="btn btn-outline-primary mr-1"
                                 (click)="modalCustomizationList(customizationList,product)"
-                                rippleEffect>Customization</button>
+                                rippleEffect>Customization</button> -->
                                 <!-- ye comment krna h -->
 
                                 <!-- ye mera hai -->
-                                <!-- <button class="btn btn-outline-primary mr-1"
+                                <button class="btn btn-outline-primary mr-1"
                                 (click)="openViewCustomizationModal(customizationList,product)"
-                                rippleEffect>Customization</button> -->
-                                <!-- ye mera hai -->
+                                rippleEffect>Customization</button> 
+                                <!--  ye mera hai -->
                                 <!-- <button class="anjali-btn" (click)="anjalimodal(customizationList,product)">Anjali</button> -->
                             <button class="btn btn-outline-primary" (click)="modalAddons(addOn,product)"
                                 rippleEffect>Addons</button>
@@ -474,106 +474,11 @@
 <!-- Product View End -->
 
 <!-- Modal Customization List-->
-<ng-template #customizationList let-modal>
-    <div class="modal-header">
-        <h5 class="modal-title" id="myModalLabel6">Customization</h5>
 
-        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body" tabindex="0" ngbAutofocus>
-        <!-- Customer List Responsive Datatable -->
-        <section class="customer-page" id="ngx-datatable-Responsive">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">Product Name</h4>    
-                    <div>
-                        <button class="btn btn-primary btn-add" (click)="modalAddCustomization(addCustomization)"
-                            rippleEffect><span>Add Customization +</span></button>
-                        <!-- <button class="btn btn-primary btn-add" rippleEffect><span>Edit Customization</span></button> -->
-                        <!-- <button class="btn btn-primary btn-add" (click)="modalViewVariation(viewVariation)"
-                            rippleEffect><span>View Details</span></button> -->
-                    </div>
-                </div>
-                <!-- ye comment krna hai -->
-                <div class="row">
-                    <div class="col-md-6 col-12">
-                        <div class="d-flex justify-content-between align-items-center m-1">
-                            <label class="d-flex align-items-center">Show
-                                <select class="form-control mx-25" [(ngModel)]="basicSelectedOption">
-                                    <option value="10">10</option>
-                                    <option value="25">25</option>
-                                    <option value="50">50</option>
-                                    <option value="100">100</option>
-                                </select>
-                                entries</label>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-12 d-flex justify-content-md-end">
-                        <div class="d-flex align-items-center justify-content-end pb-1 pl-1 pl-md-0 pb-md-0">
-                            <div class="input-group mb-1 search-table">
-                                <input type="search" placeholder="Search" class="form-control ml-25"
-                                    (keyup)="filterUpdate($event)" (search)="filterUpdate($event)" />
-                            </div>
-                            <button csvLink (click)="downloadCSV($event)"
-                                class="btn btn-outline-secondary float-right csv-export" rippleEffect><img
-                                    src="assets/images/icons/csv.png" alt=""> </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ye comment krna h -->
-
-                <!-- ngx-datatables responsive -->
-                    <ngx-datatable #table class="bootstrap core-bootstrap" [columnMode]="ColumnMode.force"
-                        [headerHeight]="40" [rowHeight]="58" [footerHeight]="50" rowHeight="auto" [limit]="10" [rows]="rows"
-                        [scrollbarH]="true">
-                        <ngx-datatable-column name="Name" prop="variationName" [width]="150"></ngx-datatable-column>
-                        <ngx-datatable-column name="Min Selection" prop="minSelection" [width]="50"></ngx-datatable-column>
-                        <ngx-datatable-column name="Max Selection" prop="maxSelection" [width]="50"></ngx-datatable-column>
-                        <ngx-datatable-column name="Action" [width]="50" [sortable]="false">
-                            <ng-template let-row="row" ngx-datatable-cell-template>
-                                <div class="d-flex align-items-center">
-                                    <div ngbDropdown container="body">
-                                        <a ngbDropdownToggle href="javascript:void(0);" class="hide-arrow"
-                                            id="dropdownBrowserState" data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">
-                                            <i class="fa-solid fa-ellipsis-vertical"></i>
-
-                                        </a>
-                                        <div ngbDropdownMenu class="dropdown-menu-right"
-                                            aria-labelledby="dropdownBrowserState">
-                                            <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center"
-                                                (click)="modalViewVariation(viewVariation,rows)"><i data-feather="file-text"
-                                                    class="mr-50"></i>Details</a>
-                                            <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center"
-                                                (click)="changeOutletStatus(content,row)">Change Status</a>
-                                            <a href="javascript:void(0)" ngbDropdownItem
-                                                class="d-flex align-items-center"><i data-feather="trash-2"
-                                                    class="mr-50"></i>Delete</a>
-                                        </div>
-                                    </div>
-                                    <div class="ml-1 edit-icon">
-                                        <a href="javascript:void(0)">
-                                            <i class="fa-regular fa-pen-to-square"
-                                                (click)="modalEditCustomization(editCustomization,row)"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </ng-template>
-                        </ngx-datatable-column>
-                    </ngx-datatable>
-                <!--/ ngx-datatables responsive -->
-            </div>
-        </section>
-        <!--/ Responsive Datatable -->
-    </div>
-</ng-template>
 
 
 <!-- Modal Variation List-->
-<ng-template #viewVariation let-modal>
+<!-- <ng-template #viewVariation let-modal>
     <div class="modal-header">
         <h5 class="modal-title" id="myModalLabel6">Variant List</h5>
         <button class="btn btn-outline-primary btn-add-variant" (click)="modalAddVariation(addVariant,variant.variantList)" rippleEffect><i
@@ -603,7 +508,7 @@
             </div>
         </div>
     </div>
-</ng-template>
+</ng-template> -->
 <!-- Modal Add Customization-->
 <ng-template #addCustomization let-modal>
     <div class="modal-header">
@@ -868,7 +773,7 @@
 <!-- Modal delete variant-->
 <ng-template #deleteVariant let-modal>
     <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Delete Variant</h5>
+        <h5 class="modal-title" id="exampleModalCenterTitle">Delete Variant </h5>
         <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -882,7 +787,7 @@
         <button type="button" class="btn btn-outline-primary" (click)="modal.close('Accept click')" rippleEffect>
             Cancel
         </button>
-        <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
+        <button type="button" class="btn btn-primary" (click)=" deletVariant()" rippleEffect>
             Delete
         </button>
     </div>
@@ -1354,6 +1259,89 @@
 
     </div>
 </ng-template>
+
+
+
+<ng-template #customizationList let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel6">Customization</h5>
+
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <!-- Customer List Responsive Datatable -->
+        <section class="customer-page" id="ngx-datatable-Responsive">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">{{productName}}</h4>    
+                    <div>
+                        <button class="btn btn-primary btn-add" (click)="modalAddCustomization(addCustomization)"
+                            rippleEffect><span>Add Customization +</span></button>
+                        <!-- <button class="btn btn-primary btn-add" rippleEffect><span>Edit Customization</span></button> -->
+                        <!-- <button class="btn btn-primary btn-add" (click)="modalViewVariation(viewVariation)"
+                            rippleEffect><span>View Details</span></button> -->
+                    </div>
+
+
+                </div>
+                <div class="card-body">
+                    <ng-container *ngIf="hasCustomization">
+                        <div class="accordion-item" *ngFor="let variation of coustimized">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    {{variation?.variationName}}
+                                </button>
+            
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+            
+                                    <button class="btn btn-outline-primary btn-variant"
+                                        (click)="modalAddVariation(addVariant,variation)" rippleEffect>Add New</button>
+            
+                                    <div class="d-flex pt-1 justify-content-start row">
+            
+                                        <div class="col-6" *ngFor="let variant of variation?.variantList">
+                                            <div class="mb-1 card variant-box">
+                                                <div class="card-body">
+                                                    <div class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mb-2">
+                                                        <button class="btn btn-variant-edit" (click)="modalEditVariation(editVariant,variant)" rippleEffect><i
+                                                                class="fa-regular fa-pen-to-square"></i></button>
+                                                        <button class="btn btn-variant-delete" (click)="modalDeleteVariant(deleteVariant,variant)"
+                                                            rippleEffect><i class="fa-solid fa-trash"></i></button>
+                                                    </div>
+                                                    <div
+                                                        class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mb-1">
+                                                        <div><strong>Variant Name:</strong></div>
+                                                        <div>{{variant?.variantName}}</div>
+                                                    </div>
+                                                    <div
+                                                        class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
+                                                        <div><strong>Variant Price</strong></div>
+                                                        <div>₹ {{variant?.displayPrice}}</div>
+                                                    </div>
+                                                </div>
+            
+                                            </div>
+                                        </div>
+                                    </div>
+            
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+              
+            </div>
+        </section>
+        <!--/ Responsive Datatable -->
+    </div>
+</ng-template>
+
 
 
 <!-- ye uncomment krna h -->

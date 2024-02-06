@@ -548,4 +548,5 @@ uploadImage(body:any){
     return data;
   }))
 }
+
 }

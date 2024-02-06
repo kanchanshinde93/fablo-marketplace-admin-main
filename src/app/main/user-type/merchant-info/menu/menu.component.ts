@@ -102,6 +102,11 @@ export class MenuComponent implements OnInit {
   previousImage: any;
   deleteCategoryByID: any;
   deleteProductById:any;
+  productName: any;
+  hasCustomization: any;
+  coustimized: any[];
+  variantid: any;
+  addvarition: any;
   constructor(private modalService: NgbModal, private router: Router, private toastr: ToastrService, private fb: FormBuilder, private adminService: AdminServiceService) {
     let nav: Navigation = this.router.getCurrentNavigation();
     if (nav.extras && nav.extras.state && nav.extras.state.outlet) {
@@ -586,13 +591,16 @@ export class MenuComponent implements OnInit {
   productCusomization() {
     this.adminService.getCustomization(this.customizationById).subscribe((data: any) => {
       let cusomizationData = data.items
-
+     // this.coustimized = [];
+     this.coustimized = [];
+     this.customizationList = data.items;
+     this.coustimized.push(this.customizationList);
       this.customizationList = [];
       this.customizationList.push(cusomizationData);
-      this.rows = this.customizationList;
+      /* this.rows = this.customizationList;
       this.tempData = this.rows;
       this.kitchenSinkRows = this.customizationList;
-      this.filteredData = this.customizationList;
+      this.filteredData = this.customizationList; */
     });
   }
 
@@ -612,6 +620,8 @@ export class MenuComponent implements OnInit {
 
   // modal Open add customization
   modalAddCustomization(data: any) {
+    this.addCustomizationForm.reset();
+    this.Submitted = false;
     this.modalRef = this.modalService.open(data, {
       centered: true,
     });
@@ -627,16 +637,21 @@ export class MenuComponent implements OnInit {
         productId: this.customizationById,
         variationName: this.addCustomizationForm.value.variationName
       }
+
+      console.log(formData);
+      
       this.adminService.addCustomization(formData).subscribe((data: any) => {
         if (data.status) {
           this.toastr.success(data.message, "Success!");
-          this.productCusomization();
-          this.addCustomizationForm.reset();
           this.modalRef.close();
           this.Submitted = false;
+          this.hasCustomization=!this.hasCustomization;
+          this.productCusomization();
+          this.addCustomizationForm.reset();
         } else {
           this.toastr.error(data.message, "error!");
           this.productCusomization();
+          this.modalRef.close();
           this.Submitted = false;
         }
       })
@@ -646,6 +661,7 @@ export class MenuComponent implements OnInit {
 
   // open edit customization Modal
   modalEditCustomization(data: any, editVariation: any) {
+    this.Submitted=false;
     this.modalRef = this.modalService.open(data, {
       centered: true,
     });
@@ -686,10 +702,15 @@ export class MenuComponent implements OnInit {
 
   // open add variation Modal
   modalAddVariation(data: any,id:any) {
-   this.modalRef = this.modalService.open(data, {
+    this.Submitted=false;
+    this.modalRef = this.modalService.open(data, {
       centered: true,
     });
+    console.log(id)
+    this.addvarition=id;
   }
+
+
 
   addVariantFormSubmit() {
    this.Submitted = true;
@@ -698,17 +719,19 @@ export class MenuComponent implements OnInit {
     }
     else {
       const formData = {
-        variationId: this.variant.variationId,
+        variationId: this.addvarition.variationId,
         variantName: this.addVariantForm.value.variantName,
         variantPrice: this.addVariantForm.value.variantPrice
       }
+      console.log(formData);
+      
 
       this.adminService.addVariant(formData).subscribe((res: any) => {
         if (res.status) {
 
           this.toastr.success(res.message, "Success!");
           this.modalRef.close();
-          this.addCustomizationForm.reset();
+          this.addVariantForm.reset();
           this.productCusomization();
           this.Submitted = false;
         } else {
@@ -912,6 +935,7 @@ export class MenuComponent implements OnInit {
     this.addonCategory = addonCategory;
   }
 
+   
   // open edit addon product Modal
   openEditAddonProductModal(data: any, editAddonProduct: any) {
     this.modalRef = this.modalService.open(data, {
@@ -1069,9 +1093,29 @@ export class MenuComponent implements OnInit {
   }
   
   // modal delete variant
-  modalDeleteVariant(data) {
-    this.modalService.open(data, {
-      centered: true
+  modalDeleteVariant(data:any,variant:any) {
+    this.modalRef=this.modalService.open(data, {
+      centered: true,
+      scrollable:true,
+      size:"md",
+    });
+    this.variantid=variant;
+  }
+
+
+   // open delete addon product Modal
+   deletVariant() {
+    const formData = {
+      variantId: this.variantid.variantId,
+    };
+    this.adminService.deletData(formData).subscribe((res: any) => {
+      if (res.status) {
+        this.toastr.success(res.message, "Variant Deleted");
+        this.modalRef.close();
+        this.productCusomization();
+      } else {
+        this.toastr.error(res.message, "error!");
+      }
     });
   }
 
@@ -1129,10 +1173,19 @@ export class MenuComponent implements OnInit {
   }
 
   // ye bhi uncomment krna h
-  // openViewCustomizationModal(data){
-  //   this.modalService.open(data, {
-  //     centered: true,
-  //     size: 'lg'
-  //   });
-  // }
+  openViewCustomizationModal(data:any, product:any){  
+    console.log(product);
+    
+   this.modalService.open(data, {
+    size: "lg",
+   /*  windowClass: 'modal left' */
+  });
+  this.customizationById = product.productId;
+  this.productName=product.productName
+  this.hasCustomization = product.hasCustomization;
+    console.log("this.hasCustomization", this.hasCustomization);
+  this.productCusomization();
+  }
+
+  
 }
