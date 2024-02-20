@@ -180,7 +180,23 @@
                 </div>
             </div>
         </section>
+
+       <!--  <google-map height="400px"
+        width="750px"
+        [center]="center"
+        [zoom]="zoom"
+        (mapClick)="addMarker($event)">
+<map-marker *ngFor="let markerPosition of markerPositions"
+          [position]="markerPosition"
+          [options]="markerOptions"></map-marker>
+</google-map> -->
+<!-- <div>Latitude: {{display?.lat}}</div>
+<div>Longitude: {{display?.lng}}</div> -->
         <!-- home page contentend -->
+<!--         <div id="map" style="height: 400px;"></div> -->
+        <!-- app.component.html -->
+   
+  
     </div>
 </div>
 <ngx-spinner bdColor = "rgb(51 51 51 / 15%)" size = "medium" color = "#3e88eb" type = "ball-fussion" [fullScreen] = "false"><p style="color: white" > Loading... </p></ngx-spinner>

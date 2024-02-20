@@ -64,6 +64,7 @@
               "node_modules/@swimlane/ngx-datatable/assets/icons.css",
               "node_modules/flatpickr/dist/flatpickr.min.css",
               "node_modules/ngx-toastr/toastr.css"
+             
               
             ],
             "stylePreprocessorOptions": {
@@ -75,6 +76,7 @@
             "scripts": [
               "./node_modules/katex/dist/katex.min.js",
               "./node_modules/quill/dist/quill.min.js"
+              
             ],
             "vendorChunk": true,
             "extractLicenses": false,

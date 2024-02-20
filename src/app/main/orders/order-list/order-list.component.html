@@ -115,14 +115,16 @@
                                         </div>
                                     </ng-template>
                                 </ngx-datatable-column>
-                                <ngx-datatable-column name="Status" prop="status" [width]="150">
+
+                                <ngx-datatable-column name="Status" prop="status" [width]="100">
                                     <ng-template let-orderStatus="value" ngx-datatable-cell-template>
                                         <div class="badge badge-pill" [ngClass]="selectColor(orderStatus)">
                                             {{ orderStatus }}
                                         </div>
                                     </ng-template>
                                 </ngx-datatable-column>
-                                <ngx-datatable-column name="Payable Amount" prop="payableAmount" [width]="50">
+
+                                <ngx-datatable-column name="Payable Amount" prop="payableAmount" [width]="100">
                                     <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
                                         <div class="d-flex align-items-center">
                                             <div class="cell-line-height">
@@ -133,7 +135,7 @@
                                         </div>
                                     </ng-template>
                                 </ngx-datatable-column>
-                                <ngx-datatable-column name="Time" prop="timing" [width]="150">
+                                <ngx-datatable-column name="Time" prop="timing" [width]="100">
                                     <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
                                         <div class="d-flex align-items-center">
                                             <div class="cell-line-height">
@@ -143,6 +145,19 @@
                                         </div>
                                     </ng-template>
                                 </ngx-datatable-column>
+
+                                <ngx-datatable-column name="Settlement Amount" prop="Settlement amount" [width]="100">
+                                    <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+                                        <div class="d-flex align-items-center">
+                                            <div class="cell-line-height">
+                                                <p class=" line-height-1 mb-0">₹{{row.amount.totalAmount - row.amount.discountedAmount}}</p>
+                                                <span class="text-muted font-small-2"> {{ row.timing[0].time }}</span>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <p></p>
+
                                 <ngx-datatable-column name="Action" [width]="120" [sortable]="false">
                                     <ng-template let-row="row" ngx-datatable-cell-template>
                                         <div class="d-flex align-items-center">

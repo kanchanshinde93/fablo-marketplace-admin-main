@@ -16,6 +16,8 @@ import { coreConfig } from 'app/app-config';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
+import { GoogleMapsModule } from '@angular/google-maps'
+
 
 
 const appRoutes: Routes = [
@@ -65,6 +67,8 @@ const appRoutes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    GoogleMapsModule,
+
     RouterModule.forRoot(appRoutes, {
       scrollPositionRestoration: 'enabled', // Add options right here
       relativeLinkResolution: 'legacy'

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -7,6 +7,7 @@ import { ContentHeaderModule } from 'app/layout/components/content-header/conten
 import { TicketComponent } from './ticket/ticket.component';
 import { Ng2FlatpickrModule } from 'ng2-flatpickr';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { GoogleMapsModule } from '@angular/google-maps';
 const routes: Routes = [
  
   {
@@ -31,8 +32,10 @@ const routes: Routes = [
     Ng2FlatpickrModule,
     ContentHeaderModule,
     NgxSpinnerModule,
+    GoogleMapsModule,
     RouterModule.forChild(routes)
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class DashboardModule { }
  
