@@ -63,5 +63,13 @@ export class OrderDetailsComponent implements OnInit {
         return "badge badge-light-danger";
     }
   }
+  timelineData(time: any, curentStatus: any) {
+    let map = new Map(
+      time.map((timeData: any) => [timeData.status, timeData.time])
+    );
+   // console.log(map);
 
+    return map.get(curentStatus);
+    console.log(time);
+  }
 }

@@ -38,3 +38,106 @@
 .column-parent {
     margin-bottom: 25px;
 }
+.order-track h3 span,
+.delivery-agent h3 span {
+	font-size: 16px;
+	color: rgba(0, 0, 0, 0.6);
+	font-weight: 400;
+	margin-left: 8px;
+}
+.order-track-map.curve-line,
+.order-track-map.curve-line-gray {
+	position: relative;
+}
+
+.order-track-map.curve-line:before,
+.order-track-map.curve-line-gray:before {
+	position: absolute;
+	content: "";
+	height: 100vh;
+	width: 100%;
+	background: url(../../../../assets/images/curve-line.png);
+	left: -45%;
+	background-repeat: no-repeat;
+	top: 12px;
+}
+
+.order-track-map.curve-line-gray:before {
+	top: 8px;
+	background: url(../../../../assets/images/curve-line-gray.png);
+	background-repeat: no-repeat;
+}
+
+.order-track-map img {
+	margin: -15px 0px -5px 5px;
+	height: 62px;
+}
+
+
+.form-check.start-track input:checked {
+	border: 2px solid #4492ff;
+}
+
+.form-check.start-track input {
+	height: 18px;
+	width: 20px;
+	border: 2px solid #9c9c9c;
+}
+
+.order-track-map img {
+	margin: -15px 0px -5px 5px;
+	height: 62px;
+}
+
+.form-check.start-track label {
+	margin-top: 5px;
+	font-size: 13px;
+	color: #4492ff;
+	margin-left: 5px;
+}
+
+.form-check.start-track {
+	min-height: auto;
+	margin: 0;
+}
+
+.form-check.start-track label p {
+	margin: 0;
+	font-size: 10px;
+	color: #464646;
+	line-height: 10px;
+}
+
+.track p {
+	margin-left: 60px;
+	margin-top: 5px;
+}
+
+.order-track h3 {
+	margin-bottom: 24px;
+}
+
+.order-list-main {
+	padding-right: 20px;
+}
+
+.order-track {
+	padding-left: 15px;
+}
+.details-parent.d-flex.justify-content-between {
+    padding-top: 20px;
+} 
+.form-check-input:disabled {
+    pointer-events: none;
+    filter: none;
+     opacity: 100% 
+}
+
+.form-check-input:checked {
+	background-color: #619eef;
+	border-color: #619eef;
+  }
+
+  .form-check-input:disabled~.form-check-label, .form-check-input[disabled]~.form-check-label {
+    opacity: 100%;
+}

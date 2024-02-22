@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
+                        <div class="d-flex align-items-center justify-content-around">
                             <div class="order-info">
                                 <p><strong>Order ID</strong></p>
                                 <p class="badge badge-light-primary">{{orderData.orderId}}</p>
@@ -14,112 +14,208 @@
                                 <p><strong>Order Status</strong></p>
                                 <p [ngClass]="getColor(orderData.status)">{{orderData.status}}</p>
                             </div>
-                            <div class="order-info">
+                            <!-- <div class="order-info">
                                 <p><strong>Settlement amount</strong></p>
                                 <p>₹{{orderData.amount.totalAmount - orderData.amount.discountedAmount}}</p>
-                            </div>
+                            </div> -->
                             <div class="order-info">
                                 <p><strong>Payment Mode</strong></p>
                                 <p>{{orderData.payment.paymentMode}}</p>
                             </div>
-                            <div class="order-info">
+                            <!-- <div class="order-info">
                                 <p><strong>Order Date</strong></p>
                                 <p>{{orderData.timing[0].date}}</p>
-                            </div>
-                            <div class="order-info">
+                            </div> -->
+                            <!-- <div class="order-info">
                                 <p><strong>Distance</strong></p>
                                 <p>{{orderData.distance}}</p>
-                            </div>
+                            </div> -->
                             <div class="order-info">
                                 <p><strong>Outlet Name</strong></p>
                                 <p>{{orderData.outlet.outletName}}</p>
                             </div>
-                            <div class="order-info">
+                            <!-- <div class="order-info">
                                 <p><strong>Order Time</strong></p>
                                 <p>{{orderData.timing[0].time}}</p>
-                            </div>
+                            </div> -->
 
                         </div>
+
+
                         <hr>
-                       <!--  <div class="row mt-3">
-                            <div class="col-md-4">
-                                <div class="food-items">
-                                    <h4 class="card-title">Food Items</h4>
-                                    <div class="employee-task d-flex justify-content-between align-items-center mb-1" *ngFor="let product of orderData.productList">
-                                        <div class="media">
-                                            
-                                            <div class="media-body my-auto">
-                                                <h6 class="mb-0">{{product.productName}} X {{product.quantity}}</h6>
-                                                <span>{{product.variationName}}</span>
-                                            </div>
+                        <div class="details-parent d-flex justify-content-between">
+                            <div class="details-parent col-md-6">
+                                <div class="card-body11">
+                                    <div class="heading d-flex justify-content-between align-items-center">
+                                        <div class="heading1">
+                                            <h3>Order Data</h3>
                                         </div>
-                                        <div class="d-flex align-items-center">
-                                            <span>₹{{product.productPrice}} ({{product.quantityPrice}})</span>
-
+                                        <hr class="mb-1">
+                                        <div class="ml-1 edit-icon">
                                         </div>
-                                    </div>
-                                   
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="customer-details">
-                                    <h4 class="card-title">Customer Details</h4>
-                                    <div
-                                        class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mb-1">
-                                        <div><strong> Customer Name:</strong></div>
-                                        <div>{{orderData.client.clientName}}</div>
-
-                                    </div>
-                                    <div
-                                        class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mb-1">
-                                        <div><strong> Customer Phone:</strong>
-                                        </div>
-                                        <div>{{orderData.client.clientPhone}}</div>
-                                    </div>
-                                    <div
-                                        class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mb-1">
-                                        <div><strong> Customer Address:</strong></div>
-                                        <div>{{orderData.client.clientAddress}}</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="price-details">
-                                    <h4 class="card-title">Price Details</h4>
-                                    <div
-                                        class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mb-1">
-                                        <div><strong> Order Price:</strong></div>
-                                        <div>₹{{orderData.amount.totalAmount}}</div>
-
-                                    </div>
-                                    <div
-                                        class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mb-1">
-                                        <div><strong>Delivery Charges:</strong></div>
-                                        <div>₹{{orderData.amount.deliveryCharge}}</div>
-                                    </div>
-                                    <div
-                                        class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mb-1">
-                                        <div><strong>Tax:</strong></div>
-                                        <div>₹{{orderData.amount.taxAmount}}</div>
-                                    </div>
-                                    <div
-                                        class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mb-1">
-                                        <div><strong>Discount:</strong></div>
-                                        <div>₹{{orderData.amount.discountedAmount}}</div>
                                     </div>
                                     <hr>
-                                    <div
-                                        class="d-flex align-items-center justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mb-1">
-                                        <div><strong>Total Price:</strong></div>
-                                        <div>₹{{orderData.payableAmount | number:'1.2-2'}}</div>
+                                    <div class=" card-transaction">
+                                        <div class="card-body1">
+                                            <div class="transaction-item">
+                                                <div class="media">
+                                                    <div class="media-body">
+                                                        <h6 class="transaction-title">Settlement amount</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="details">₹{{orderData.amount.totalAmount -
+                                                    orderData.amount.discountedAmount}}</div>
+                                            </div>
+                                            <div class="transaction-item">
+                                                <div class="media">
+                                                    <div class="media-body">
+                                                        <h6 class="transaction-title">Distance</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="details">{{orderData.distance}}</div>
+                                            </div>
+                                            <div class="transaction-item">
+                                                <div class="media">
+                                                    <div class="media-body">
+                                                        <h6 class="transaction-title">Order Time:</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="details">{{orderData.timing[0].time}}</div>
+                                            </div>
+                                            <div class="transaction-item">
+                                                <div class="media">
+                                                    <div class="media-body">
+                                                        <h6 class="transaction-title">Discount:</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="details">₹{{orderData.amount.discountedAmount}}</div>
+                                            </div>
+                                            <!-- <hr>
+                                            <div class="transaction-item">
+                                                <div class="media">
+                                                    <div class="media-body">
+                                                        <h6 class="transaction-title">Order Date</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="details">₹{{orderData.payableAmount | number:'1.2-2'}}</div>
+                                            </div> -->
+
+                                        </div>
                                     </div>
-                                    
-                                   
+                                </div>
+
+                            </div>
+
+                            <div class="details-parent col-md-6">
+                                <div class="card-body11">
+                                    <div class="heading d-flex justify-content-between align-items-center">
+                                        <div class="heading1">
+                                            <h3>Order TimeLine</h3>
+                                        </div>
+                                        <hr class="mb-1">
+                                        <div class="ml-1 edit-icon">
+                                            <a href="javascript:void(0)">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class=" card-transaction">
+                                        <div class="card-body1 row mx-auto">
+                                            <div class="col-md-6">
+                                                <div class="order-track-map">
+                                                    <div class="form-check start-track">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="flexCheckDefault" disabled  [checked]="
+                                                            timelineData(orderData.timing, 'pending')
+                                                          " />
+                                                        <label class="form-check-label">
+                                                            <span class="gray-clr">Placed</span>
+                                                            <p>
+                                                                    {{ timelineData(orderData.timing, "pending") }}
+                                                            </p>
+                                                        </label>
+                                                    </div>
+                                                    <img src="assets/images/line-gray.png" alt="" />
+                                                    <div class="form-check start-track">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="flexCheckDefault" disabled  [checked]="
+                                                            timelineData(orderData.timing, 'preparing')
+                                                          " />
+                                                        <label class="form-check-label">
+                                                            <span class="gray-clr">Accepted</span>
+                                                            <p>
+                                                                 {{ timelineData(orderData.timing, "preparing") }}
+                                                            </p>
+                                                        </label>
+                                                    </div>
+                                                    <img src="assets/images/line-gray.png" alt="" />
+                                                    <div class="form-check start-track">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="flexCheckDefault" disabled  [checked]="
+                                                            timelineData(orderData.timing, 'preparing')
+                                                          " />
+                                                        <label class="form-check-label">
+                                                            <span class="gray-clr">Preparing</span>
+                                                            <p>
+                                                                 {{ timelineData(orderData.timing, "preparing") }}
+                                                            </p>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class=" col-md-6">
+                                                <div class="order-track-map curve-line-gray">
+                                                    <div class="form-check start-track">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="flexCheckDefault" disabled  [checked]="timelineData(orderData.timing, 'ready')" />
+                                                        <label class="form-check-label">
+                                                            <span class="gray-clr">Ready</span>
+                                                            <p>
+                                                                {{ timelineData(orderData.timing, "ready") }}
+                                                            </p>
+                                                        </label>
+                                                    </div>
+
+                                                    <img src="assets/images/line-gray.png" alt="" />
+                                                    <div class="form-check start-track">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="flexCheckDefault" disabled [checked]="
+                                                            timelineData(orderData.timing, 'dispatched')
+                                                          "/>
+                                                        <label class="form-check-label">
+                                                            <span class="gray-clr">Picked</span>
+                                                            <p>
+                                                                 {{
+                                                                     timelineData(orderData.timing, "dispatched")
+                                                                    }}
+                                                            </p>
+                                                        </label>
+                                                    </div>
+                                                    <img src="assets/images/line-gray.png" alt="" />
+                                                    <div class="form-check start-track">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="flexCheckDefault" disabled  [checked]="
+                                                            timelineData(orderData.timing, 'delivered')
+                                                          "/>
+                                                        <label class="form-check-label">
+                                                            <span class="gray-clr">Delivered</span>
+                                                            <p>
+                                                                  {{ timelineData(orderData.timing, "delivered") }}
+                                                            </p>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div> -->
 
-                        
+
+                        </div>
 
                         <div class="details-parent d-flex justify-content-between">
                             <div class="details-parent col-md-4">
@@ -136,74 +232,32 @@
                                     <div class=" card-transaction">
                                         <div class="card-body1">
                                             <div class="transaction-item" *ngFor="let product of orderData.productList">
-                                                <div class="media" >
+                                                <div class="media">
                                                     <div class="media-body">
-                                                        <h6 class="transaction-title">{{product.productName}} X {{product.quantity}}</h6>
+                                                        <h6 class="transaction-title">{{product.productName}} X
+                                                            {{product.quantity}}</h6>
                                                         <!-- <small>Starbucks</small> -->
                                                     </div>
                                                 </div>
-                                                <div class="details">₹{{product.productPrice}} ({{product.quantityPrice}})</div>
+                                                <div class="details">₹{{product.productPrice}}
+                                                    ({{product.quantityPrice}})</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                            </div>
-
-                            <div class="details-parent col-md-4">
-                              <div class="card-body11">
-                                <div class="heading d-flex justify-content-between align-items-center">
-                                    <div class="heading1">
-                                        <h3>Customer Details</h3>
-                                    </div>
-                                    <hr class="mb-1">
-                                    <div class="ml-1 edit-icon">
-                                        <a href="javascript:void(0)">
-                                       </a>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class=" card-transaction">
-                                    <div class="card-body1">
-                                        <div class="transaction-item">
-                                            <div class="media">
-                                               <div class="media-body">
-                                                    <h6 class="transaction-title">Customer Name:</h6>
-                                                   
-                                                </div>
-                                            </div>
-                                            <div class="details">{{orderData.client.clientName}}</div>
-                                        </div>
-                                        <div class="transaction-item">
-                                            <div class="media">
-                                               <div class="media-body">
-                                                    <h6 class="transaction-title">Customer Phone:</h6>
-                                                </div>
-                                            </div>
-                                            <div class="details">{{orderData.client.clientPhone}}</div>
-                                        </div>
-                                        <div class="transaction-item">
-                                            <div class="media">
-                                                <div class="media-body">
-                                                    <h6 class="transaction-title">Customer Address:</h6>
-                                                </div>
-                                            </div>
-                                            <div class="details">{{orderData.client.clientAddress}}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                              </div>
                             </div>
 
                             <div class="details-parent col-md-4">
                                 <div class="card-body11">
                                     <div class="heading d-flex justify-content-between align-items-center">
                                         <div class="heading1">
-                                            <h3>Price Details</h3>
-                                        </div>                                                    
+                                            <h3>Customer Details</h3>
+                                        </div>
+                                        <hr class="mb-1">
                                         <div class="ml-1 edit-icon">
                                             <a href="javascript:void(0)">
-                                             </a>
+                                            </a>
                                         </div>
                                     </div>
                                     <hr>
@@ -211,9 +265,53 @@
                                         <div class="card-body1">
                                             <div class="transaction-item">
                                                 <div class="media">
-                                                     <div class="media-body">
+                                                    <div class="media-body">
+                                                        <h6 class="transaction-title">Customer Name:</h6>
+
+                                                    </div>
+                                                </div>
+                                                <div class="details">{{orderData.client.clientName}}</div>
+                                            </div>
+                                            <div class="transaction-item">
+                                                <div class="media">
+                                                    <div class="media-body">
+                                                        <h6 class="transaction-title">Customer Phone:</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="details">{{orderData.client.clientPhone}}</div>
+                                            </div>
+                                            <div class="transaction-item">
+                                                <div class="media">
+                                                    <div class="media-body">
+                                                        <h6 class="transaction-title">Customer Address:</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="details">{{orderData.client.clientAddress}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="details-parent col-md-4">
+                                <div class="card-body11">
+                                    <div class="heading d-flex justify-content-between align-items-center">
+                                        <div class="heading1">
+                                            <h3>Price Details</h3>
+                                        </div>
+                                        <div class="ml-1 edit-icon">
+                                            <a href="javascript:void(0)">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class=" card-transaction">
+                                        <div class="card-body1">
+                                            <div class="transaction-item">
+                                                <div class="media">
+                                                    <div class="media-body">
                                                         <h6 class="transaction-title">Order Price:</h6>
-                                                     </div>
+                                                    </div>
                                                 </div>
                                                 <div class="details">₹{{orderData.amount.totalAmount}}</div>
                                             </div>
@@ -250,7 +348,7 @@
                                                 </div>
                                                 <div class="details">₹{{orderData.payableAmount | number:'1.2-2'}}</div>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
