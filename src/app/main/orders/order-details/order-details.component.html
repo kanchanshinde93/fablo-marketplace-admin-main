@@ -233,10 +233,10 @@
                                         <div class="card-body1">
                                             <div class="transaction-item" *ngFor="let product of orderData.productList">
                                                 <div class="media">
-                                                    <div class="media-body">
-                                                        <h6 class="transaction-title">{{product.productName}} X
-                                                            {{product.quantity}}</h6>
-                                                        <!-- <small>Starbucks</small> -->
+                                                   
+                                                    <div class="media-body my-auto">
+                                                        <h6 class="mb-0">{{product.productName}} X {{product.quantity}}</h6>
+                                                        <span>{{product.variationName}}</span>
                                                     </div>
                                                 </div>
                                                 <div class="details">₹{{product.productPrice}}
