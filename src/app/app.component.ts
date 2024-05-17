@@ -1,4 +1,4 @@
-import { Component, Inject, OnDestroy, OnInit, ElementRef, Renderer2, ViewChild,TemplateRef} from '@angular/core';
+           import { Component, Inject, OnDestroy, OnInit, ElementRef, Renderer2, ViewChild,TemplateRef} from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 
@@ -25,7 +25,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss']            
 })
 export class AppComponent implements OnInit, OnDestroy {
   @ViewChild("content", { static: true }) content: TemplateRef<any>;

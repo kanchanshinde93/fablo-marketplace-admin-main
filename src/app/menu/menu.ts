@@ -43,7 +43,7 @@ export const menu: CoreMenu[] = [
   },
   {
     id: 'advertiesment',
-    title: 'Advertiesment',
+    title: 'Advertisement',
     translate: 'MENU.ADVERTIESMENT',
     type: 'item',
     icon: 'volume-2',
